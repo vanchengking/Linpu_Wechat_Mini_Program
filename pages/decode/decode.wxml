@@ -1,0 +1,34 @@
+<view class="container" catchtouchstart="handleTouchStart" catchtouchend="handleTouchEnd">
+  <!-- 背景图 -->
+  <image class="bg" src="https://asave.rutno.com/fileview?id=zTeB1JKeCmMA" mode="cover"></image>
+
+  <!-- 顶部标题 -->
+  <view class="top-title">林浦印象</view>
+
+  <view class="vertical-text">
+    <!-- 左侧竖排文字：濂水绕林浦 -->
+    <view class="vertical-column left-column">
+      <view class="calligraphy-text">濂</view>
+      <view class="calligraphy-text offset-1">水</view>
+      <view class="calligraphy-text offset-2">绕</view>
+      <view class="calligraphy-text offset-3">林</view>
+      <view class="calligraphy-text offset-4">浦</view>
+    </view>
+    
+    <!-- 右侧竖排文字：故事传千年 -->
+    <view class="vertical-column right-column">
+      <view class="calligraphy-text">故</view>
+      <view class="calligraphy-text offset-1">事</view>
+      <view class="calligraphy-text offset-2">传</view>
+      <view class="calligraphy-text offset-3">千</view>
+      <view class="calligraphy-text offset-4">年</view>
+    </view>
+  </view>
+
+  <!-- 向上滑动提示 -->
+  <view class="swipe-tip">
+    <view class="arrow" animation="{{arrowAnimation}}">▲</view>
+    <view class="tip-text">向上滑动开启你与神明的故事</view>
+  </view>
+
+</view>

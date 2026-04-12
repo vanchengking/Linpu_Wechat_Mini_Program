@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "与尚书伯聊天",
+  "navigationBarBackgroundColor": "#6c6553",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#000000",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

@@ -1,0 +1,87 @@
+
+<view class="container">
+
+  <!-- 背景图 -->
+  <image 
+    class="bg-img"
+    src="https://asave.rutno.com/fileview?id=otoA9Jvt6lnG"
+    mode="aspectFill"
+  ></image>
+
+  <!-- 尚书伯 -->
+  <view wx:if="{{showCharacter}}" class="character-area">
+    <image 
+      class="character"
+      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+      mode="widthFix"
+    ></image>
+  </view>
+
+  <!-- 历史消息容器（可滚动） -->
+  <scroll-view 
+    class="message-container" 
+    scroll-y="true"
+    scroll-top="{{scrollTop}}"
+    bindscroll="onScroll"
+  >
+    <!-- 用户消息气泡列表 -->
+    <view wx:for="{{messages}}" wx:key="index" class="message-item">
+      <view wx:if="{{item.role === 'user'}}" class="user-bubble" animation="{{item.animation}}">
+        <text>{{item.content}}</text>
+      </view>
+      <view wx:elif="{{item.role === 'ai'}}" class="ai-bubble" animation="{{item.animation}}">
+        <text>{{item.content}}</text>
+      </view>
+    </view>
+
+    <!-- 初始气泡 -->
+    <view wx:if="{{showInitialBubble}}" class="initial-bubble">
+      <view class="bubble">
+        <text>诶！那是谁家的小书生？快跟上！我是林浦的尚书伯，也是这里的"巡境百事通"，有什么想问的尽管说！
+          听见锣鼓声了吗？咱们村的巡境队伍马上就要出发了！
+          有什么关于林浦巡境的问题，都可以问我！
+        </text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部输入栏 -->
+  <view class="input-bar">
+    <!-- 输入框 -->
+    <view class="input-wrapper">
+      <input 
+        class="input-box"
+        placeholder="向尚书伯提问..."
+        value="{{inputText}}"
+        bindinput="onInput"
+        bindconfirm="sendText"
+      />
+    </view>
+
+    <!-- 语音按钮 -->
+    <view class="voice-btn" bindtap="startVoice">
+      <image 
+        src="/resources/icons/语音输入.png"
+        class="voice-icon"
+      ></image>
+    </view>
+
+    <!-- 发送按钮 -->
+    <view class="send-btn" bindtap="sendText">
+      <text>发送</text>
+    </view>
+  </view>
+
+  <!-- 退出确认弹窗 -->
+  <view wx:if="{{showExitConfirm}}" class="modal-mask" bindtap="hideExitConfirm">
+    <view class="modal-content" catchtap="">
+      <view class="modal-title">提示</view>
+      <view class="modal-message">退出将清空对话内容，是否确认退出？</view>
+      <view class="modal-buttons">
+        <view class="modal-button cancel-btn" bindtap="hideExitConfirm">取消</view>
+        <view class="modal-button confirm-btn" bindtap="confirmExit">退出</view>
+      </view>
+    </view>
+  </view>
+
+</view>

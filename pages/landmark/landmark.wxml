@@ -1,0 +1,79 @@
+<view class="container">
+
+  <view class="section-title">
+    <view class="line"></view>
+    <text>建筑遗存</text>
+    <view class="line"></view>
+  </view>
+
+  <view class="building-list">
+    <block wx:for="{{buildings}}" wx:key="id">
+      <view class="card" bindtap="openDetail" data-index="{{index}}">
+        <!-- 图片轮播容器 -->
+        <swiper class="card-swiper" indicator-dots="true" autoplay="false" interval="5000" duration="1000">
+          <block wx:for="{{item.images.length > 0 ? item.images : ['/images/placeholder.png']}}" wx:key="index">
+            <swiper-item>
+              <image class="card-img" src="{{item}}" mode="aspectFit"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="card-info">
+          <view class="card-header">
+            <text class="card-name">{{item.name}}</text>
+            <text class="card-tag">{{item.type}}</text>
+          </view>
+          <view class="card-summary">{{item.summary}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="detail-modal {{showModal ? 'show' : ''}}">
+    <view class="modal-mask" bindtap="closeDetail"></view>
+    <view class="modal-content">
+      <view class="close-btn" bindtap="closeDetail">×</view>
+      
+      <scroll-view scroll-y="true" class="modal-scroll">
+        <!-- 详情页图片轮播容器 -->
+        <swiper class="modal-swiper" indicator-dots="true" autoplay="false" interval="5000" duration="1000">
+          <block wx:for="{{currentBuilding.images.length > 0 ? currentBuilding.images : ['/images/placeholder.png']}}" wx:key="index">
+            <swiper-item>
+              <image class="modal-img" src="{{item}}" mode="aspectFit"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+        
+        <view class="modal-body">
+          <view class="modal-title">{{currentBuilding.name}}</view>
+          <view class="modal-tags">
+            <text class="tag">{{currentBuilding.type}}</text>
+            <text wx:if="{{currentBuilding.protectionLevel}}" class="tag secondary">{{currentBuilding.protectionLevel}}</text>
+          </view>
+
+          <view class="section">
+            <view class="label">简介</view>
+            <text class="text">{{currentBuilding.intro}}</text>
+          </view>
+
+          <view class="section" wx:if="{{currentBuilding.layout}}">
+            <view class="label">建筑布局</view>
+            <text class="text">{{currentBuilding.layout}}</text>
+          </view>
+
+          <view class="section" wx:if="{{currentBuilding.history}}">
+            <view class="label">历史钩沉</view>
+            <text class="text">{{currentBuilding.history}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 全局浮窗聊天按钮 -->
+  <view class="float-chat-btn" bindtap="goToChat">
+    <image 
+      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+      class="float-chat-icon"
+    ></image>
+  </view>
+</view>

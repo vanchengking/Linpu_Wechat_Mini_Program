@@ -1,0 +1,265 @@
+page {
+  background-color: #000;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 返回按钮 */
+.back-btn {
+  position: absolute;
+  top: 80rpx;
+  left: 30rpx;
+  z-index: 20;
+  background: rgba(0,0,0,0.4);
+  padding: 20rpx 30rpx;
+  border-radius: 50rpx;
+  border: 2rpx solid rgba(255,255,255,0.8);
+}
+.back-text {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 全屏按钮 */
+.fullscreen-btn {
+  position: absolute;
+  top: 200rpx;
+  right: 30rpx;
+  z-index: 20;
+  background: rgba(0,0,0,0.4);
+  padding: 15rpx;
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fullscreen-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 背景图 */
+.bg-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 场景选择按钮 */
+.scene-buttons {
+  position: absolute;
+  bottom: 210rpx;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+  z-index: 15;
+}
+
+.scene-btn {
+  background: rgba(255,255,255,0.9);
+  border: 2rpx solid #6c6553;
+  border-radius: 50rpx;
+  padding: 16rpx 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.scene-btn:active {
+  background: #6c6553;
+  transform: scale(0.95);
+}
+
+.scene-text {
+  font-size: 30rpx;
+  color: #6c6553;
+  font-weight: bold;
+}
+
+.scene-btn:active .scene-text {
+  color: white;
+}
+
+/* 消息容器 */
+.message-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 330rpx;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+  padding-bottom: 200rpx; /* 为初始气泡预留空间 */
+}
+
+/* 固定人物 */
+.character-area {
+  position: fixed;
+  bottom: 330rpx;
+  left: 0rpx;
+  z-index: 10; /* 确保显示在消息之上 */
+  transform-origin: center bottom; 
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards; /* 淡入上升动画 */
+}
+
+.character {
+  width: 400rpx;
+  opacity: 1; /* 确保图片不透明 */
+  display: block; /* 确保是块级元素 */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 初始气泡 */
+.initial-bubble {
+  margin-bottom: 30rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 330rpx;
+  padding: 22rpx 28rpx;
+  border-radius: 18rpx;
+  background: rgba(255,255,255,0.85);
+  color: #333;
+  font-size: 30rpx;
+  line-height: 36rpx;
+  text-align: justify;
+  word-wrap: break-word;
+  word-break: break-all;
+  min-height: 80rpx;
+}
+
+/* 用户消息气泡 */
+.message-item {
+  margin: 30rpx 40rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-bubble {
+  max-width: 330rpx;
+  padding: 22rpx 28rpx;
+  border-radius: 18rpx;
+  background: rgba(109,83,68,0.9);
+  color: white;
+  font-size: 30rpx;
+  line-height: 36rpx;
+  text-align: justify;
+  word-wrap: break-word;
+  word-break: break-all;
+  min-height: 60rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.2);
+}
+
+/* AI消息气泡 */
+.ai-bubble {
+  max-width: 330rpx;
+  padding: 22rpx 28rpx;
+  border-radius: 18rpx;
+  background: rgba(244, 244, 244, 0.78);
+  color: #333333ff; 
+  font-size: 30rpx;
+  line-height: 36rpx;
+  text-align: justify;
+  word-wrap: break-word;
+  word-break: break-all;
+  min-height: 60rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1); 
+}
+
+/* 底部输入栏 */
+.input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 28rpx 26rpx 38rpx 26rpx;
+  background: rgba(255, 255, 255, 0.98);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15rpx;
+  box-shadow: 0 -4rpx 10rpx rgba(0,0,0,0.05);
+  z-index: 20;
+}
+
+/* 输入框容器，自动占据主空间 */
+.input-wrapper {
+  flex: 1.9;
+  display: flex;
+  align-items: center;
+}
+
+.input-box {
+  flex: 1;
+  height: 80rpx;
+  padding: 0 30rpx;
+  background: #ffffff;
+  border-radius: 40rpx;
+  border: 2rpx solid #e0e0e0;
+  font-size: 30rpx;
+  color: #333;
+}
+
+/* 语音按钮 */
+.voice-btn {
+  width: 80rpx;
+  height: 80rpx;
+  background: #d4cba7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 36rpx;
+  box-shadow: 0 4rpx 8rpx rgba(109,83,68,0.3);
+  flex-shrink: 0;
+}
+
+.voice-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 发送按钮 */
+.send-btn {
+  height: 80rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d4cba7;
+  color: white;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  border: none;
+  box-shadow: 0 4rpx 8rpx rgba(109,83,68,0.3);
+  min-width: 100rpx;
+  max-width: 160rpx;
+  flex-shrink: 0;
+}

@@ -1,0 +1,160 @@
+// pages/landmark/landmark.js
+Page({
+  data: {
+    showModal: false,
+    currentBuilding: null,
+    buildings: [
+      {
+        id: 1,
+        name: "林浦泰山宫",
+        type: "宫庙建筑",
+        protectionLevel: "福建省级文物保护单位",
+        images: [
+          "https://asave.rutno.com/fileview?id=CTwGwAct3Bnf",
+          "https://asave.rutno.com/fileview?id=bax7krmLfHDJ",
+          "https://asave.rutno.com/fileview?id=fg0BEdSVl259"
+        ],
+        summary: "原为平山阁，因南宋益王赵昰曾驻跸于此，后改称泰山宫。由泰山宫、天后宫、总管殿组成。",
+        intro: "林浦泰山宫位于福州市仓山区城门镇濂江村，原名平山阁。南宋末年，益王赵昰（后来的端宗）曾在此驻跸，故后世改称为泰山宫。建筑坐东朝西，占地面积1484平方米。",
+        layout: "泰山宫坐北朝南，由正殿、大王殿（即总管殿）及天后宫三部分组成，总占地面积约1000平方米。正殿前建门亭，立于高台之上。朱门槛窗上浮雕花卉与人物故事。穹顶凿三方藻井，正中椭圆绘刻“双龙戏珠”，左右作四方形“丹凤朝阳”。宫前相隔百米对称处，各建一木构牌坊为东、西辕门。辕门前方有老榕树两株，为元代所植，已历七百余年。",
+        history: "南宋德祐二年（1276），陈宜中、陆秀夫、张世杰等人拥立赵昰在福州登基。宋亡后，林浦百姓为纪念宋帝及陈丞相，将行宫改为社庙，冠以“泰山”二字避讳元廷猜忌。宫中所祀神像均影射南宋君臣，如以宋高宗赵构为泰山，并祀文天祥、陆秀夫、张世杰等。"
+      },
+      {
+        id: 2,
+        name: "世公保尚书家庙",
+        type: "宗祠建筑",
+        protectionLevel: "福州市级文物保护单位",
+        images: [
+          "https://asave.rutno.com/fileview?id=Db2fGRMz2kG6",
+          "https://asave.rutno.com/fileview?id=j3o8Yv6f5uMl"
+        ],
+        summary: "始建于明正德十三年，系明代南京兵部尚书林瀚建造。为“三代五尚书”、“七科八进士”之纪念。",
+        intro: "世宫保尚书林公家庙位于林浦村，始建于明正德十三年（1518年），系明代南京兵部尚书林瀚建造。它是林浦林氏家族辉煌历史的见证，尤其是“三代五尚书”与“七科八进士”的殊荣。",
+        layout: "庙为木结构，坐东朝西，占地669平方米。由门楼、厢房、戏台、回廊、大厅、天井组成。大厅面阔五间，进深七柱，为古代三品以上官员家庙规格。门楼为牌楼式建筑，檐下斗拱出挑4层，上覆重檐歇山顶。额匾书：“世宫保尚书林公家庙”。庙前有石砌水池，形如“乌纱帽”。",
+        history: "林浦林氏在明代辉煌一时，林瀚及其子孙创造了科举史上的奇迹。明史评价：“明代三世五尚书，并得谥文，林氏一家而已”。家庙内立有《林尚书家庙记》石碑，记载了建祠始末。"
+      },
+      {
+        id: 3,
+        name: "濂江书院",
+        type: "文化教育",
+        protectionLevel: "福州市级文物保护单位",
+        images: [
+          "https://asave.rutno.com/fileview?id=fRcruyF3yaxC",
+          "https://asave.rutno.com/fileview?id=Nci5dMCK0wwc",
+          "https://asave.rutno.com/fileview?id=Ev83x7cgmqhW"
+        ],
+        summary: "福州唯一保存完好的宋代古书院，朱熹及其弟子黄榦曾在此讲学，留有“文光射斗”等石刻。",
+        intro: "濂江书院始建于唐末，迄今已有一千多年历史，是福州唯一一所保存最为完好的古书院。书院是林浦教育的发祥地，见证了林氏家族文风之盛。",
+        layout: "书院为二层木结构楼房。书院内有“文昌阁”，即宋朱熹讲学处，又名“朱子厅”。文昌阁前平台有师生洗笔的石臼，边刻“知鱼乐”三字。石栏正反面分别刻有“文光射斗”和“濂水龙腾”八个苍劲大字。",
+        history: "南宋年间，朱熹及其弟子黄榦曾在此讲学，并题写“文明气象”赞扬此处师生。朱子的思想在此留下了深远影响，自此濂江书院学子辈出，明代林浦林氏“七科八进士”的成就便与此深厚的教育底蕴密不可分。"
+      },
+      {
+        id: 4,
+        name: "尚书里石牌坊",
+        type: "牌坊建筑",
+        protectionLevel: "历史构筑物",
+        images: [
+          "https://asave.rutno.com/fileview?id=erPBNEVyiXEV",
+          "https://asave.rutno.com/fileview?id=OOxrFWzxgxsW",
+          "https://asave.rutno.com/fileview?id=L8fwHlT28qKu"
+        ],
+        summary: "始建于明隆庆年间，以此表彰林瀚家族“三代五尚书”的显赫功绩，额刻“尚书里”。",
+        intro: "尚书里石牌坊位于林浦狮山村，始建于明隆庆年间，是皇帝赐修以表彰林氏家族的功绩。文革中被毁，上世纪八十年代利用残存构件按原样重修。",
+        layout: "石牌坊正面中门上匾书刻“尚书里”三字。下匾刻有林瀚为首的“三代五尚书”及父祖名讳官衔。两旁横匾书刻“两朝宠命，累世翰林”。背面正中书刻“科第联芳”。牌坊顶镶有青石圣旨牌。",
+        history: "据《明史》记载，林氏三世五尚书，皆内行修洁。明隆庆皇帝特赐修此坊。它是林浦林氏家族荣耀的象征。"
+      },
+      {
+        id: 5,
+        name: "林浦断桥",
+        type: "桥梁建筑",
+        protectionLevel: "省级历史文化名村景点",
+        images: [
+          "https://asave.rutno.com/fileview?id=pt0qNSHiJv7w",
+          "https://asave.rutno.com/fileview?id=lN00jnEXUUn1",
+          "https://asave.rutno.com/fileview?id=wwhAgYC2g58O"
+        ],
+        summary: "始建于南宋绍兴三年，由疍民建造。桥体断裂原因成谜，桥墩上建有小庙，形成独特景观。",
+        intro: "林浦断桥，俗称“三门桥”，始建于南宋绍兴三年（1133年）。它比福州著名的万寿桥还要早190年。桥梁条石巨大，桥孔宽阔，在宋代桥梁中极为罕见。",
+        layout: "原桥长22米，宽2.7米，现残存两墩三孔。桥为石构平梁撑式。奇特之处在于，桥墩中一墩位于陆地，一墩位于江中。江中桥墩上建有一座水神庙（马相公庙），桥梁与庙对接后不再延伸，形成“断桥”奇景。",
+        history: "该桥由当时的疍民建造。关于桥梁为何中断，历史众说纷纭，原因成谜。桥面刻有宋代纪年题刻，具有极高的文物价值。"
+      },
+      {
+        id: 6,
+        name: "进士木牌坊",
+        type: "牌坊建筑",
+        protectionLevel: "林尚书家庙附属文物",
+        images: [
+          "https://asave.rutno.com/fileview?id=GMBVlF7pHYN8",
+          "https://asave.rutno.com/fileview?id=L0t4y4KKdPce",
+          "https://asave.rutno.com/fileview?id=YjeWJbbM98BJ"
+        ],
+        summary: "俗称“进士柴坊”，建于明正德十一年，木构单檐歇山顶，额书“世尚书”。",
+        intro: "位于林浦街中，是林尚书家庙的附属文物。始建于明正德十一年（1516年），为纪念林瀚家族的科举成就而立。",
+        layout: "牌坊为木结构，单门，高约8米，面宽9米。由木柱支撑，上覆单檐庑殿顶（参考材料提及歇山顶与庑殿顶混用，依现存实物多为歇山式，此处保留原文描述）。檐下斗拱重叠，层层出跳。坊额悬挂木匾书“进士”，横楣详细记载了家族科举情况。",
+        history: ""
+      }
+    ]
+  },
+
+  // 打开详情弹窗
+  openDetail(e) {
+    const index = e.currentTarget.dataset.index;
+    const building = this.data.buildings[index];
+    this.setData({
+      currentBuilding: building,
+      showModal: true
+    });
+    
+    // 添加页面滚动锁定
+    wx.hideTabBar();
+  },
+
+  // 关闭详情弹窗
+  closeDetail() {
+    this.setData({
+      showModal: false,
+      currentBuilding: null
+    });
+    
+    // 解除页面滚动锁定
+    wx.showTabBar();
+  },
+
+  // 页面加载完成
+  onReady() {
+    // 可以在这里添加一些初始化操作
+  },
+  
+  // 页面显示时
+  onShow() {
+    // 如果弹窗是打开状态，隐藏tabbar
+    if (this.data.showModal) {
+      wx.hideTabBar();
+    }
+  },
+  
+  // 页面隐藏时
+  onHide() {
+    // 确保tabbar恢复显示
+    wx.showTabBar();
+  },
+
+  // 跳转到聊天页面
+  goToChat() {
+    console.log("浮窗按钮被点击了");
+    wx.navigateTo({
+      url: '/pages/chat/chat',
+      success: (res) => {
+        console.log('跳转到聊天页面成功');
+      },
+      fail: (err) => {
+        console.error('跳转到聊天页面失败:', err);
+        wx.showToast({
+          title: '跳转失败，请稍后重试',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    });
+  }
+})

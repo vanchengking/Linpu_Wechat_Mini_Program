@@ -1,0 +1,86 @@
+<!-- 背景图 -->
+<image class="bg-image" src="https://asave.rutno.com/fileview?id=S8JAJK5wKDye" mode="aspectFill"></image>
+
+<view class="container">
+  <!-- 顶部内容 -->
+  <view class="header">
+    <view class="avatar-box">
+      <image class="avatar" src="/resources/icons/个人.png"></image>
+    </view>
+
+    <view class="subtitle">日行千里的文化探险者</view>
+  </view>
+
+  <!-- 四大功能入口 -->
+  <view class="feature-row">
+    <view class="feature-item">
+      <image src="/resources/icons/云塔.png" class="feature-icon"></image>
+      <text class="feature-text">林浦印象</text>
+    </view>
+
+    <view class="feature-item">
+      <image src="/resources/icons/地标.png" class="feature-icon"></image>
+      <text class="feature-text">地标打卡</text>
+    </view>
+
+    <view class="feature-item">
+      <image src="/resources/icons/成就.png" class="feature-icon"></image>
+      <text class="feature-text">所获成就</text>
+    </view>
+
+    <view class="feature-item">
+      <image src="/resources/icons/个人.png" class="feature-icon"></image>
+      <text class="feature-text">个人记录</text>
+    </view>
+  </view>
+
+  <!-- 行走路线 -->
+  <view class="map-card">
+    <image src="https://asave.rutno.com/fileview?id=CVAyXbX3RgJC" class="map-img"></image>
+    <view class="map-title">行走路线 ></view>
+  </view>
+
+  <!-- 列表按钮 -->
+  <view class="menu">
+    <view class="menu-item">
+      <view class="left">
+        <image src="/resources/icons/成就.png" class="menu-icon"></image>
+        <text>排行榜</text>
+      </view>
+      <text class="arrow">></text>
+    </view>
+
+    <view class="menu-item">
+      <view class="left">
+        <image src="/resources/icons/个人.png" class="menu-icon"></image>
+        <text>更多设置</text>
+      </view>
+      <text class="arrow">></text>
+    </view>
+
+    <view class="menu-item">
+      <view class="left">
+        <image src="/resources/icons/地标.png" class="menu-icon"></image>
+        <text>给予建议</text>
+      </view>
+      <text class="arrow">></text>
+    </view>
+
+    <view class="menu-item">
+      <view class="left">
+        <image src="/resources/icons/个人.png" class="menu-icon"></image>
+        <text>研发团队</text>
+      </view>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 全局浮窗聊天按钮 -->
+  <view class="float-chat-btn" bindtap="goToChat">
+    <image 
+      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+      class="float-chat-icon"
+    ></image>
+  </view>
+
+  </view>

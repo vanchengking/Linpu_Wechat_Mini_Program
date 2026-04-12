@@ -1,0 +1,99 @@
+<view class="container">
+
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goHome">
+    <text class="back-text">返回</text>
+  </view>
+
+  <!-- 全屏切换按钮 -->
+  <view class="fullscreen-btn" bindtap="toggleFullscreen">
+    <image 
+      src="/resources/icons/全屏.png"
+      class="fullscreen-icon"
+    ></image>
+  </view>
+
+  <!-- 背景图 -->
+  <image 
+    class="bg-img"
+    src="https://asave.rutno.com/fileview?id=fhuPaix7GDJc"
+    mode="aspectFill"
+  ></image>
+
+  <!-- 场景选择按钮 -->
+  <view class="scene-buttons">
+    <view class="scene-btn" bindtap="selectScene" data-scene="濂江书院">
+      <text class="scene-text">濂江书院</text>
+    </view>
+    <view class="scene-btn" bindtap="selectScene" data-scene="世公保">
+      <text class="scene-text">世公保</text>
+    </view>
+    <view class="scene-btn" bindtap="selectScene" data-scene="泰山宫">
+      <text class="scene-text">泰山宫</text>
+    </view>
+  </view>
+
+  <!-- 尚书伯 -->
+  <view wx:if="{{showCharacter}}" class="character-area">
+    <image 
+      class="character"
+      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+      mode="widthFix"
+    ></image>
+  </view>
+
+  <!-- 历史消息容器（可滚动） -->
+  <scroll-view 
+    class="message-container" 
+    scroll-y="true"
+    scroll-top="{{scrollTop}}"
+    bindscroll="onScroll"
+  >
+    <!-- 用户消息气泡列表 -->
+    <view wx:for="{{messages}}" wx:key="index" class="message-item">
+      <view wx:if="{{item.role === 'user'}}" class="user-bubble" animation="{{item.animation}}">
+        <text>{{item.content}}</text>
+      </view>
+      <view wx:elif="{{item.role === 'ai'}}" class="ai-bubble" animation="{{item.animation}}">
+        <text>{{item.content}}</text>
+      </view>
+    </view>
+
+    <!-- 初始气泡 -->
+    <view class="initial-bubble">
+      <view class="bubble">
+        <text>濂江书院是福州现存最完好的古书院，始建于唐末，南宋朱熹曾在此讲学，"宋朱熹讲学处" 巨碑、"文光射斗" 石栏等遗迹，见证千年学风传承。</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部输入栏（全屏时隐藏） -->
+  <view wx:if="{{!isFullscreen}}" class="input-bar">
+
+    <!-- 输入框 -->
+    <view class="input-wrapper">
+      <input 
+        class="input-box"
+        placeholder="向尚书伯提问..."
+        value="{{inputText}}"
+        bindinput="onInput"
+        bindconfirm="sendText"
+      />
+    </view>
+
+    <!-- 语音按钮 -->
+    <view class="voice-btn" bindtap="startVoice">
+      <image 
+        src="/resources/icons/语音输入.png"
+        class="voice-icon"
+      ></image>
+    </view>
+
+    <!-- 发送按钮 -->
+    <view class="send-btn" bindtap="sendText">
+      <text>发送</text>
+    </view>
+
+  </view>
+
+</view>

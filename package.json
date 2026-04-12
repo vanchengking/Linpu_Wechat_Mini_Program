@@ -1,0 +1,16 @@
+{
+  "name": "linpuyixiang",
+  "version": "1.0.0",
+  "description": "林浦印象小程序",
+  "main": "app.js",
+  "scripts": {
+    "dev": "weapp-cli serve",
+    "build": "weapp-cli build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "weapp-cli": "^0.1.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
