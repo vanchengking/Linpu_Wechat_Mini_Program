@@ -32,7 +32,7 @@ Page({
 
   goHome() {
     wx.navigateTo({
-      url: '/pages/guide/guide',
+      url: '/pages/scene/scene?id=guide',
       fail: (err) => {
         console.error('跳转到guide页面失败:', err);
         wx.showToast({

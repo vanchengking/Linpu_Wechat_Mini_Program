@@ -1,0 +1,58 @@
+<view class="container">
+
+  <view class="back-btn" bindtap="goHome">
+    <text class="back-text">返回</text>
+  </view>
+
+  <view class="fullscreen-btn" bindtap="toggleFullscreen">
+    <image src="/resources/icons/全屏.png" class="fullscreen-icon"></image>
+  </view>
+
+  <image class="bg-img" src="{{sceneData.bgImg}}" mode="aspectFill"></image>
+
+  <view class="scene-buttons">
+    <view class="scene-btn" bindtap="selectScene" data-id="lianshu">
+      <text class="scene-text">濂江书院</text>
+    </view>
+    <view class="scene-btn" bindtap="selectScene" data-id="shigong">
+      <text class="scene-text">世公保</text>
+    </view>
+    <view class="scene-btn" bindtap="selectScene" data-id="taishan">
+      <text class="scene-text">泰山宫</text>
+    </view>
+  </view>
+
+  <view wx:if="{{showCharacter}}" class="character-area">
+    <image class="character" src="{{sceneData.characterImg}}" mode="widthFix"></image>
+  </view>
+
+  <scroll-view class="message-container" scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="onScroll">
+    <view wx:for="{{messages}}" wx:key="index" class="message-item">
+      <view wx:if="{{item.role === 'user'}}" class="user-bubble" animation="{{item.animation}}">
+        <text>{{item.content}}</text>
+      </view>
+      <view wx:elif="{{item.role === 'ai'}}" class="ai-bubble" animation="{{item.animation}}">
+        <text>{{item.content}}</text>
+      </view>
+    </view>
+
+    <view class="initial-bubble">
+      <view class="bubble">
+        <text>{{sceneData.initialText}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{!isFullscreen}}" class="input-bar">
+    <view class="input-wrapper">
+      <input class="input-box" placeholder="向尚书伯提问..." value="{{inputText}}" bindinput="onInput" bindconfirm="sendText" />
+    </view>
+    <view class="voice-btn" bindtap="startVoice">
+      <image src="/resources/icons/语音输入.png" class="voice-icon"></image>
+    </view>
+    <view class="send-btn" bindtap="sendText">
+      <text>发送</text>
+    </view>
+  </view>
+
+</view>

@@ -20,6 +20,9 @@
     "navigationBarTitleText": "林浦印象",
     "navigationBarTextStyle": "black"
   },
+  "usingComponents": {
+    "float-npc": "/components/float-npc/float-npc"
+  },
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "color": "#555",

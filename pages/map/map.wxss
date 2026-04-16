@@ -1,86 +1,187 @@
-/* pages/map/map.wxss */
-.container {
-  min-height: 100vh;
-  background: url('https://asave.rutno.com/fileview?id=S8JAJK5wKDye') no-repeat center center;
-  background-size: cover;
-  padding: 30rpx;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 40rpx;
-}
-
-.title {
-  font-size: 48rpx;
-  color: black;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 20rpx;
-}
-
-.subtitle {
-  font-size: 32rpx;
-  color: rgba(0, 0, 0, 0.8);
-  display: block;
-}
-
-.map-container {
-  background: white;
-  border-radius: 20rpx;
-  height: 400rpx;
-  margin-bottom: 40rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+page {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
   overflow: hidden;
 }
 
-.map-img {
+.container {
   width: 100%;
   height: 100%;
-  border: 10rpx solid #ffffff; /* 白色边框 */
-  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1); /* 阴影效果 */
-  box-sizing: border-box;
+  position: relative;
 }
 
-.location-list {
-  background: white;
-  border-radius: 20rpx;
-  padding: 0 30rpx;
-  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+/* 顶部提示 */
+.top-hint {
+  position: absolute;
+  top: 60rpx;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  pointer-events: none;
+}
+.top-hint text {
+  background: rgba(0, 0, 0, 0.6);
+  color: #D4AF37;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  border: 1px solid rgba(212, 175, 55, 0.4);
 }
 
-.location-item {
+/* 拖拽地图区域 */
+.map-area {
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a1a1a;
+}
+
+/* 设定为 200% 确保有足够的拖拽空间 */
+.map-view {
+  width: 200vw;
+  height: 200vh;
   display: flex;
   align-items: center;
-  padding: 30rpx 0;
-  border-bottom: 1rpx solid #f0f0f0;
+  justify-content: center;
 }
 
-.location-item:last-child {
-  border-bottom: none;
+.map-bg {
+  width: 100%;
+  height: auto;
+  pointer-events: none; /* 让事件穿透到图层本身 */
 }
 
-.location-icon {
+/* ======= 锚点与呼吸灯特效 ======= */
+.anchor-point {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%); /* 确保坐标居中 */
+  z-index: 10;
+}
+
+.anchor-icon {
+  width: 60rpx;
+  height: 60rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.anchor-label {
+  margin-top: 10rpx;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  white-space: nowrap;
+}
+
+/* 核心呼吸灯 CSS 动画 */
+.pulse-ring {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  background-color: rgba(212, 175, 55, 0.6); /* 金色 */
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* ======= 底部抽屉 UI ======= */
+.bottom-drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  pointer-events: none; /* 隐藏时不可点击 */
+}
+
+.bottom-drawer.show {
+  pointer-events: auto; /* 显示时恢复点击 */
+}
+
+.drawer-mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.drawer-content {
+  position: absolute;
+  bottom: -400rpx; /* 默认隐藏在屏幕下方 */
+  left: 0;
+  width: 100%;
+  background: #f8f4e6;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Q弹动画 */
+}
+
+/* 激活时抽屉弹起 */
+.bottom-drawer.show .drawer-content {
+  bottom: 0;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.drawer-title {
   font-size: 40rpx;
-  margin-right: 30rpx;
-}
-
-.location-info {
-  flex: 1;
-}
-
-.location-name {
-  font-size: 32rpx;
-  color: #333;
   font-weight: bold;
-  display: block;
-  margin-bottom: 8rpx;
+  color: #333;
+  margin-right: 20rpx;
 }
 
-.location-category {
-  font-size: 24rpx;
+.drawer-tag {
+  font-size: 22rpx;
+  color: #8B2323;
+  border: 1px solid #8B2323;
+  padding: 2rpx 10rpx;
+  border-radius: 10rpx;
+}
+
+.close-btn {
+  font-size: 50rpx;
+  color: #999;
+  line-height: 1;
+  padding: 0 20rpx;
+}
+
+.drawer-desc {
+  font-size: 28rpx;
   color: #666;
+  line-height: 1.6;
+}
+
+.drawer-footer {
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.enter-btn {
+  background-color: #8B2323; /* 主题红 */
+  color: #fff;
+  border-radius: 50rpx;
+  font-weight: bold;
+  font-size: 32rpx;
+  box-shadow: 0 8rpx 16rpx rgba(139, 35, 35, 0.3);
+}
+.enter-btn:active {
+  transform: scale(0.98);
 }

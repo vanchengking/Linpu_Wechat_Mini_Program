@@ -1,0 +1,13 @@
+<movable-area class="movable-area">
+  <movable-view 
+    class="movable-view" 
+    x="{{x}}" 
+    y="{{y}}" 
+    direction="all" 
+    animation="{{false}}"
+    catchtap="goToChat"
+  >
+    <view class="pulse-ring"></view>
+    <image src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG" class="npc-icon"></image>
+  </movable-view>
+</movable-area>
