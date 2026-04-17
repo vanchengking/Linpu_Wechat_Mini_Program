@@ -76,7 +76,7 @@
   <view class="input-wrapper">
     <input 
       class="input-box"
-      placeholder="向尚书伯提问..."
+      placeholder="向XXX提问..."
       value="{{inputText}}"
       bindinput="onInput"
       bindconfirm="sendText"

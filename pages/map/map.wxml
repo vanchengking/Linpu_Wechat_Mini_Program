@@ -1,53 +1,31 @@
+<!--pages/map/map.wxml-->
 <view class="container">
-  <view class="top-hint">
-    <text>双指缩放探索 · 点击锚点进入</text>
+  <view class="header">
+    <text class="subtitle">探索林浦地理风貌</text>
   </view>
-
-  <movable-area class="map-area" scale-area>
-    <movable-view 
-      class="map-view" 
-      direction="all" 
-      scale="{{true}}" 
-      scale-min="0.8" 
-      scale-max="3" 
-      scale-value="{{scale}}"
-    >
-      <image class="map-bg" src="https://asave.rutno.com/fileview?id=CVAyXbX3RgJC" mode="widthFix"></image>
-
-      <view 
-        class="anchor-point" 
-        wx:for="{{locations}}" 
-        wx:key="id"
-        style="left: {{item.left}}; top: {{item.top}};"
-        bindtap="onAnchorTap"
-        data-id="{{item.id}}"
-      >
-        <view class="pulse-ring"></view>
-        <image class="anchor-icon" src="/resources/icons/地标.png"></image>
-        <text class="anchor-label">{{item.name}}</text>
-      </view>
-
-    </movable-view>
-  </movable-area>
-
-  <view class="bottom-drawer {{showDrawer ? 'show' : ''}}">
-    <view class="drawer-mask" bindtap="closeDrawer" wx:if="{{showDrawer}}"></view>
+  
+  <view class="content">
+    <view class="map-container">
+      <image src="https://101.34.247.48:8888/down/ScTxYTX9VGGK.png" class="map-img"></image>
+    </view>
     
-    <view class="drawer-content">
-      <view class="drawer-header">
-        <view>
-          <text class="drawer-title">{{activeLocation.name}}</text>
-          <text class="drawer-tag">{{activeLocation.type}}</text>
+    <view class="location-list">
+      <view class="location-item" wx:for="{{locations}}" wx:key="id">
+        <view class="location-icon">{{item.icon}}</view>
+        <view class="location-info">
+          <text class="location-name">{{item.name}}</text>
+          <text class="location-category">{{item.category}}</text>
         </view>
-        <view class="close-btn" bindtap="closeDrawer">×</view>
-      </view>
-      <view class="drawer-body">
-        <text class="drawer-desc">{{activeLocation.brief}}</text>
-      </view>
-      <view class="drawer-footer">
-        <button class="enter-btn" bindtap="enterScene">进入场景探索</button>
       </view>
     </view>
+  </view>
+
+  <!-- 全局浮窗聊天按钮 -->
+  <view class="float-chat-btn" bindtap="goToChat">
+    <image 
+      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+      class="float-chat-icon"
+    ></image>
   </view>
 
 </view>

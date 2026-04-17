@@ -48,7 +48,7 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.12.0",
+  "libVersion": "3.15.2",
   "appid": "wx442934a532a838d5",
   "projectname": "林浦印象",
   "isGameTourist": false,

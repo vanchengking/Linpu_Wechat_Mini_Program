@@ -1,7 +1,8 @@
 Page({
   data: {
     touchStartY: 0,
-    arrowAnimation: {}
+    arrowAnimation: {},
+    pageAnimation: {}
   },
 
   onReady() {
@@ -34,29 +35,48 @@ Page({
 
   /* 触摸开始 */
   handleTouchStart(e) {
-    this.data.touchStartY = e.changedTouches[0].clientY;
+    this.setData({
+      touchStartY: e.changedTouches[0].clientY
+    });
   },
 
   /* 触摸结束 */
   handleTouchEnd(e) {
     const endY = e.changedTouches[0].clientY;
     if (this.data.touchStartY - endY > 80) {
-      wx.navigateTo({
-        url: "/pages/guide/guide"
-      });
+      this.animateUpAndNavigate();
     }
   },
 
-  /* 跳转到聊天页面 */
+  /* 向上模糊动画并跳转 */
+  animateUpAndNavigate() {
+    const animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: "ease-in"
+    });
+
+    // 向上移动并缩小
+    animation.translateY(-100).scale(0.9).opacity(0).step();
+    this.setData({ pageAnimation: animation.export() });
+
+    // 动画完成后跳转
+    setTimeout(() => {
+      wx.switchTab({
+        url: "/pages/blank/blank"
+      });
+    }, 400);
+  },
+
+  /* 跳转到空白页面 */
   goToChat() {
     console.log("浮窗按钮被点击了");
-    wx.navigateTo({
-      url: "/pages/chat/chat",
+    wx.switchTab({
+      url: "/pages/blank/blank",
       success: () => {
-        console.log("成功跳转到聊天页面");
+        console.log("成功跳转到空白页面");
       },
       fail: (error) => {
-        console.error("跳转聊天页面失败:", error);
+        console.error("跳转空白页面失败:", error);
         wx.showToast({
           title: "跳转失败，请重试",
           icon: "none"

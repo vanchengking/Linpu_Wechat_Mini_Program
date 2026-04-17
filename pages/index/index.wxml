@@ -1,9 +1,9 @@
-<view class="container" catchtouchstart="handleTouchStart" catchtouchend="handleTouchEnd">
+<view class="container" bindtouchstart="handleTouchStart" bindtouchend="handleTouchEnd" animation="{{pageAnimation}}">
   <!-- 背景图 -->
-  <image class="bg" src="https://asave.rutno.com/fileview?id=zTeB1JKeCmMA" mode="cover"></image>
 
-
-  <!-- 中间竖排文案 - 书法体错位分布 -->
+  <image class="bg" src="https://101.34.247.48:8888/down/6g63c6V4ZamB.png" mode="cover"></image>
+  <!-- <image class="bg" src="https://bl.meishipay.com/images/background/background.png" mode="cover"></image> -->
+  <!-- 中间竖排文案，错位分布 -->
   <view class="vertical-text">
     <!-- 左侧竖排文字：濂水绕林浦 -->
     <view class="vertical-column left-column">
@@ -27,7 +27,7 @@
   <!-- 向上滑动提示 -->
   <view class="swipe-tip">
     <view class="arrow" animation="{{arrowAnimation}}">▲</view>
-    <view class="tip-text">向上滑动开启你与神明们的故事</view>
+    <view class="tip-text">向上滑动开启你林浦的故事</view>
   </view>
 
 </view>

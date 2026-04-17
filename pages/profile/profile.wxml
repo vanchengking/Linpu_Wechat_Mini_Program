@@ -36,7 +36,7 @@
 
   <!-- 行走路线 -->
   <view class="map-card">
-    <image src="https://asave.rutno.com/fileview?id=CVAyXbX3RgJC" class="map-img"></image>
+    <image src="https://101.34.247.48:8888/down/ImAI5hv3em7q.png" class="map-img"></image>
     <view class="map-title">行走路线 ></view>
   </view>
 

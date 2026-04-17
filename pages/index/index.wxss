@@ -49,10 +49,10 @@
 
 /* 书法体文字样式 */
 .calligraphy-text {
-  font-family: 'STKaiti', 'KaiTi', '楷体', 'SimKai', '华文楷体', sans-serif;
+  font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
   font-size: 68rpx; /* 增大字号 */
   font-weight: bold; /* 加粗字体 */
-  color: #781722; /* 深红色 */
+  color: #333333; /* 深灰色 */
   text-shadow: 2rpx 2rpx 0 #ffffff; /* 白色描边，右下偏移 */
   line-height: 1.2;
   margin: 15rpx 0;

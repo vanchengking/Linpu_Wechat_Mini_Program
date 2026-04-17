@@ -13,7 +13,7 @@
         <swiper class="card-swiper" indicator-dots="true" autoplay="false" interval="5000" duration="1000">
           <block wx:for="{{item.images.length > 0 ? item.images : ['/images/placeholder.png']}}" wx:key="index">
             <swiper-item>
-              <image class="card-img" src="{{item}}" mode="aspectFit"></image>
+              <image class="card-img" src="{{item}}" mode="aspectFill"></image>
             </swiper-item>
           </block>
         </swiper>
@@ -38,7 +38,7 @@
         <swiper class="modal-swiper" indicator-dots="true" autoplay="false" interval="5000" duration="1000">
           <block wx:for="{{currentBuilding.images.length > 0 ? currentBuilding.images : ['/images/placeholder.png']}}" wx:key="index">
             <swiper-item>
-              <image class="modal-img" src="{{item}}" mode="aspectFit"></image>
+              <image class="modal-img" src="{{item}}" mode="aspectFill"></image>
             </swiper-item>
           </block>
         </swiper>
