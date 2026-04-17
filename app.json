@@ -31,7 +31,7 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/experience/experience",
         "text": "文化解码",
         "iconPath": "/resources/icons/佛像.png",
         "selectedIconPath": "/resources/icons/佛像.png"
@@ -43,10 +43,10 @@
         "selectedIconPath": "/resources/icons/古亭.png"
       },
       {
-        "pagePath": "pages/experience/experience",
-        "text": "林浦体验",
-        "iconPath": "/resources/icons/脚印.png",
-        "selectedIconPath": "/resources/icons/脚印.png"
+        "pagePath": "pages/blank/blank",
+        "text": "AR向导",
+        "iconPath": "/resources/icons/ar.png",
+        "selectedIconPath": "/resources/icons/ar.png"
       },
       {
         "pagePath": "pages/map/map",
