@@ -1,0 +1,150 @@
+<!-- 成就页面 -->
+<view class="achievement-page">
+  <!-- 顶部用户信息卡片 -->
+  <view class="user-card">
+    <view class="user-info-row">
+      <image class="user-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+      <view class="user-detail">
+        <text class="user-name">文化探险者</text>
+        <text class="user-title">LV.{{userInfo.level}} {{userInfo.levelTitle}}</text>
+        <view class="exp-bar-bg">
+          <view class="exp-bar-fill" style="width: {{userInfo.expPercent}}%"></view>
+          <text class="exp-text">{{userInfo.currentExp}}/{{userInfo.nextLevelExp}} EXP</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 核心数据统计 -->
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-num">{{stats.landmarkVisited}}</text>
+        <text class="stat-label">地标打卡</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{stats.experienceDone}}</text>
+        <text class="stat-label">文化体验</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{stats.arScanned}}</text>
+        <text class="stat-label">AR扫描</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">{{stats.totalDays}}</text>
+        <text class="stat-label">探索天数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 徽章墙 -->
+  <view class="section">
+    <view class="section-header">
+      <image src="/resources/icons/成就.png" class="section-icon"></image>
+      <text class="section-title">徽章收集</text>
+      <text class="badge-count">{{unlockedBadgeCount}}/{{totalBadgeCount}}</text>
+    </view>
+    <view class="badge-grid">
+      <view
+        wx:for="{{badges}}"
+        wx:key="id"
+        class="badge-item {{item.unlocked ? 'unlocked' : 'locked'}}"
+        bindtap="showBadgeDetail"
+        data-index="{{index}}">
+        <image
+          class="badge-icon"
+          src="{{item.icon}}"
+          mode="aspectFit"
+          style="{{item.badgeStyle}}">
+        </image>
+        <text class="badge-name">{{item.name}}</text>
+        <view wx:if="{{item.unlocked}}" class="badge-check">
+          <text>✓</text>
+        </view>
+        <view wx:else class="badge-lock">
+          <text>🔒</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成就列表 -->
+  <view class="section">
+    <view class="section-header">
+      <image src="/resources/icons/云塔.png" class="section-icon"></image>
+      <text class="section-title">成就任务</text>
+      <text class="achievement-count">{{completedAchievementCount}}/{{totalAchievementCount}}</text>
+    </view>
+    <view class="achievement-list">
+      <view
+        wx:for="{{achievements}}"
+        wx:key="id"
+        class="achievement-item {{item.completed ? 'completed' : ''}}"
+        bindtap="goToRelatedPage"
+        data-type="{{item.linkType}}"
+        data-id="{{item.linkId}}">
+        <view class="ach-left">
+          <view class="ach-icon-wrap {{item.completed ? 'done' : ''}}">
+            <text>{{item.iconText}}</text>
+          </view>
+          <view class="ach-info">
+            <text class="ach-name">{{item.name}}</text>
+            <text class="ach-desc">{{item.desc}}</text>
+            <view class="progress-wrap" wx:if="{{!item.completed && item.target > 1}}">
+              <view class="progress-bar">
+                <view class="progress-fill" style="width: {{item.progressWidth}}%"></view>
+              </view>
+              <text class="progress-text">{{item.progress}}/{{item.target}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="ach-right">
+          <text class="ach-reward">+{{item.rewardExp}} EXP</text>
+          <text class="ach-arrow" wx:if="{{!item.completed && item.linkType}}">→</text>
+          <text wx:elif="{{item.completed}}" class="ach-done-text">已完成</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 排行榜入口 -->
+  <view class="section rank-section" bindtap="goToRanking">
+    <view class="rank-header">
+      <text class="rank-title">🏆 探险排行榜</text>
+      <text class="rank-arrow">查看完整排行 ></text>
+    </view>
+    <view class="rank-list">
+      <view wx:for="{{ranking}}" wx:key="rank" class="rank-item">
+        <text class="rank-pos {{item.rankClass}}">
+          {{item.rank}}
+        </text>
+        <text class="rank-name">{{item.name}}</text>
+        <view class="rank-level-tag lv{{item.level}}">
+          <text>Lv.{{item.level}}</text>
+        </view>
+        <text class="rank-exp">{{item.exp}} EXP</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部间距 -->
+  <view style="height: 60rpx;"></view>
+</view>
+
+<!-- 徽章详情弹窗 -->
+<view class="badge-modal-mask" wx:if="{{showBadgeModal}}" bindtap="closeBadgeModal">
+  <view class="badge-modal" catchtap="">
+    <view class="badge-modal-header">
+      <image class="badge-modal-icon" src="{{currentBadge.icon}}" mode="aspectFit"></image>
+      <text class="badge-modal-name">{{currentBadge.name}}</text>
+      <text class="badge-modal-status {{currentBadge.unlocked ? '' : 'locked-status'}}">
+        {{currentBadge.unlocked ? '已解锁' : '未解锁'}}
+      </text>
+    </view>
+    <text class="badge-modal-desc">{{currentBadge.desc}}</text>
+    <text class="badge-modal-tip" wx:if="{{!currentBadge.unlocked}}">💡 解锁条件：{{currentBadge.condition}}</text>
+    <text class="badge-modal-time" wx:if="{{currentBadge.unlocked}}">📅 解锁时间：{{currentBadge.unlockTime}}</text>
+    <view class="badge-modal-close" bindtap="closeBadgeModal">知道了</view>
+  </view>
+</view>

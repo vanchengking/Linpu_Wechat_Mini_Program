@@ -104,9 +104,40 @@ Page({
       currentBuilding: building,
       showModal: true
     });
+
+    // 记录已访问的地标，与成就系统联动
+    this.recordLandmarkVisit(building.id);
     
     // 添加页面滚动锁定
     wx.hideTabBar();
+  },
+
+  /**
+   * 记录地标访问到本地缓存（成就系统联动）
+   */
+  recordLandmarkVisit(landmarkId) {
+    try {
+      let userData = wx.getStorageSync('linpu_user_data') || { totalExp: 0 };
+      let visited = userData.visitedLandmarks || [];
+      
+      if (!visited.includes(landmarkId)) {
+        visited.push(landmarkId);
+        userData.visitedLandmarks = visited;
+        userData.landmarkVisited = visited.length;
+        userData.totalExp = (userData.totalExp || 0) + 50; // 每个新地标+50EXP
+        
+        // 同时更新进度缓存（供成就页面实时读取）
+        let progressCache = wx.getStorageSync('linpu_progress_cache') || {};
+        progressCache.landmarkVisited = visited.length;
+        wx.setStorageSync('linpu_progress_cache', progressCache);
+        
+        wx.setStorageSync('linpu_user_data', userData);
+        
+        console.log(`地标 ${landmarkId} 已记录访问，总计: ${visited.length}/6`);
+      }
+    } catch (e) {
+      console.log('记录地标访问失败:', e);
+    }
   },
 
   // 关闭详情弹窗

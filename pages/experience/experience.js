@@ -72,6 +72,36 @@ Page({
       currentItem: this.data.experiences[index],
       showModal: true
     });
+
+    // 记录已完成的体验，与成就系统联动
+    this.recordExperienceDone(this.data.experiences[index].id);
+  },
+
+  /**
+   * 记录体验完成到本地缓存（成就系统联动）
+   */
+  recordExperienceDone(experienceId) {
+    try {
+      let userData = wx.getStorageSync('linpu_user_data') || { totalExp: 0 };
+      let done = userData.doneExperiences || [];
+      
+      if (!done.includes(experienceId)) {
+        done.push(experienceId);
+        userData.doneExperiences = done;
+        userData.experienceDone = done.length;
+        userData.totalExp = (userData.totalExp || 0) + 80; // 每个新体验+80EXP
+        
+        let progressCache = wx.getStorageSync('linpu_progress_cache') || {};
+        progressCache.experienceDone = done.length;
+        wx.setStorageSync('linpu_progress_cache', progressCache);
+        
+        wx.setStorageSync('linpu_user_data', userData);
+        
+        console.log(`体验 ${experienceId} 已记录完成，总计: ${done.length}/4`);
+      }
+    } catch (e) {
+      console.log('记录体验完成失败:', e);
+    }
   },
 
   // 关闭详情

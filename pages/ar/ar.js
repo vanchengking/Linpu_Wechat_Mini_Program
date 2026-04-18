@@ -233,6 +233,32 @@ Page({
 
     wx.setStorageSync('ar_game_progress_v2', newLevels);
     this.stopAR();
+
+    // 记录AR扫描/完成关卡，与成就系统联动
+    this.recordARScan();
+  },
+
+  /**
+   * 记录AR扫描次数到本地缓存（成就系统联动）
+   */
+  recordARScan() {
+    try {
+      let userData = wx.getStorageSync('linpu_user_data') || { totalExp: 0 };
+      let scanCount = (userData.arScanned || 0) + 1;
+      
+      userData.arScanned = scanCount;
+      userData.totalExp = (userData.totalExp || 0) + 30; // 每次AR完成+30EXP
+      
+      let progressCache = wx.getStorageSync('linpu_progress_cache') || {};
+      progressCache.arScanned = scanCount;
+      wx.setStorageSync('linpu_progress_cache', progressCache);
+      
+      wx.setStorageSync('linpu_user_data', userData);
+      
+      console.log(`AR扫描已记录，总计: ${scanCount}次`);
+    } catch (e) {
+      console.log('记录AR扫描失败:', e);
+    }
   },
 
   exitGame() {

@@ -14,7 +14,8 @@
     "pages/shigong/shigong",
     "pages/taishan/taishan",
     "pages/landmark/landmark",
-    "pages/chat/chat"
+    "pages/chat/chat",
+    "pages/achievement/achievement"
   ],
   "window": {
     "backgroundTextStyle": "light",

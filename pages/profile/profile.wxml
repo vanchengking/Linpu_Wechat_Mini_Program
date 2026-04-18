@@ -23,7 +23,7 @@
       <text class="feature-text">地标打卡</text>
     </view>
 
-    <view class="feature-item">
+    <view class="feature-item" bindtap="showAchievementPopup">
       <image src="/resources/icons/成就.png" class="feature-icon"></image>
       <text class="feature-text">所获成就</text>
     </view>
@@ -42,7 +42,7 @@
 
   <!-- 列表按钮 -->
   <view class="menu">
-    <view class="menu-item">
+    <view class="menu-item" bindtap="goToAchievement">
       <view class="left">
         <image src="/resources/icons/成就.png" class="menu-icon"></image>
         <text>排行榜</text>
@@ -84,3 +84,105 @@
   </view>
 
   </view>
+
+<!-- ===== 所获成就弹窗 ===== -->
+<view class="ach-mask" wx:if="{{showAchievementModal}}" bindtap="closeAchievement">
+  <view class="ach-popup" catchtap="">
+    <!-- 弹窗标题 -->
+    <view class="ach-popup-header">
+      <text class="ach-popup-title">🏅 所获成就</text>
+      <view class="ach-close-btn" bindtap="closeAchievement">
+        <text>✕</text>
+      </view>
+    </view>
+
+    <!-- 用户等级卡片（简化版） -->
+    <view class="ach-level-card">
+      <view class="ach-level-left">
+        <image class="ach-avatar-sm" src="/resources/icons/人物头像.png"></image>
+        <view class="ach-level-info">
+          <text class="ach-lv-text">LV.{{userLevel}} {{userTitle}}</text>
+        </view>
+      </view>
+      <view class="ach-see-full" bindtap="closeAchievement">
+        <text bindtap="goToAchievement">查看完整详情 ></text>
+      </view>
+    </view>
+
+    <!-- 数据概览 -->
+    <view class="ach-stats-row">
+      <view class="ach-stat-box">
+        <text class="ach-stat-num">{{stats.landmarkVisited}}</text>
+        <text class="ach-stat-label">地标打卡</text>
+      </view>
+      <view class="ach-stat-box">
+        <text class="ach-stat-num">{{stats.experienceDone}}</text>
+        <text class="ach-stat-label">文化体验</text>
+      </view>
+      <view class="ach-stat-box">
+        <text class="ach-stat-num">{{stats.arScanned}}</text>
+        <text class="ach-stat-label">AR扫描</text>
+      </view>
+    </view>
+
+    <!-- 徽章展示 -->
+    <view class="ach-badge-section">
+      <view class="ach-section-title">
+        <text>徽章收集 {{unlockedBadges}}/{{totalBadges}}</text>
+      </view>
+      <view class="ach-badge-row">
+        <view class="ach-badge-item ach-unlocked">
+          <image src="/resources/icons/云塔.png" class="ach-b-icon"></image>
+          <text>初入林浦</text>
+        </view>
+        <view class="ach-badge-item ach-locked">
+          <image src="/resources/icons/地标.png" class="ach-b-icon"></image>
+          <text>地标猎人</text>
+        </view>
+        <view class="ach-badge-item ach-locked">
+          <image src="/resources/icons/佛像.png" class="ach-b-icon"></image>
+          <text>文化传承者</text>
+        </view>
+        <view class="ach-badge-item ach-unlocked">
+          <image src="/resources/icons/ar.png" class="ach-b-icon"></image>
+          <text>AR先锋</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 成就进度 -->
+    <view class="ach-list-section">
+      <view class="ach-section-title">
+        <text>成就任务 {{completedAch}}/{{totalAch}}</text>
+      </view>
+      <view class="ach-item">
+        <text class="ach-item-name">地标探险家</text>
+        <view class="ach-p-bar"><view class="ach-p-fill" style="width: 50%"></view></view>
+        <text class="ach-p-txt">3/6</text>
+      </view>
+      <view class="ach-item">
+        <text class="ach-item-name">文化解码者</text>
+        <view class="ach-p-bar"><view class="ach-p-fill" style="width: 50%"></view></view>
+        <text class="ach-p-txt">2/4</text>
+      </view>
+      <view class="ach-item">
+        <text class="ach-item-name">AR探索者</text>
+        <view class="ach-p-bar"><view class="ach-p-fill" style="width: 40%"></view></view>
+        <text class="ach-p-txt">4/10</text>
+      </view>
+      <view class="ach-item ach-done">
+        <text class="ach-item-name">泰山宫朝圣</text>
+        <text class="ach-done-tag">✓ 已完成</text>
+      </view>
+      <view class="ach-item ach-done">
+        <text class="ach-item-name">巡境参与者</text>
+        <text class="ach-done-tag">✓ 已完成</text>
+      </view>
+    </view>
+
+    <!-- 底部按钮 -->
+    <view class="ach-bottom-btn" bindtap="closeAchievement">
+      <text>知道了</text>
+    </view>
+  </view>
+</view>
