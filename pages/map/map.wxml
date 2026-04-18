@@ -1,21 +1,65 @@
 <!--pages/map/map.wxml-->
 <view class="container">
-  <view class="header">
-    <text class="subtitle">探索林浦地理风貌</text>
+  <view class="top-hint">
+    <text>拖拽探索林浦风貌 · 点击锚点查看地标</text>
   </view>
-  
-  <view class="content">
-    <view class="map-container">
-      <image src="https://101.34.247.48:8888/down/ScTxYTX9VGGK.png" class="map-img"></image>
-    </view>
-    
-    <view class="location-list">
-      <view class="location-item" wx:for="{{locations}}" wx:key="id">
-        <view class="location-icon">{{item.icon}}</view>
-        <view class="location-info">
-          <text class="location-name">{{item.name}}</text>
-          <text class="location-category">{{item.category}}</text>
+
+  <movable-area class="map-area">
+    <movable-view class="map-view" direction="all" scale="{{true}}" scale-min="0.5" scale-max="3" scale-value="{{scale}}">
+      <!-- 底图 -->
+      <image src="https://101.34.247.48:8888/down/ScTxYTX9VGGK.png" mode="widthFix" class="map-bg"></image>
+      
+      <!-- 动态渲染锚点 -->
+      <view 
+        class="anchor-point" 
+        wx:for="{{locations}}" 
+        wx:key="id"
+        style="left: {{item.left}}; top: {{item.top}};"
+        bindtap="onAnchorTap"
+        data-id="{{item.id}}"
+      >
+        <view class="pulse-ring"></view>
+        <image src="/resources/icons/地标.png" class="anchor-icon"></image>
+        <text class="anchor-label">{{item.name}}</text>
+      </view>
+    </movable-view>
+  </movable-area>
+
+  <!-- 中央悬浮窗 (Modal) -->
+  <view class="modal-wrapper {{showModal ? 'active' : ''}}">
+    <view class="modal-backdrop" bindtap="closeModal"></view>
+    <view class="modal-content">
+      <view class="close-icon" bindtap="closeModal">✕</view>
+      
+      <scroll-view scroll-y class="modal-scroll">
+        <!-- 图片展示 -->
+        <swiper class="modal-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
+          <block wx:for="{{activeLocation.images}}" wx:key="*this">
+            <swiper-item>
+              <image class="swiper-image" src="{{item}}" mode="aspectFill"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+        
+        <view class="modal-body">
+          <view class="modal-header">
+            <text class="modal-title">{{activeLocation.name}}</text>
+            <view class="modal-tags">
+              <text class="tag">{{activeLocation.type}}</text>
+            </view>
+          </view>
+          
+          <text class="modal-protection" wx:if="{{activeLocation.protectionLevel}}">{{activeLocation.protectionLevel}}</text>
+
+          <view class="content-section">
+            <view class="section-label">地标简介</view>
+            <text class="section-text">{{activeLocation.intro || activeLocation.brief}}</text>
+          </view>
         </view>
+      </scroll-view>
+
+      <view class="modal-footer">
+        <button class="action-btn primary" bindtap="enterScene">进入场景探索</button>
       </view>
     </view>
   </view>
@@ -27,5 +71,4 @@
       class="float-chat-icon"
     ></image>
   </view>
-
 </view>

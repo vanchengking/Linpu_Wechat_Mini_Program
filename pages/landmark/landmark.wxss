@@ -219,3 +219,27 @@ page {
   color: #666;
   line-height: 1.6;
 }
+
+/* 底部按钮样式 */
+.modal-footer-btns {
+  margin-top: 60rpx;
+  padding-bottom: 40rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.chat-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 20rpx 60rpx;
+  border-radius: 50rpx;
+  box-shadow: 0 8rpx 20rpx rgba(139, 35, 35, 0.3);
+  width: 80% !important;
+}
+
+.chat-btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}

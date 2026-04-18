@@ -64,6 +64,11 @@
             <view class="label">历史钩沉</view>
             <text class="text">{{currentBuilding.history}}</text>
           </view>
+
+          <!-- 新增：进入场景探索按钮 -->
+          <view class="modal-footer-btns">
+            <button class="chat-btn" bindtap="goToScene">进入场景探索</button>
+          </view>
         </view>
       </scroll-view>
     </view>

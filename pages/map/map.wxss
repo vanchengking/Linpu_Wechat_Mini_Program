@@ -36,7 +36,6 @@ page {
   background-color: #1a1a1a;
 }
 
-/* 设定为 200% 确保有足够的拖拽空间 */
 .map-view {
   width: 200vw;
   height: 200vh;
@@ -48,7 +47,7 @@ page {
 .map-bg {
   width: 100%;
   height: auto;
-  pointer-events: none; /* 让事件穿透到图层本身 */
+  pointer-events: none;
 }
 
 /* ======= 锚点与呼吸灯特效 ======= */
@@ -58,7 +57,7 @@ page {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translate(-50%, -50%); /* 确保坐标居中 */
+  transform: translate(-50%, -50%);
   z-index: 10;
 }
 
@@ -79,12 +78,11 @@ page {
   white-space: nowrap;
 }
 
-/* 核心呼吸灯 CSS 动画 */
 .pulse-ring {
   position: absolute;
   width: 50rpx;
   height: 50rpx;
-  background-color: rgba(212, 175, 55, 0.6); /* 金色 */
+  background-color: rgba(212, 175, 55, 0.6);
   border-radius: 50%;
   z-index: 1;
   animation: pulse 1.5s infinite ease-in-out;
@@ -95,93 +93,160 @@ page {
   100% { transform: scale(2.5); opacity: 0; }
 }
 
-/* ======= 底部抽屉 UI ======= */
-.bottom-drawer {
+/* ======= 中央悬浮窗 (VN 风格) ======= */
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-wrapper.active {
+  visibility: visible;
+}
+
+.modal-backdrop {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 999;
-  pointer-events: none; /* 隐藏时不可点击 */
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
 }
 
-.bottom-drawer.show {
-  pointer-events: auto; /* 显示时恢复点击 */
+.modal-content {
+  position: relative;
+  width: 85%;
+  height: 70%;
+  background: #fff;
+  border-radius: 40rpx;
+  overflow: hidden;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 20rpx 60rpx rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
 }
 
-.drawer-mask {
+.modal-wrapper.active .modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.close-icon {
+  position: absolute;
+  top: 20rpx;
+  right: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  font-size: 32rpx;
+}
+
+.modal-scroll {
+  flex: 1;
+}
+
+.modal-swiper {
+  width: 100%;
+  height: 400rpx;
+}
+
+.swiper-image {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
 }
 
-.drawer-content {
-  position: absolute;
-  bottom: -400rpx; /* 默认隐藏在屏幕下方 */
-  left: 0;
-  width: 100%;
-  background: #f8f4e6;
-  border-top-left-radius: 40rpx;
-  border-top-right-radius: 40rpx;
+.modal-body {
   padding: 40rpx;
-  box-sizing: border-box;
-  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Q弹动画 */
 }
 
-/* 激活时抽屉弹起 */
-.bottom-drawer.show .drawer-content {
-  bottom: 0;
-}
-
-.drawer-header {
+.modal-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 20rpx;
 }
 
-.drawer-title {
-  font-size: 40rpx;
+.modal-title {
+  font-size: 44rpx;
   font-weight: bold;
   color: #333;
-  margin-right: 20rpx;
 }
 
-.drawer-tag {
+.modal-tags .tag {
   font-size: 22rpx;
   color: #8B2323;
   border: 1px solid #8B2323;
-  padding: 2rpx 10rpx;
-  border-radius: 10rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 30rpx;
 }
 
-.close-btn {
-  font-size: 50rpx;
+.modal-protection {
+  display: block;
+  font-size: 24rpx;
   color: #999;
-  line-height: 1;
-  padding: 0 20rpx;
+  margin-bottom: 30rpx;
 }
 
-.drawer-desc {
+.content-section {
+  margin-top: 30rpx;
+}
+
+.section-label {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #5d4b3c;
+  margin-bottom: 15rpx;
+  padding-left: 15rpx;
+  border-left: 6rpx solid #8B2323;
+}
+
+.section-text {
   font-size: 28rpx;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.8;
+  text-align: justify;
 }
 
-.drawer-footer {
-  margin-top: 40rpx;
-  margin-bottom: 20rpx;
+.modal-footer {
+  padding: 30rpx 40rpx 40rpx;
+  background: #fff;
 }
 
-.enter-btn {
-  background-color: #8B2323; /* 主题红 */
-  color: #fff;
-  border-radius: 50rpx;
-  font-weight: bold;
+.action-btn {
+  width: 100% !important;
+  height: 90rpx;
+  border-radius: 45rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 32rpx;
-  box-shadow: 0 8rpx 16rpx rgba(139, 35, 35, 0.3);
+  font-weight: bold;
 }
-.enter-btn:active {
+
+.action-btn.primary {
+  background: #8B2323;
+  color: #fff;
+  box-shadow: 0 10rpx 20rpx rgba(139, 35, 35, 0.3);
+}
+
+.action-btn:active {
   transform: scale(0.98);
+  opacity: 0.9;
 }

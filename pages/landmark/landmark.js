@@ -121,6 +121,23 @@ Page({
   },
 
   // 页面加载完成
+  onLoad(options) {
+    console.log('文化地标页面加载完成', options);
+    if (options.id) {
+      const id = parseInt(options.id);
+      const index = this.data.buildings.findIndex(b => b.id === id);
+      if (index !== -1) {
+        const building = this.data.buildings[index];
+        this.setData({
+          currentBuilding: building,
+          showModal: true
+        });
+        wx.hideTabBar();
+      }
+    }
+  },
+
+  // 页面加载渲染完成
   onReady() {
     // 可以在这里添加一些初始化操作
   },
@@ -137,6 +154,21 @@ Page({
   onHide() {
     // 确保tabbar恢复显示
     wx.showTabBar();
+  },
+
+  // 跳转到对应的探索场景 (对话界面)
+  goToScene() {
+    const name = this.data.currentBuilding.name;
+    let sceneId = 'guide';
+    
+    // 根据名称匹配场景 ID
+    if (name.includes('泰山宫')) sceneId = 'taishan';
+    else if (name.includes('世公保')) sceneId = 'shigong';
+    else if (name.includes('濂江书院')) sceneId = 'lianshu';
+    
+    wx.navigateTo({
+      url: `/pages/scene/scene?id=${sceneId}`
+    });
   },
 
   // 跳转到聊天页面

@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/ar/ar",
+    "pages/market/market",
     "pages/blank/blank",
     "pages/decode/decode",
     "pages/experience/experience",
@@ -38,10 +39,10 @@
         "selectedIconPath": "/resources/icons/佛像.png"
       },
       {
-        "pagePath": "pages/landmark/landmark",
-        "text": "重要地标",
-        "iconPath": "/resources/icons/古亭.png",
-        "selectedIconPath": "/resources/icons/古亭.png"
+        "pagePath": "pages/map/map",
+        "text": "地图导览",
+        "iconPath": "/resources/icons/地图定位.png",
+        "selectedIconPath": "/resources/icons/地图定位.png"
       },
       {
         "pagePath": "pages/ar/ar",
@@ -50,10 +51,10 @@
         "selectedIconPath": "/resources/icons/ar.png"
       },
       {
-        "pagePath": "pages/map/map",
-        "text": "地图导览",
-        "iconPath": "/resources/icons/地图定位.png",
-        "selectedIconPath": "/resources/icons/地图定位.png"
+        "pagePath": "pages/market/market",
+        "text": "文创市场",
+        "iconPath": "/resources/icons/云塔.png",
+        "selectedIconPath": "/resources/icons/云塔.png"
       },
       {
         "pagePath": "pages/profile/profile",
