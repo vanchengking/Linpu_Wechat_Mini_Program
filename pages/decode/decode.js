@@ -1,78 +1,66 @@
 // pages/decode/decode.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    touchStartY: 0,
-    arrowAnimation: {}
-  },
 
-  onReady() {
-    this.animateArrow();
-  },
-
-  /* 箭头上下跳动 */
-  animateArrow() {
-    const animation = wx.createAnimation({
-      duration: 500,
-      timingFunction: "ease-in-out"
-    });
-
-    const animate = () => {
-      animation.translateY(-10).step();
-      this.setData({arrowAnimation: animation.export()});
-      
-      setTimeout(() => {
-        animation.translateY(0).step();
-        this.setData({arrowAnimation: animation.export()});
-        
-        setTimeout(() => {
-          animate();
-        }, 300);
-      }, 300);
-    };
-
-    animate();
-  },
-
-  /* 触摸开始 */
-  handleTouchStart(e) {
-    this.data.touchStartY = e.changedTouches[0].clientY;
-  },
-
-  /* 触摸结束 */
-  handleTouchEnd(e) {
-    const endY = e.changedTouches[0].clientY;
-    if (this.data.touchStartY - endY > 80) {
-      wx.switchTab({
-        url: "/pages/ar/ar"
-      });
-    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log('文化解码页面加载完成');
+  onLoad(options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
 
   }
 })

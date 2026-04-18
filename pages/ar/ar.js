@@ -2,7 +2,7 @@
 Page({
   data: {
     currentView: 'levels', // 'levels' or 'game'
-    isARMode: true,
+    isARMode: false,
     showSuccessModal: false,
     currentLevelIndex: 0,
     currentDialogueIndex: 0,

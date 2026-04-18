@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "林浦体验",
-  "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black"
+  "navigationBarBackgroundColor": "#fcf7e3",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#fcf7e3"
 }

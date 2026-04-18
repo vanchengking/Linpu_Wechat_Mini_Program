@@ -1,5 +1,5 @@
 page {
-  background-color: #f8f4e6;
+  background-color: #fcf7e3;
   width: 100%;
   height: 100%;
 }
@@ -79,7 +79,7 @@ page {
   position: relative;
   padding: 30rpx 40rpx;
   font-size: 30rpx;
-  color: #666;
+  color: #6c6553;
   transition: all 0.3s;
 }
 
@@ -103,7 +103,7 @@ page {
 /* 商品瀑布流 */
 .product-scroll {
   flex: 1;
-  background-color: #f5f5f5;
+  background-color: #fcf7e3;
 }
 
 .product-grid {
@@ -140,7 +140,7 @@ page {
 
 .product-name {
   font-size: 28rpx;
-  color: #333;
+  color: #4a4035;
   font-weight: bold;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -151,7 +151,7 @@ page {
 
 .product-desc {
   font-size: 22rpx;
-  color: #999;
+  color: #8a8070;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -181,7 +181,7 @@ page {
 
 .sales-box {
   font-size: 20rpx;
-  color: #ccc;
+  color: #b0a898;
 }
 
 .add-cart-btn {
@@ -208,6 +208,7 @@ page {
 .bottom-placeholder {
   text-align: center;
   padding: 40rpx 0;
-  color: #aaa;
+  color: #9a9080;
   font-size: 24rpx;
+  letter-spacing: 2rpx;
 }
