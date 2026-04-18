@@ -10,9 +10,9 @@ Page({
         type: "宫庙建筑",
         protectionLevel: "福建省级文物保护单位",
         images: [
-          "https://101.34.247.48:8888/down/nx4A3JQ1lSnb.png",
-          "https://101.34.247.48:8888/down/1Mel6AxuhALu.png",
-          "https://101.34.247.48:8888/down/5dvT9jLjkRAg.jpg"
+          "bl.meishipay.com/images/content/location/泰山宫2.png",
+          "bl.meishipay.com/images/content/location/泰山宫3.jpg",
+          "bl.meishipay.com/images/content/location/泰山宫4.jpg"
         ],
         summary: "原为平山阁，因南宋益王赵昰曾驻跸于此，后改称泰山宫。由泰山宫、天后宫、总管殿组成。",
         intro: "林浦泰山宫位于福州市仓山区城门镇濂江村，原名平山阁。南宋末年，益王赵昰（后来的端宗）曾在此驻跸，故后世改称为泰山宫。建筑坐东朝西，占地面积1484平方米。",
@@ -25,8 +25,8 @@ Page({
         type: "宗祠建筑",
         protectionLevel: "福州市级文物保护单位",
         images: [
-          "https://101.34.247.48:8888/down/OgYQBzHxPO5O.jpg",
-          "https://101.34.247.48:8888/down/0yd6tSidDl3S.png"
+          "bl.meishipay.com/images/content/世公保3.png",
+          "bl.meishipay.com/images/content/世公保2.png"
         ],
         summary: "始建于明正德十三年，系明代南京兵部尚书林瀚建造。为“三代五尚书”、“七科八进士”之纪念。",
         intro: "世宫保尚书林公家庙位于林浦村，始建于明正德十三年（1518年），系明代南京兵部尚书林瀚建造。它是林浦林氏家族辉煌历史的见证，尤其是“三代五尚书”与“七科八进士”的殊荣。",
@@ -39,9 +39,9 @@ Page({
         type: "文化教育",
         protectionLevel: "福州市级文物保护单位",
         images: [
-          "https://101.34.247.48:8888/down/eTzNzBC9Pu65.jpg",
-          "https://101.34.247.48:8888/down/Fu2P7KDHnWKZ.png",
-          "https://101.34.247.48:8888/down/TTa6oRqkYWix.png"
+          "bl.meishipay.com/images/content/濂江书院6.jpeg",
+          "bl.meishipay.com/images/content/濂江书院7.jpeg",
+          "bl.meishipay.com/images/content/濂江书院5.jpeg"
         ],
         summary: "福州唯一保存完好的宋代古书院，朱熹及其弟子黄榦曾在此讲学，留有“文光射斗”等石刻。",
         intro: "濂江书院始建于唐末，迄今已有一千多年历史，是福州唯一一所保存最为完好的古书院。书院是林浦教育的发祥地，见证了林氏家族文风之盛。",
@@ -54,9 +54,9 @@ Page({
         type: "牌坊建筑",
         protectionLevel: "历史构筑物",
         images: [
-          "https://101.34.247.48:8888/down/oJPQSStUpA7r.png",
-          "https://101.34.247.48:8888/down/4BkKW05UwDUi.jpg",
-          "https://101.34.247.48:8888/down/ACctOTzMAkaf.jpg"
+          "bl.meishipay.com/images/content/牌坊.png",
+          "bl.meishipay.com/images/content/石牌坊.jpg",
+          "bl.meishipay.com/images/content/石牌坊2.jpg"
         ],
         summary: "始建于明隆庆年间，以此表彰林瀚家族“三代五尚书”的显赫功绩，额刻“尚书里”。",
         intro: "尚书里石牌坊位于林浦狮山村，始建于明隆庆年间，是皇帝赐修以表彰林氏家族的功绩。文革中被毁，上世纪八十年代利用残存构件按原样重修。",
@@ -69,9 +69,9 @@ Page({
         type: "桥梁建筑",
         protectionLevel: "省级历史文化名村景点",
         images: [
-          "https://101.34.247.48:8888/down/7uSZjtEegwT4.jpg",
-          "https://101.34.247.48:8888/down/hAvpvdK1jnlz.jpg",
-          "https://101.34.247.48:8888/down/papoTh2nRHQ3.jpg"
+          "bl.meishipay.com/images/content/断桥1.jpg",
+          "bl.meishipay.com/images/content/断桥2.jpg",
+          "bl.meishipay.com/images/content/断桥3.jpg"
         ],
         summary: "始建于南宋绍兴三年，由疍民建造。桥体断裂原因成谜，桥墩上建有小庙，形成独特景观。",
         intro: "林浦断桥，俗称“三门桥”，始建于南宋绍兴三年（1133年）。它比福州著名的万寿桥还要早190年。桥梁条石巨大，桥孔宽阔，在宋代桥梁中极为罕见。",
@@ -84,9 +84,9 @@ Page({
         type: "牌坊建筑",
         protectionLevel: "林尚书家庙附属文物",
         images: [
-          "https://101.34.247.48:8888/down/F62Wg7A49Zis.png",
-          "https://101.34.247.48:8888/down/q3Mr7h1lFYDk.jpg",
-          "https://101.34.247.48:8888/down/qcvNH6m7zG1o.jpg"
+          "bl.meishipay.com/images/content/进士牌坊1.png",
+          "bl.meishipay.com/images/content/进士牌坊2.jpg",
+          "bl.meishipay.com/images/content/进士牌坊3.jpg"
         ],
         summary: "俗称“进士柴坊”，建于明正德十一年，木构单檐歇山顶，额书“世尚书”。",
         intro: "位于林浦街中，是林尚书家庙的附属文物。始建于明正德十一年（1516年），为纪念林瀚家族的科举成就而立。",
