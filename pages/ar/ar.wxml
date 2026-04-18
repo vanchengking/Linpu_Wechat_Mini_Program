@@ -1,0 +1,114 @@
+<view class="container">
+  <!-- 背景层：实景 AR 或 设计背景图 -->
+  <view class="background-layer">
+    <camera 
+      wx:if="{{isARMode}}"
+      device-position="back" 
+      flash="off" 
+      binderror="error" 
+      frame-size="medium"
+      class="full-screen"
+    >
+      <canvas type="webgl" id="arCanvas" class="ar-canvas"></canvas>
+    </camera>
+    <image 
+      wx:else
+      src="{{levels[currentLevelIndex].bgImage || 'https://101.34.247.48:8888/down/6g63c6V4ZamB.png'}}" 
+      mode="aspectFill" 
+      class="full-screen design-bg"
+    ></image>
+  </view>
+
+  <!-- 顶部状态栏 -->
+  <view class="top-bar" wx:if="{{currentView === 'game'}}">
+    <view class="back-btn" bindtap="exitGame">
+      <text>退出</text>
+    </view>
+    <view class="level-info">
+      <text>{{levels[currentLevelIndex].title}}</text>
+    </view>
+    <view class="mode-toggle" bindtap="toggleMode">
+      <text>{{isARMode ? '实景AR' : '背景模式'}}</text>
+    </view>
+  </view>
+
+  <!-- 关卡选择视图 -->
+  <view class="view-overlay level-selection" wx:if="{{currentView === 'levels'}}">
+    <view class="header">
+      <text class="title">AR 体验林浦</text>
+      <text class="subtitle">沉浸式文字冒险之旅</text>
+    </view>
+
+    <scroll-view scroll-y class="level-list">
+      <view 
+        wx:for="{{levels}}" 
+        wx:key="id" 
+        class="level-card {{item.unlocked ? '' : 'locked'}}"
+        bindtap="{{item.unlocked ? 'startLevel' : ''}}"
+        data-id="{{item.id}}"
+      >
+        <view class="level-num">{{index + 1}}</view>
+        <view class="level-info">
+          <text class="level-title">{{item.title}}</text>
+          <text class="level-desc">{{item.desc}}</text>
+        </view>
+        <view class="level-status">
+          <text wx:if="{{!item.unlocked}}">🔒 未解锁</text>
+          <text wx:elif="{{item.completed}}">✅ 已完成</text>
+          <text wx:else>开启章节</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 游戏对话视图 -->
+  <view class="view-overlay game-play" wx:if="{{currentView === 'game'}}">
+    <!-- 人物立绘区域 -->
+    <view class="character-area">
+      <image 
+        wx:if="{{currentDialogue.characterImage}}"
+        src="{{currentDialogue.characterImage}}" 
+        mode="aspectFit" 
+        class="character-image {{currentDialogue.characterSide || 'center'}}"
+      ></image>
+    </view>
+
+    <!-- 对话交互区域 -->
+    <view class="dialogue-container">
+      <!-- 选项按钮 -->
+      <view class="options-box" wx:if="{{currentDialogue.options && currentDialogue.options.length > 0}}">
+        <view 
+          wx:for="{{currentDialogue.options}}" 
+          wx:key="text" 
+          class="option-item" 
+          bindtap="selectOption" 
+          data-option="{{item}}"
+        >
+          {{item.text}}
+        </view>
+      </view>
+
+      <!-- 对话框 -->
+      <view class="dialogue-box" bindtap="nextDialogue">
+        <view class="name-tag" wx:if="{{currentDialogue.speaker}}">
+          {{currentDialogue.speaker}}
+        </view>
+        <view class="content">
+          <text class="typing-text">{{currentDialogue.text}}</text>
+        </view>
+        <view class="next-indicator" wx:if="{{!currentDialogue.options || currentDialogue.options.length === 0}}">
+          ▼
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关卡完成结算 -->
+  <view class="modal" wx:if="{{showSuccessModal}}">
+    <view class="modal-content">
+      <text class="modal-title">章节完成</text>
+      <text class="modal-info">您已解锁林浦文化的新篇章</text>
+      <button class="modal-btn" bindtap="backToLevels">继续探索</button>
+    </view>
+  </view>
+</view>

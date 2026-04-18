@@ -42,8 +42,8 @@ Page({
   handleTouchEnd(e) {
     const endY = e.changedTouches[0].clientY;
     if (this.data.touchStartY - endY > 80) {
-      wx.navigateTo({
-        url: "/pages/blank/blank"
+      wx.switchTab({
+        url: "/pages/ar/ar"
       });
     }
   },

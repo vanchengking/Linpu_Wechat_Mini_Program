@@ -62,21 +62,21 @@ Page({
     // 动画完成后跳转
     setTimeout(() => {
       wx.switchTab({
-        url: "/pages/blank/blank"
+        url: "/pages/ar/ar"
       });
     }, 400);
   },
 
-  /* 跳转到空白页面 */
+  /* 跳转到 AR 页面 */
   goToChat() {
     console.log("浮窗按钮被点击了");
     wx.switchTab({
-      url: "/pages/blank/blank",
+      url: "/pages/ar/ar",
       success: () => {
-        console.log("成功跳转到空白页面");
+        console.log("成功跳转到 AR 页面");
       },
       fail: (error) => {
-        console.error("跳转空白页面失败:", error);
+        console.error("跳转 AR 页面失败:", error);
         wx.showToast({
           title: "跳转失败，请重试",
           icon: "none"

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/ar/ar",
     "pages/blank/blank",
     "pages/decode/decode",
     "pages/experience/experience",
@@ -43,8 +44,8 @@
         "selectedIconPath": "/resources/icons/古亭.png"
       },
       {
-        "pagePath": "pages/blank/blank",
-        "text": "AR向导",
+        "pagePath": "pages/ar/ar",
+        "text": "AR体验",
         "iconPath": "/resources/icons/ar.png",
         "selectedIconPath": "/resources/icons/ar.png"
       },
