@@ -68,6 +68,7 @@
       </scroll-view>
 
       <view class="modal-footer">
+        <button class="action-btn" bindtap="geoCheckIn">实地打卡</button>
         <button class="action-btn primary" bindtap="enterScene">进入场景探索</button>
       </view>
     </view>

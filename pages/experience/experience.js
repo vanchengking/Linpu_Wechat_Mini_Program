@@ -73,8 +73,8 @@ Page({
       showModal: true
     });
 
-    // 记录已完成的体验，与成就系统联动
-    this.recordExperienceDone(this.data.experiences[index].id);
+    // 记录打开弹窗的时间
+    this.data.modalOpenTime = Date.now();
   },
 
   /**
@@ -98,6 +98,15 @@ Page({
         wx.setStorageSync('linpu_user_data', userData);
         
         console.log(`体验 ${experienceId} 已记录完成，总计: ${done.length}/4`);
+
+        // 检查是否4个全部看完
+        if (done.length >= 4) {
+          const hasGotAllPoints = wx.getStorageSync('experience_all_points_got');
+          if (!hasGotAllPoints) {
+            getApp().addPoints(50, '阅读全部文化解码');
+            wx.setStorageSync('experience_all_points_got', true);
+          }
+        }
       }
     } catch (e) {
       console.log('记录体验完成失败:', e);
@@ -109,6 +118,20 @@ Page({
     this.setData({
       showModal: false
     });
+
+    // 计算停留时间
+    if (this.data.modalOpenTime) {
+      const stayTime = Date.now() - this.data.modalOpenTime;
+      if (stayTime >= 5000) { // 停留大于等于5秒
+        this.recordExperienceDone(this.data.currentItem.id);
+      } else {
+        wx.showToast({
+          title: '阅读满5秒才可获得记录与积分哦',
+          icon: 'none'
+        });
+      }
+      this.data.modalOpenTime = 0;
+    }
   },
 
   // 跳转到聊天页面

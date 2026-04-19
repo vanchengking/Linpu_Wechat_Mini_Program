@@ -276,10 +276,12 @@ page {
   padding: 15rpx 40rpx 25rpx;
   background: #fff;
   border-top: 1rpx solid #eee;
+  display: flex;
+  justify-content: space-between;
 }
 
 .action-btn {
-  width: 60% !important;
+  width: 45% !important;
   height: 70rpx;
   border-radius: 35rpx;
   display: flex;
@@ -287,7 +289,9 @@ page {
   align-items: center;
   font-size: 28rpx;
   font-weight: bold;
-  margin: 0 auto;
+  margin: 0;
+  background: #f0f0f0;
+  color: #333;
 }
 
 .action-btn.primary {

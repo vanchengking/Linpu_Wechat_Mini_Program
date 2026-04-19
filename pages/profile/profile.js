@@ -19,6 +19,12 @@ Page({
     this.loadAchievementData();
   },
 
+  onShow() {
+    this.setData({
+      userPoints: getApp().getPoints()
+    });
+  },
+
   // 从缓存加载成就数据
   loadAchievementData() {
     try {

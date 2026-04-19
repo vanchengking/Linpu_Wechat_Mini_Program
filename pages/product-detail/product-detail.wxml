@@ -1,0 +1,82 @@
+<view class="container pb-120">
+  <!-- 商品大图轮播区 -->
+  <swiper class="product-swiper" indicator-dots="true" autoplay="true" interval="3000" duration="500">
+    <block wx:for="{{product.images}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item}}" mode="aspectFill" class="slide-image" bindtap="previewImage" data-url="{{item}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 商品基本信息区 -->
+  <view class="info-section">
+    <view class="price-row">
+      <text class="currency">¥</text>
+      <text class="price">{{product.price}}</text>
+      <view class="sales-tag">已售 {{product.sales}}</view>
+    </view>
+    <view class="title-row">
+      <text class="product-title">{{product.name}}</text>
+    </view>
+    <view class="desc-row">
+      <text class="product-desc">{{product.desc}}</text>
+    </view>
+    
+    <!-- 运费与保障 -->
+    <view class="guarantee-row">
+      <view class="g-item"><text class="icon">✓</text><text>林浦正品</text></view>
+      <view class="g-item"><text class="icon">✓</text><text>七天无理由退换</text></view>
+      <view class="g-item"><text class="icon">✓</text><text>全场包邮</text></view>
+    </view>
+  </view>
+
+  <!-- 规格选择（示例占位） -->
+  <view class="spec-section" bindtap="showSpecModal">
+    <text class="spec-label">选择</text>
+    <text class="spec-value">请选择 商品规格 / 数量</text>
+    <text class="arrow">></text>
+  </view>
+
+  <!-- 图文详情区 -->
+  <view class="detail-section">
+    <view class="detail-title">
+      <view class="line"></view>
+      <text>商品详情</text>
+      <view class="line"></view>
+    </view>
+    <view class="detail-content">
+      <!-- 预留图片添加代码，后续可在 detailImages 数组中配置 -->
+      <block wx:for="{{product.detailImages}}" wx:key="*this">
+        <image src="{{item}}" mode="widthFix" class="detail-image"></image>
+      </block>
+      <view wx:if="{{!product.detailImages || product.detailImages.length === 0}}" class="empty-detail">
+        <text>暂无详细图文介绍</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部悬浮购买栏 -->
+  <view class="bottom-bar">
+    <view class="icon-group">
+      <view class="icon-item" bindtap="goHome">
+        <image src="/resources/icons/云塔.png" class="b-icon"></image>
+        <text>市集</text>
+      </view>
+      <view class="icon-item">
+        <image src="/resources/icons/个人.png" class="b-icon"></image>
+        <text>客服</text>
+      </view>
+      <view class="icon-item" bindtap="goCart">
+        <view class="cart-badge" wx:if="{{cartCount > 0}}">{{cartCount}}</view>
+        <!-- 暂时使用成就图标占位购物车 -->
+        <image src="/resources/icons/成就.png" class="b-icon"></image>
+        <text>购物车</text>
+      </view>
+    </view>
+    
+    <view class="btn-group">
+      <view class="btn-add-cart" bindtap="addToCart">加入购物车</view>
+      <view class="btn-buy-now" bindtap="buyNow">立即购买</view>
+    </view>
+  </view>
+</view>

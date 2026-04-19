@@ -15,7 +15,9 @@
     "pages/taishan/taishan",
     "pages/landmark/landmark",
     "pages/chat/chat",
-    "pages/achievement/achievement"
+    "pages/achievement/achievement",
+    "pages/product-detail/product-detail",
+    "pages/cart/cart"
   ],
   "window": {
     "backgroundTextStyle": "light",

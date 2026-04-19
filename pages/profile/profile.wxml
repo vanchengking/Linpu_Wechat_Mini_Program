@@ -9,6 +9,9 @@
     </view>
 
     <view class="subtitle">日行千里的文化探险者</view>
+    <view class="points-badge">
+      <text>当前积分: {{userPoints}}</text>
+    </view>
   </view>
 
   <!-- 四大功能入口 -->

@@ -1,11 +1,18 @@
 <view class="container">
-  <!-- 头部 Banner -->
-  <view class="header-banner">
-    <image src="https://101.34.247.48:8888/down/ScTxYTX9VGGK.png" mode="aspectFill" class="banner-img"></image>
-    <view class="banner-mask"></view>
-    <view class="banner-text">
-      <text class="title">林浦市集</text>
-      <text class="subtitle">千年古风，掌中把玩</text>
+  <!-- 悬浮功能区 -->
+  <view class="floating-controls">
+    <!-- 积分悬浮窗 -->
+    <view class="points-box" bindtap="openCouponModal">
+      <image src="/resources/icons/云塔.png" class="points-icon"></image>
+      <text class="points-num">{{userPoints}} 积分</text>
+      <text class="points-action">兑换 > </text>
+    </view>
+    
+    <!-- 购物车悬浮窗 -->
+    <view class="cart-box" bindtap="goToCart">
+      <view class="cart-badge" wx:if="{{cartCount > 0}}">{{cartCount}}</view>
+      <image src="/resources/icons/成就.png" class="cart-icon"></image>
+      <text class="cart-text">购物车</text>
     </view>
   </view>
 
@@ -61,4 +68,31 @@
       <text>- 传承文化，生生不息 -</text>
     </view>
   </scroll-view>
+
+  <!-- 积分兑换弹窗 -->
+  <view class="coupon-modal {{showCouponModal ? 'active' : ''}}">
+    <view class="modal-mask" bindtap="closeCouponModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">积分兑换抵用券</text>
+        <view class="close-btn" bindtap="closeCouponModal">×</view>
+      </view>
+      <view class="modal-points-info">
+        <text>当前积分余额：</text>
+        <text class="highlight">{{userPoints}}</text>
+      </view>
+      <scroll-view scroll-y class="coupon-list">
+        <view class="coupon-item" wx:for="{{coupons}}" wx:key="id">
+          <view class="coupon-left">
+            <text class="coupon-discount">{{item.discountText}}</text>
+            <text class="coupon-desc">全场通用</text>
+          </view>
+          <view class="coupon-right">
+            <text class="coupon-cost">{{item.cost}} 积分</text>
+            <button class="exchange-btn" bindtap="exchangeCoupon" data-id="{{item.id}}" disabled="{{userPoints < item.cost}}">兑换</button>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
 </view>

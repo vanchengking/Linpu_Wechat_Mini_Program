@@ -1,0 +1,73 @@
+<view class="container">
+  <!-- 购物车列表 -->
+  <view class="cart-list" wx:if="{{cartItems.length > 0}}">
+    <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
+      <!-- 选择框 -->
+      <view class="checkbox-box" bindtap="toggleSelect" data-index="{{index}}">
+        <icon type="success" size="20" color="{{item.selected ? '#8B2323' : '#ddd'}}" />
+      </view>
+      
+      <!-- 商品图 -->
+      <image src="{{item.image}}" mode="aspectFill" class="product-img" bindtap="goToDetail" data-id="{{item.id}}"></image>
+      
+      <!-- 商品信息 -->
+      <view class="product-info">
+        <view class="product-name">{{item.name}}</view>
+        <view class="price-stepper">
+          <view class="price">¥{{item.price}}</view>
+          <view class="stepper">
+            <view class="minus {{item.quantity <= 1 ? 'disabled' : ''}}" bindtap="changeQuantity" data-index="{{index}}" data-delta="-1">-</view>
+            <input type="number" value="{{item.quantity}}" bindblur="inputQuantity" data-index="{{index}}" />
+            <view class="plus" bindtap="changeQuantity" data-index="{{index}}" data-delta="1">+</view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 删除按钮 -->
+      <view class="delete-btn" bindtap="removeItem" data-index="{{index}}">删除</view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-cart" wx:else>
+    <image src="/resources/icons/云塔.png" class="empty-icon"></image>
+    <text>购物车空空如也~</text>
+    <button class="go-shopping" bindtap="goMarket">去逛逛</button>
+  </view>
+
+  <!-- 优惠券选择区 -->
+  <view class="coupon-section" wx:if="{{cartItems.length > 0}}" bindtap="openCouponPicker">
+    <view class="label">优惠券</view>
+    <view class="value {{selectedCoupon ? 'selected' : ''}}">
+      {{selectedCoupon ? selectedCoupon.discountText : (availableCoupons.length > 0 ? availableCoupons.length + '张可用' : '无可用优惠券')}}
+    </view>
+    <view class="arrow">></view>
+  </view>
+
+  <!-- 价格详情区 -->
+  <view class="price-detail" wx:if="{{cartItems.length > 0}}">
+    <view class="price-item">
+      <text>商品总额</text>
+      <text>¥{{rawTotalPrice}}</text>
+    </view>
+    <view class="price-item red" wx:if="{{discountAmount > 0}}">
+      <text>优惠抵扣</text>
+      <text>-¥{{discountAmount}}</text>
+    </view>
+  </view>
+
+  <!-- 底部结算栏 -->
+  <view class="footer-bar" wx:if="{{cartItems.length > 0}}">
+    <view class="select-all" bindtap="toggleSelectAll">
+      <icon type="success" size="20" color="{{isAllSelected ? '#8B2323' : '#ddd'}}" />
+      <text>全选</text>
+    </view>
+    
+    <view class="total-info">
+      <text class="label">合计:</text>
+      <text class="total-price">¥{{totalPrice}}</text>
+    </view>
+    
+    <button class="checkout-btn" bindtap="checkout">去结算({{selectedCount}})</button>
+  </view>
+</view>

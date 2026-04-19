@@ -48,6 +48,73 @@ App({
   },
   
   globalData: {
-    userInfo: null
+    userInfo: null,
+    userPoints: 0, // 用户积分余额
+    ownedCoupons: [] // 用户拥有的优惠券
+  },
+
+  // 加载存储的数据
+  loadStorageData: function() {
+    const points = wx.getStorageSync('userPoints');
+    const coupons = wx.getStorageSync('ownedCoupons');
+    this.globalData.userPoints = points || 0;
+    this.globalData.ownedCoupons = coupons || [];
+  },
+
+  // 获取积分
+  getPoints: function() {
+    if (this.globalData.userPoints === 0) {
+      this.loadStorageData();
+    }
+    return this.globalData.userPoints;
+  },
+
+  // 增加积分
+  addPoints: function(amount, source) {
+    this.globalData.userPoints += amount;
+    wx.setStorageSync('userPoints', this.globalData.userPoints);
+    wx.showToast({
+      title: `获得 ${amount} 积分\n(${source})`,
+      icon: 'none',
+      duration: 2000
+    });
+    return this.globalData.userPoints;
+  },
+
+  // 扣减积分（例如购买抵用券）
+  deductPoints: function(amount) {
+    if (this.globalData.userPoints >= amount) {
+      this.globalData.userPoints -= amount;
+      wx.setStorageSync('userPoints', this.globalData.userPoints);
+      return true; // 扣减成功
+    }
+    return false; // 余额不足
+  },
+
+  // 添加优惠券
+  addCoupon: function(coupon) {
+    const newCoupon = {
+      ...coupon,
+      id: Date.now(), // 给个唯一ID
+      used: false
+    };
+    this.globalData.ownedCoupons.push(newCoupon);
+    wx.setStorageSync('ownedCoupons', this.globalData.ownedCoupons);
+  },
+
+  // 获取可用优惠券
+  getAvailableCoupons: function() {
+    return this.globalData.ownedCoupons.filter(c => !c.used);
+  },
+
+  // 使用优惠券
+  useCoupon: function(couponId) {
+    const idx = this.globalData.ownedCoupons.findIndex(c => c.id === couponId);
+    if (idx > -1) {
+      this.globalData.ownedCoupons[idx].used = true;
+      wx.setStorageSync('ownedCoupons', this.globalData.ownedCoupons);
+      return true;
+    }
+    return false;
   }
 })

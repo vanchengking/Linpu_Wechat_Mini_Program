@@ -235,13 +235,13 @@ Page({
     this.stopAR();
 
     // 记录AR扫描/完成关卡，与成就系统联动
-    this.recordARScan();
+    this.recordARScan(currentLevelIndex);
   },
 
   /**
    * 记录AR扫描次数到本地缓存（成就系统联动）
    */
-  recordARScan() {
+  recordARScan(levelIndex) {
     try {
       let userData = wx.getStorageSync('linpu_user_data') || { totalExp: 0 };
       let scanCount = (userData.arScanned || 0) + 1;
@@ -256,6 +256,13 @@ Page({
       wx.setStorageSync('linpu_user_data', userData);
       
       console.log(`AR扫描已记录，总计: ${scanCount}次`);
+
+      // 发放积分：每次通过章节获得 100 积分 (每个章节只发一次)
+      const arPointsKey = `ar_points_level_${levelIndex}`;
+      if (!wx.getStorageSync(arPointsKey)) {
+        getApp().addPoints(100, `完成AR游戏章节：${this.data.levels[levelIndex].title}`);
+        wx.setStorageSync(arPointsKey, true);
+      }
     } catch (e) {
       console.log('记录AR扫描失败:', e);
     }

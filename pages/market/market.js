@@ -1,6 +1,15 @@
 // pages/market/market.js
 Page({
   data: {
+    userPoints: 0,
+    cartCount: 0,
+    showCouponModal: false,
+    coupons: [
+      { id: 1, discountText: '9折 抵用券', cost: 100, discount: 0.9 },
+      { id: 2, discountText: '8折 抵用券', cost: 200, discount: 0.8 },
+      { id: 3, discountText: '7折 抵用券', cost: 400, discount: 0.7 },
+      { id: 4, discountText: '5折 抵用券', cost: 800, discount: 0.5 }
+    ],
     currentTab: 'all',
     categories: [
       { id: 'all', name: '全部' },
@@ -98,6 +107,26 @@ Page({
     this.filterProducts('all');
   },
 
+  onShow() {
+    // 每次显示页面时更新积分和购物车数量
+    this.setData({
+      userPoints: getApp().getPoints()
+    });
+    this.updateCartCount();
+  },
+
+  updateCartCount() {
+    const cart = wx.getStorageSync('cart') || [];
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    this.setData({ cartCount: count });
+  },
+
+  goToCart() {
+    wx.navigateTo({
+      url: '/pages/cart/cart'
+    });
+  },
+
   switchTab(e) {
     const tabId = e.currentTarget.dataset.id;
     this.setData({ currentTab: tabId });
@@ -115,16 +144,84 @@ Page({
 
   viewDetail(e) {
     const id = e.currentTarget.dataset.id;
-    wx.showToast({
-      title: '商品详情开发中...',
-      icon: 'none'
+    wx.navigateTo({
+      url: `/pages/product-detail/product-detail?id=${id}`
     });
   },
 
   addToCart(e) {
+    const id = e.currentTarget.dataset.id;
+    const product = this.data.products.find(p => p.id === id);
+    if (!product) return;
+
+    let cart = wx.getStorageSync('cart') || [];
+    const idx = cart.findIndex(item => item.id === id);
+    if (idx > -1) {
+      cart[idx].quantity += 1;
+    } else {
+      cart.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1
+      });
+    }
+    wx.setStorageSync('cart', cart);
+    this.updateCartCount();
+
     wx.showToast({
       title: '已加入购物车',
       icon: 'success'
+    });
+  },
+
+  // 打开积分兑换弹窗
+  openCouponModal() {
+    this.setData({
+      showCouponModal: true,
+      userPoints: getApp().getPoints()
+    });
+  },
+
+  // 关闭积分兑换弹窗
+  closeCouponModal() {
+    this.setData({
+      showCouponModal: false
+    });
+  },
+
+  // 兑换优惠券
+  exchangeCoupon(e) {
+    const couponId = e.currentTarget.dataset.id;
+    const coupon = this.data.coupons.find(c => c.id === couponId);
+    
+    if (!coupon) return;
+
+    wx.showModal({
+      title: '确认兑换',
+      content: `是否花费 ${coupon.cost} 积分兑换 ${coupon.discountText}？`,
+      success: (res) => {
+        if (res.confirm) {
+          const success = getApp().deductPoints(coupon.cost);
+          if (success) {
+            this.setData({
+              userPoints: getApp().getPoints()
+            });
+            // 将获取到的抵用券存入缓存
+            getApp().addCoupon(coupon);
+            wx.showToast({
+              title: '兑换成功',
+              icon: 'success'
+            });
+          } else {
+            wx.showToast({
+              title: '积分不足',
+              icon: 'none'
+            });
+          }
+        }
+      }
     });
   }
 });
