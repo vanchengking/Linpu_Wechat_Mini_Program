@@ -9,12 +9,14 @@ page {
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* 顶部提示 */
 .top-hint {
   position: absolute;
-  top: 60rpx;
+  top: 10rpx;
   width: 100%;
   text-align: center;
   z-index: 100;
@@ -23,30 +25,43 @@ page {
 .top-hint text {
   background: rgba(0, 0, 0, 0.6);
   color: #D4AF37;
-  padding: 10rpx 30rpx;
+  padding: 6rpx 20rpx;
   border-radius: 30rpx;
-  font-size: 26rpx;
+  font-size: 20rpx;
   border: 1px solid rgba(212, 175, 55, 0.4);
 }
 
-/* 拖拽地图区域 */
+/* 地图区域 */
 .map-area {
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: #1a1a1a;
-}
-
-.map-view {
-  width: 200vw;
-  height: 200vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.map-view {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 1356 / 744;
+  background-color: #2a2a2a; /* 增加底色，防图片加载失败时全黑 */
 }
 
 .map-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  display: block;
   pointer-events: none;
 }
 
@@ -62,26 +77,26 @@ page {
 }
 
 .anchor-icon {
-  width: 60rpx;
-  height: 60rpx;
+  width: 40rpx;
+  height: 40rpx;
   position: relative;
   z-index: 2;
 }
 
 .anchor-label {
-  margin-top: 10rpx;
+  margin-top: 6rpx;
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
-  font-size: 22rpx;
-  padding: 4rpx 12rpx;
+  font-size: 18rpx;
+  padding: 4rpx 10rpx;
   border-radius: 8rpx;
   white-space: nowrap;
 }
 
 .pulse-ring {
   position: absolute;
-  width: 50rpx;
-  height: 50rpx;
+  width: 32rpx;
+  height: 32rpx;
   background-color: rgba(212, 175, 55, 0.6);
   border-radius: 50%;
   z-index: 1;
@@ -124,10 +139,10 @@ page {
 
 .modal-content {
   position: relative;
-  width: 85%;
-  height: 70%;
+  width: 90%;
+  height: 85%;
   background: #fff;
-  border-radius: 40rpx;
+  border-radius: 20rpx;
   overflow: hidden;
   transform: scale(0.8);
   opacity: 0;
@@ -144,10 +159,10 @@ page {
 
 .close-icon {
   position: absolute;
-  top: 20rpx;
-  right: 30rpx;
-  width: 60rpx;
-  height: 60rpx;
+  top: 15rpx;
+  right: 15rpx;
+  width: 50rpx;
+  height: 50rpx;
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
   border-radius: 50%;
@@ -155,16 +170,29 @@ page {
   justify-content: center;
   align-items: center;
   z-index: 1001;
-  font-size: 32rpx;
+  font-size: 28rpx;
 }
 
 .modal-scroll {
   flex: 1;
+  height: 0; /* 配合 flex 让 scroll-view 生效 */
+}
+
+/* 横版排布：左图右文 */
+.modal-content-inner {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.modal-left {
+  width: 50%;
+  height: 100%;
 }
 
 .modal-swiper {
   width: 100%;
-  height: 400rpx;
+  height: 100%;
 }
 
 .swiper-image {
@@ -172,72 +200,94 @@ page {
   height: 100%;
 }
 
+.modal-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fcf7e3; /* 与主色调呼应 */
+}
+
 .modal-body {
-  padding: 40rpx;
+  padding: 30rpx 40rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
 }
 
 .modal-title {
-  font-size: 44rpx;
+  font-size: 36rpx;
   font-weight: bold;
   color: #333;
 }
 
 .modal-tags .tag {
-  font-size: 22rpx;
+  font-size: 20rpx;
   color: #8B2323;
   border: 1px solid #8B2323;
-  padding: 4rpx 16rpx;
+  padding: 4rpx 12rpx;
   border-radius: 30rpx;
 }
 
 .modal-protection {
   display: block;
-  font-size: 24rpx;
+  font-size: 20rpx;
   color: #999;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 
 .content-section {
-  margin-top: 30rpx;
+  margin-top: 10rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .section-label {
-  font-size: 30rpx;
+  font-size: 26rpx;
   font-weight: bold;
   color: #5d4b3c;
-  margin-bottom: 15rpx;
-  padding-left: 15rpx;
+  margin-bottom: 10rpx;
+  padding-left: 10rpx;
   border-left: 6rpx solid #8B2323;
+  flex-shrink: 0;
+}
+
+.desc-scroll {
+  flex: 1;
+  height: 0;
 }
 
 .section-text {
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #666;
-  line-height: 1.8;
+  line-height: 1.6;
   text-align: justify;
 }
 
 .modal-footer {
-  padding: 30rpx 40rpx 40rpx;
+  padding: 15rpx 40rpx 25rpx;
   background: #fff;
+  border-top: 1rpx solid #eee;
 }
 
 .action-btn {
-  width: 100% !important;
-  height: 90rpx;
-  border-radius: 45rpx;
+  width: 60% !important;
+  height: 70rpx;
+  border-radius: 35rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: bold;
+  margin: 0 auto;
 }
 
 .action-btn.primary {

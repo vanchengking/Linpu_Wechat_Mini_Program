@@ -53,6 +53,42 @@ Page({
         sales: 45,
         image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
         desc: '体验宋代点茶文化的必备器具，重温南宋风雅。'
+      },
+      {
+        id: 6,
+        name: '林浦古村手绘明信片',
+        category: 'culture',
+        price: '25.00',
+        sales: 210,
+        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
+        desc: '一套8张，水彩手绘还原林浦古村的静谧角落与历史建筑。'
+      },
+      {
+        id: 7,
+        name: '《林浦建筑文化》图鉴',
+        category: 'book',
+        price: '68.00',
+        sales: 89,
+        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
+        desc: '深入解析林浦古建筑群的榫卯结构与雕花艺术，附赠建筑线稿。'
+      },
+      {
+        id: 8,
+        name: '林浦非遗剪纸摆件',
+        category: 'souvenir',
+        price: '45.00',
+        sales: 156,
+        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
+        desc: '非遗传承人手工剪制，亚克力封装，展现林浦民俗风情。'
+      },
+      {
+        id: 9,
+        name: '尚书家风定制折扇',
+        category: 'culture',
+        price: '58.00',
+        sales: 198,
+        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
+        desc: '竹骨折扇，扇面题写“三代五尚书”家训，夏日纳凉尽显文人气息。'
       }
     ],
     filteredProducts: []

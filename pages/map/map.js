@@ -11,7 +11,7 @@ Page({
         type: '文化教育',
         protectionLevel: "福州市级文物保护单位",
         left: '15%', 
-        top: '25%',
+        top: '40%',
         images: [
           "https://101.34.247.48:8888/down/eTzNzBC9Pu65.jpg",
           "https://101.34.247.48:8888/down/Fu2P7KDHnWKZ.png",
@@ -26,7 +26,7 @@ Page({
         type: '宗祠建筑',
         protectionLevel: "福州市级文物保护单位",
         left: '75%',
-        top: '40%',
+        top: '35%',
         images: [
           "https://101.34.247.48:8888/down/OgYQBzHxPO5O.jpg",
           "https://101.34.247.48:8888/down/0yd6tSidDl3S.png"
@@ -39,8 +39,8 @@ Page({
         name: '林浦泰山宫',
         type: '宫庙建筑',
         protectionLevel: "福建省级文物保护单位",
-        left: '40%',
-        top: '80%',
+        left: '60%',
+        top: '70%',
         images: [
           "https://101.34.247.48:8888/down/nx4A3JQ1lSnb.png",
           "https://101.34.247.48:8888/down/1Mel6AxuhALu.png",
@@ -54,8 +54,8 @@ Page({
         name: '尚书里石牌坊',
         type: '牌坊建筑',
         protectionLevel: "历史构筑物",
-        left: '20%',
-        top: '65%',
+        left: '30%',
+        top: '70%',
         images: [
           "https://101.34.247.48:8888/down/oJPQSStUpA7r.png",
           "https://101.34.247.48:8888/down/4BkKW05UwDUi.jpg",
@@ -69,8 +69,8 @@ Page({
         name: '林浦断桥',
         type: '桥梁建筑',
         protectionLevel: "省级历史文化名村景点",
-        left: '80%',
-        top: '20%',
+        left: '88%',
+        top: '65%',
         images: [
           "https://101.34.247.48:8888/down/7uSZjtEegwT4.jpg",
           "https://101.34.247.48:8888/down/hAvpvdK1jnlz.jpg",
@@ -84,8 +84,8 @@ Page({
         name: '进士木牌坊',
         type: '牌坊建筑',
         protectionLevel: "林尚书家庙附属文物",
-        left: '55%',
-        top: '15%',
+        left: '45%',
+        top: '30%',
         images: [
           "https://101.34.247.48:8888/down/F62Wg7A49Zis.png",
           "https://101.34.247.48:8888/down/q3Mr7h1lFYDk.jpg",
