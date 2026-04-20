@@ -1,15 +1,20 @@
-<!--pages/map/map.wxml-->
 <view class="container">
   <view class="top-hint">
-    <text>点击锚点查看地标</text>
+    <text>双指缩放地图，点击锚点查看地标</text>
   </view>
 
-  <view class="map-area">
-    <view class="map-view">
-      <!-- 底图 -->
+  <movable-area class="map-area" scale-area>
+    <movable-view 
+      class="map-view" 
+      direction="all" 
+      scale="true" 
+      scale-min="0.5" 
+      scale-max="4" 
+      scale-value="{{scale}}"
+      out-of-bounds="true"
+    >
       <image src="https://bl.meishipay.com/images/content/地图导览.png" class="map-bg"></image>
       
-      <!-- 动态渲染锚点 -->
       <view 
         class="anchor-point" 
         wx:for="{{locations}}" 
@@ -22,10 +27,9 @@
         <image src="/resources/icons/地标.png" class="anchor-icon"></image>
         <text class="anchor-label">{{item.name}}</text>
       </view>
-    </view>
-  </view>
+    </movable-view>
+  </movable-area>
 
-  <!-- 中央悬浮窗 (Modal) -->
   <view class="modal-wrapper {{showModal ? 'active' : ''}}">
     <view class="modal-backdrop" bindtap="closeModal"></view>
     <view class="modal-content">
@@ -33,8 +37,7 @@
       
       <scroll-view scroll-y class="modal-scroll">
         <view class="modal-content-inner">
-          <!-- 左侧：图片展示 -->
-          <view class="modal-left">
+          <view class="modal-top">
             <swiper class="modal-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
               <block wx:for="{{activeLocation.images}}" wx:key="*this">
                 <swiper-item>
@@ -44,8 +47,7 @@
             </swiper>
           </view>
           
-          <!-- 右侧：内容区 -->
-          <view class="modal-right">
+          <view class="modal-bottom">
             <view class="modal-body">
               <view class="modal-header">
                 <text class="modal-title">{{activeLocation.name}}</text>
@@ -58,9 +60,9 @@
 
               <view class="content-section">
                 <view class="section-label">地标简介</view>
-                <scroll-view scroll-y class="desc-scroll">
+                <view class="desc-box">
                   <text class="section-text">{{activeLocation.intro || activeLocation.brief}}</text>
-                </scroll-view>
+                </view>
               </view>
             </view>
           </view>
@@ -74,7 +76,6 @@
     </view>
   </view>
 
-  <!-- 全局浮窗聊天按钮 -->
   <view class="float-chat-btn" bindtap="goToChat">
     <image 
       src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
