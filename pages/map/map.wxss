@@ -314,3 +314,31 @@ page {
   transform: scale(0.98);
   opacity: 0.9;
 }
+
+/* ======= 可自由拖拽浮窗聊天按钮 ======= */
+.chat-drag-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* 关键：穿透全屏区域，不影响底层地图的点击和拖动 */
+  pointer-events: none; 
+  z-index: 9999;
+}
+
+.chat-drag-view {
+  width: 120rpx;
+  height: 120rpx;
+  /* 关键：恢复图标本身的点击和拖拽属性 */
+  pointer-events: auto; 
+}
+
+.float-chat-icon-drag {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 6rpx 16rpx rgba(0,0,0,0.3);
+  /* 继承你在 app.wxss 中写的呼吸悬浮动画 */
+  animation: float 3s ease-in-out infinite; 
+}

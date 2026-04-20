@@ -76,10 +76,19 @@
     </view>
   </view>
 
-  <view class="float-chat-btn" bindtap="goToChat">
-    <image 
-      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
-      class="float-chat-icon"
-    ></image>
-  </view>
+  <movable-area class="chat-drag-area">
+    <movable-view 
+      class="chat-drag-view" 
+      direction="all" 
+      x="{{chatX}}" 
+      y="{{chatY}}" 
+      animation="{{false}}"
+    >
+      <image 
+        src="bl.meishipay.com/images/characters/shangshubo.png" 
+        class="float-chat-icon-drag"
+        bindtap="goToChat"
+      ></image>
+    </movable-view>
+  </movable-area>
 </view>
