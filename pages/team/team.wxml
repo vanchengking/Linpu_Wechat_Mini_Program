@@ -1,0 +1,91 @@
+<!-- 研发团队页面 -->
+<view class="team-page">
+  <!-- 团队标题 -->
+  <view class="team-header">
+    <view class="team-logo">
+      <text class="logo-text">林</text>
+    </view>
+    <text class="team-name">林浦印象研发团队</text>
+    <text class="team-slogan">用科技守护千年文脉</text>
+  </view>
+
+  <!-- 项目简介 -->
+  <view class="intro-card">
+    <view class="section-divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">关于项目</text>
+      <view class="divider-line"></view>
+    </view>
+    <text class="intro-text">
+      "林浦印象"是一款基于微信小程序平台的文化遗产数字体验产品，融合 AR 增强现实、场景叙事交互、空间数据可视化等技术，打造沉浸式的古村落文化探索之旅。项目聚焦福州林浦村千年历史底蕴，以"文化解码+场景探索"为核心玩法，让用户在游戏化体验中感受传统文化之美。
+    </text>
+    <view class="project-tags">
+      <text class="p-tag">国创赛项目</text>
+      <text class="p-tag">微信小程序</text>
+      <text class="p-tag">AR体验</text>
+      <text class="p-tag">文化遗产</text>
+    </view>
+  </view>
+
+  <!-- 团队成员 -->
+  <view class="member-section">
+    <view class="section-divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">团队成员</text>
+      <view class="divider-line"></view>
+    </view>
+    <view class="member-list">
+      <view class="member-card" wx:for="{{members}}" wx:key="name">
+        <view class="member-avatar-wrap {{item.color}}">
+          <text class="member-initial">{{item.initial}}</text>
+        </view>
+        <view class="member-info">
+          <text class="member-name">{{item.name}}</text>
+          <text class="member-role">{{item.role}}</text>
+          <text class="member-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 技术栈 -->
+  <view class="tech-section">
+    <view class="section-divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">技术栈</text>
+      <view class="divider-line"></view>
+    </view>
+    <view class="tech-grid">
+      <view class="tech-item" wx:for="{{techStack}}" wx:key="name">
+        <text class="tech-icon">{{item.icon}}</text>
+        <text class="tech-name">{{item.name}}</text>
+        <text class="tech-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 致谢 -->
+  <view class="thanks-section">
+    <view class="section-divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">致谢</text>
+      <view class="divider-line"></view>
+    </view>
+    <view class="thanks-card">
+      <text class="thanks-text">
+        感谢北京林业大学园林学院提供的学术指导与支持，感谢林浦村当地居民的热情帮助，感谢所有参与测试的同学们。
+      </text>
+      <text class="thanks-text" style="margin-top: 12rpx;">
+        特别感谢国创赛平台给予的展示机会，让我们得以将传统文化的数字化保护理念付诸实践。
+      </text>
+    </view>
+  </view>
+
+  <!-- 底部 -->
+  <view class="footer">
+    <text class="footer-text">Made with ❤️ by Linpu Team</text>
+    <text class="footer-sub">北京林业大学 · 2026</text>
+  </view>
+
+  <view style="height: 60rpx;"></view>
+</view>

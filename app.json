@@ -17,7 +17,12 @@
     "pages/chat/chat",
     "pages/achievement/achievement",
     "pages/product-detail/product-detail",
-    "pages/cart/cart"
+    "pages/cart/cart",
+    "pages/record/record",
+    "pages/ranking/ranking",
+    "pages/settings/settings",
+    "pages/feedback/feedback",
+    "pages/team/team"
   ],
   "window": {
     "backgroundTextStyle": "light",

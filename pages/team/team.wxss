@@ -1,0 +1,249 @@
+/* ========== 研发团队页面样式 ========== */
+
+page {
+  background: linear-gradient(180deg, #fcf7e3 0%, #f5ead6 100%);
+  min-height: 100vh;
+}
+
+.team-page {
+  padding: 20rpx 24rpx 0;
+}
+
+/* ========== 团队头部 ========== */
+.team-header {
+  text-align: center;
+  padding: 16rpx 0 28rpx;
+}
+
+.team-logo {
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #d4a574, #b8895e);
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18rpx;
+  box-shadow: 0 8rpx 24rpx rgba(180,140,90,0.3);
+}
+
+.logo-text {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.team-name {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #3c2a1e;
+  margin-bottom: 8rpx;
+}
+
+.team-slogan {
+  font-size: 24rpx;
+  color: #b8895e;
+  letter-spacing: 2rpx;
+}
+
+/* ========== 区块通用 ========== */
+.intro-card, .member-section, .tech-section, .thanks-section {
+  background: #fffaf2;
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(160,130,90,0.1);
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 22rpx;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1rpx;
+  background: rgba(180,150,110,0.25);
+}
+
+.divider-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #3c2a1e;
+  padding: 0 20rpx;
+}
+
+/* ========== 项目简介 ========== */
+.intro-text {
+  display: block;
+  font-size: 26rpx;
+  color: #5a4a3a;
+  line-height: 1.8;
+  margin-bottom: 18rpx;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.p-tag {
+  padding: 8rpx 20rpx;
+  background: #fef9ee;
+  border-radius: 20rpx;
+  border: 1rpx solid #efe0cc;
+  font-size: 22rpx;
+  color: #b8895e;
+}
+
+/* ========== 团队成员 ========== */
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.member-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 22rpx 18rpx;
+  background: #fef9ee;
+  border-radius: 16rpx;
+  border: 1rpx solid #efe0cc;
+}
+
+.member-avatar-wrap {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 18rpx;
+}
+
+.member-avatar-wrap.brown {
+  background: linear-gradient(135deg, #d4a574, #b8895e);
+}
+
+.member-avatar-wrap.blue {
+  background: linear-gradient(135deg, #5b8fb9, #3a6fa0);
+}
+
+.member-avatar-wrap.green {
+  background: linear-gradient(135deg, #6ba368, #4a7a48);
+}
+
+.member-avatar-wrap.purple {
+  background: linear-gradient(135deg, #9b7ebd, #7b5ea0);
+}
+
+.member-initial {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-name {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #3c2a1e;
+  margin-bottom: 4rpx;
+}
+
+.member-role {
+  display: inline-block;
+  font-size: 20rpx;
+  color: #d4a574;
+  background: #fdf6e8;
+  padding: 2rpx 14rpx;
+  border-radius: 6rpx;
+  margin-bottom: 6rpx;
+}
+
+.member-desc {
+  display: block;
+  font-size: 23rpx;
+  color: #8a7a68;
+  line-height: 1.5;
+  margin-top: 4rpx;
+}
+
+/* ========== 技术栈 ========== */
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.tech-item {
+  width: calc(50% - 8rpx);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22rpx 12rpx;
+  background: #fef9ee;
+  border-radius: 14rpx;
+  border: 1rpx solid #efe0cc;
+}
+
+.tech-icon {
+  font-size: 40rpx;
+  margin-bottom: 8rpx;
+}
+
+.tech-name {
+  font-size: 25rpx;
+  font-weight: 600;
+  color: #3c2a1e;
+  margin-bottom: 4rpx;
+}
+
+.tech-desc {
+  font-size: 20rpx;
+  color: #8a7a68;
+  text-align: center;
+}
+
+/* ========== 致谢 ========== */
+.thanks-card {
+  background: #fef9ee;
+  border-radius: 14rpx;
+  padding: 22rpx 20rpx;
+  border: 1rpx solid #efe0cc;
+}
+
+.thanks-text {
+  display: block;
+  font-size: 24rpx;
+  color: #5a4a3a;
+  line-height: 1.7;
+}
+
+/* ========== 底部 ========== */
+.footer {
+  text-align: center;
+  padding: 32rpx 0 12rpx;
+}
+
+.footer-text {
+  display: block;
+  font-size: 24rpx;
+  color: #b8895e;
+  font-weight: 500;
+  margin-bottom: 6rpx;
+}
+
+.footer-sub {
+  font-size: 22rpx;
+  color: #8a7a68;
+}

@@ -1,0 +1,111 @@
+<!-- 个人记录页面 -->
+<view class="record-page">
+  <!-- 顶部统计卡片 -->
+  <view class="stats-header">
+    <view class="stats-bg"></view>
+    <view class="stats-user">
+      <image class="stats-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+      <view class="stats-meta">
+        <text class="stats-name">我的探索足迹</text>
+        <text class="stats-summary">已累计探索 {{totalDays}} 天</text>
+      </view>
+    </view>
+    <view class="stats-grid">
+      <view class="stats-item">
+        <text class="stats-num">{{stats.landmarkVisited}}</text>
+        <text class="stats-label">地标打卡</text>
+      </view>
+      <view class="stats-divider"></view>
+      <view class="stats-item">
+        <text class="stats-num">{{stats.experienceDone}}</text>
+        <text class="stats-label">文化体验</text>
+      </view>
+      <view class="stats-divider"></view>
+      <view class="stats-item">
+        <text class="stats-num">{{stats.arScanned}}</text>
+        <text class="stats-label">AR扫描</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类切换标签 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === 'checkin' ? 'active' : ''}}" bindtap="switchTab" data-tab="checkin">
+      <text>打卡记录</text>
+    </view>
+    <view class="tab-item {{currentTab === 'experience' ? 'active' : ''}}" bindtap="switchTab" data-tab="experience">
+      <text>体验记录</text>
+    </view>
+    <view class="tab-item {{currentTab === 'scan' ? 'active' : ''}}" bindtap="switchTab" data-tab="scan">
+      <text>扫描记录</text>
+    </view>
+  </view>
+
+  <!-- 打卡记录 -->
+  <view class="record-list" wx:if="{{currentTab === 'checkin'}}">
+    <view class="date-group" wx:for="{{checkinRecords}}" wx:key="date">
+      <text class="date-label">{{item.date}}</text>
+      <view class="record-card" wx:for="{{item.records}}" wx:for-item="record" wx:key="id">
+        <view class="record-icon-wrap landmark">
+          <text>📍</text>
+        </view>
+        <view class="record-content">
+          <text class="record-title">{{record.title}}</text>
+          <text class="record-time">{{record.time}}</text>
+        </view>
+        <view class="record-tag">{{record.tag}}</view>
+      </view>
+    </view>
+    <view class="empty-state" wx:if="{{checkinRecords.length === 0}}">
+      <text class="empty-icon">🔍</text>
+      <text class="empty-text">暂无打卡记录</text>
+      <text class="empty-hint">去地图页面打卡你的第一个地标吧</text>
+    </view>
+  </view>
+
+  <!-- 体验记录 -->
+  <view class="record-list" wx:if="{{currentTab === 'experience'}}">
+    <view class="date-group" wx:for="{{experienceRecords}}" wx:key="date">
+      <text class="date-label">{{item.date}}</text>
+      <view class="record-card" wx:for="{{item.records}}" wx:for-item="record" wx:key="id">
+        <view class="record-icon-wrap experience">
+          <text>🎭</text>
+        </view>
+        <view class="record-content">
+          <text class="record-title">{{record.title}}</text>
+          <text class="record-time">{{record.time}}</text>
+        </view>
+        <view class="record-tag">{{record.tag}}</view>
+      </view>
+    </view>
+    <view class="empty-state" wx:if="{{experienceRecords.length === 0}}">
+      <text class="empty-icon">🎭</text>
+      <text class="empty-text">暂无体验记录</text>
+      <text class="empty-hint">去文化解码页面体验林浦民俗吧</text>
+    </view>
+  </view>
+
+  <!-- 扫描记录 -->
+  <view class="record-list" wx:if="{{currentTab === 'scan'}}">
+    <view class="date-group" wx:for="{{scanRecords}}" wx:key="date">
+      <text class="date-label">{{item.date}}</text>
+      <view class="record-card" wx:for="{{item.records}}" wx:for-item="record" wx:key="id">
+        <view class="record-icon-wrap scan">
+          <text>📱</text>
+        </view>
+        <view class="record-content">
+          <text class="record-title">{{record.title}}</text>
+          <text class="record-time">{{record.time}}</text>
+        </view>
+        <view class="record-tag">{{record.tag}}</view>
+      </view>
+    </view>
+    <view class="empty-state" wx:if="{{scanRecords.length === 0}}">
+      <text class="empty-icon">📱</text>
+      <text class="empty-text">暂无扫描记录</text>
+      <text class="empty-hint">去AR页面体验场景扫描吧</text>
+    </view>
+  </view>
+
+  <view style="height: 60rpx;"></view>
+</view>

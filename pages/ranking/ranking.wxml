@@ -1,0 +1,94 @@
+<!-- 排行榜页面 -->
+<view class="ranking-page">
+  <!-- 顶部标题 -->
+  <view class="page-header">
+    <text class="header-title">探险排行榜</text>
+    <text class="header-subtitle">看看谁是林浦最厉害的探险者</text>
+  </view>
+
+  <!-- 分类标签 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === 'exp' ? 'active' : ''}}" bindtap="switchTab" data-tab="exp">
+      <text>EXP排行</text>
+    </view>
+    <view class="tab-item {{currentTab === 'landmark' ? 'active' : ''}}" bindtap="switchTab" data-tab="landmark">
+      <text>打卡排行</text>
+    </view>
+    <view class="tab-item {{currentTab === 'badge' ? 'active' : ''}}" bindtap="switchTab" data-tab="badge">
+      <text>徽章排行</text>
+    </view>
+  </view>
+
+  <!-- 前三名展示 -->
+  <view class="podium-section">
+    <!-- 第二名 -->
+    <view class="podium-item second">
+      <view class="podium-avatar-wrap silver-ring">
+        <image class="podium-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+      </view>
+      <text class="podium-rank">2</text>
+      <text class="podium-name">{{topThree[1].name}}</text>
+      <text class="podium-score">{{topThree[1].score}} {{currentTab === 'exp' ? 'EXP' : (currentTab === 'landmark' ? '次' : '枚')}}</text>
+      <view class="podium-bar silver-bar"></view>
+    </view>
+
+    <!-- 第一名 -->
+    <view class="podium-item first">
+      <view class="crown">👑</view>
+      <view class="podium-avatar-wrap gold-ring">
+        <image class="podium-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+      </view>
+      <text class="podium-rank gold-text">1</text>
+      <text class="podium-name">{{topThree[0].name}}</text>
+      <text class="podium-score">{{topThree[0].score}} {{currentTab === 'exp' ? 'EXP' : (currentTab === 'landmark' ? '次' : '枚')}}</text>
+      <view class="podium-bar gold-bar"></view>
+    </view>
+
+    <!-- 第三名 -->
+    <view class="podium-item third">
+      <view class="podium-avatar-wrap bronze-ring">
+        <image class="podium-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+      </view>
+      <text class="podium-rank">3</text>
+      <text class="podium-name">{{topThree[2].name}}</text>
+      <text class="podium-score">{{topThree[2].score}} {{currentTab === 'exp' ? 'EXP' : (currentTab === 'landmark' ? '次' : '枚')}}</text>
+      <view class="podium-bar bronze-bar"></view>
+    </view>
+  </view>
+
+  <!-- 完整排行列表 -->
+  <view class="rank-list-section">
+    <view class="rank-list-header">
+      <text class="rank-list-title">完整排名</text>
+    </view>
+    <view class="rank-list">
+      <view class="rank-row {{item.isMe ? 'me' : ''}}" wx:for="{{rankList}}" wx:key="rank">
+        <view class="rank-pos">
+          <text class="pos-text {{item.rank <= 3 ? 'top' : ''}}">{{item.rank}}</text>
+        </view>
+        <view class="rank-info">
+          <image class="rank-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+          <view class="rank-detail">
+            <text class="rank-name">{{item.name}}</text>
+            <view class="rank-level">
+              <text class="lv-tag lv{{item.lvColor}}">Lv.{{item.level}}</text>
+              <text class="rank-title-text">{{item.title}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="rank-score-wrap">
+          <text class="rank-score">{{item.score}}</text>
+          <text class="rank-score-unit">{{currentTab === 'exp' ? 'EXP' : (currentTab === 'landmark' ? '次' : '枚')}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的排名 -->
+  <view class="my-rank-footer" wx:if="{{myRank}}">
+    <text class="my-rank-text">我的排名：第{{myRank}}名</text>
+    <text class="my-rank-score">（{{myScore}} {{currentTab === 'exp' ? 'EXP' : (currentTab === 'landmark' ? '次' : '枚')}}）</text>
+  </view>
+
+  <view style="height: 80rpx;"></view>
+</view>

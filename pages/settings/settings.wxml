@@ -1,0 +1,126 @@
+<!-- 更多设置页面 -->
+<view class="settings-page">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <image class="user-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+    <view class="user-info">
+      <text class="user-name">文化探险者</text>
+      <text class="user-desc">Lv.{{userLevel}} {{userTitle}}</text>
+    </view>
+    <text class="edit-icon">></text>
+  </view>
+
+  <!-- 通用设置 -->
+  <view class="section">
+    <text class="section-title">通用设置</text>
+    <view class="setting-list">
+      <view class="setting-item" bindtap="toggleNotification">
+        <view class="setting-left">
+          <text class="setting-icon">🔔</text>
+          <text class="setting-label">消息通知</text>
+        </view>
+        <switch checked="{{notificationOn}}" color="#d4a574" bindchange="toggleNotification" />
+      </view>
+
+      <view class="setting-item" bindtap="toggleSound">
+        <view class="setting-left">
+          <text class="setting-icon">🔊</text>
+          <text class="setting-label">音效</text>
+        </view>
+        <switch checked="{{soundOn}}" color="#d4a574" bindchange="toggleSound" />
+      </view>
+
+      <view class="setting-item" bindtap="toggleVibrate">
+        <view class="setting-left">
+          <text class="setting-icon">📳</text>
+          <text class="setting-label">触感反馈</text>
+        </view>
+        <switch checked="{{vibrateOn}}" color="#d4a574" bindchange="toggleVibrate" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
+  <view class="section">
+    <text class="section-title">数据管理</text>
+    <view class="setting-list">
+      <view class="setting-item" bindtap="clearCache">
+        <view class="setting-left">
+          <text class="setting-icon">🧹</text>
+          <text class="setting-label">清除缓存</text>
+        </view>
+        <text class="setting-value">{{cacheSize}}</text>
+      </view>
+
+      <view class="setting-item" bindtap="exportData">
+        <view class="setting-left">
+          <text class="setting-icon">📤</text>
+          <text class="setting-label">导出我的数据</text>
+        </view>
+        <text class="arrow">></text>
+      </view>
+
+      <view class="setting-item" bindtap="resetProgress">
+        <view class="setting-left">
+          <text class="setting-icon">🔄</text>
+          <text class="setting-label">重置探索进度</text>
+        </view>
+        <text class="arrow">></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="section">
+    <text class="section-title">关于</text>
+    <view class="setting-list">
+      <view class="setting-item" bindtap="showPrivacy">
+        <view class="setting-left">
+          <text class="setting-icon">🔒</text>
+          <text class="setting-label">隐私政策</text>
+        </view>
+        <text class="arrow">></text>
+      </view>
+
+      <view class="setting-item" bindtap="showTerms">
+        <view class="setting-left">
+          <text class="setting-icon">📋</text>
+          <text class="setting-label">用户协议</text>
+        </view>
+        <text class="arrow">></text>
+      </view>
+
+      <view class="setting-item" bindtap="goToTeam">
+        <view class="setting-left">
+          <text class="setting-icon">👥</text>
+          <text class="setting-label">研发团队</text>
+        </view>
+        <text class="arrow">></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text class="version-text">林浦印象 v1.0.0</text>
+    <text class="version-desc">北京林业大学 国创赛项目</text>
+  </view>
+
+  <!-- 重置确认弹窗 -->
+  <view class="modal-mask" wx:if="{{showResetModal}}" bindtap="closeResetModal">
+    <view class="modal-box" catchtap="">
+      <text class="modal-title">确认重置</text>
+      <text class="modal-desc">重置后所有探索进度、成就和徽章将被清除，此操作不可恢复。</text>
+      <view class="modal-btns">
+        <view class="modal-btn cancel" bindtap="closeResetModal">
+          <text>取消</text>
+        </view>
+        <view class="modal-btn confirm" bindtap="confirmReset">
+          <text>确认重置</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 60rpx;"></view>
+</view>

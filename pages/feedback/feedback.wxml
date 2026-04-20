@@ -1,0 +1,97 @@
+<!-- 给予建议页面 -->
+<view class="feedback-page">
+  <!-- 顶部插图 -->
+  <view class="header-section">
+    <view class="header-illustration">
+      <text class="illustration-icon">💬</text>
+    </view>
+    <text class="header-title">帮助我们变得更好</text>
+    <text class="header-desc">您的每一条建议都是林浦印象前进的动力</text>
+  </view>
+
+  <!-- 建议类型选择 -->
+  <view class="section">
+    <text class="section-label">建议类型</text>
+    <view class="type-grid">
+      <view class="type-item {{selectedType === item.value ? 'active' : ''}}"
+        wx:for="{{feedbackTypes}}"
+        wx:key="value"
+        bindtap="selectType"
+        data-value="{{item.value}}">
+        <text class="type-icon">{{item.icon}}</text>
+        <text class="type-text">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 满意度评分 -->
+  <view class="section">
+    <text class="section-label">整体满意度</text>
+    <view class="rating-section">
+      <view class="stars">
+        <text class="star {{rating >= item ? 'active' : ''}}"
+          wx:for="{{[1,2,3,4,5]}}"
+          wx:key="*this"
+          bindtap="setRating"
+          data-rating="{{item}}">★</text>
+      </view>
+      <text class="rating-text">{{ratingLabels[rating - 1]}}</text>
+    </view>
+  </view>
+
+  <!-- 建议内容 -->
+  <view class="section">
+    <text class="section-label">详细建议</text>
+    <textarea class="feedback-input"
+      placeholder="请描述您的建议或遇到的问题..."
+      placeholder-style="color: #b8a898;"
+      value="{{content}}"
+      bindinput="onContentInput"
+      maxlength="500"
+      auto-height="{{true}}"
+      show-confirm-bar="{{false}}">
+    </textarea>
+    <text class="char-count">{{content.length}}/500</text>
+  </view>
+
+  <!-- 联系方式（可选） -->
+  <view class="section">
+    <text class="section-label">联系方式（可选）</text>
+    <input class="contact-input"
+      type="text"
+      placeholder="方便我们回复您的建议"
+      placeholder-style="color: #b8a898;"
+      value="{{contact}}"
+      bindinput="onContactInput" />
+  </view>
+
+  <!-- 常见问题快捷入口 -->
+  <view class="section quick-section">
+    <text class="section-label">常见建议</text>
+    <view class="quick-tags">
+      <text class="quick-tag" wx:for="{{quickTags}}" wx:key="*this" bindtap="appendTag" data-tag="{{item}}">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <view class="submit-btn {{content.length > 0 ? 'active' : ''}}" bindtap="submitFeedback">
+      <text>提交建议</text>
+    </view>
+    <text class="submit-tip">感谢您的宝贵意见 ❤️</text>
+  </view>
+
+  <!-- 提交成功弹窗 -->
+  <view class="modal-mask" wx:if="{{showSuccessModal}}" bindtap="closeSuccessModal">
+    <view class="success-modal" catchtap="">
+      <text class="success-icon">🎉</text>
+      <text class="success-title">提交成功！</text>
+      <text class="success-desc">感谢您的建议，我们会认真对待每一条反馈。</text>
+      <view class="success-btn" bindtap="closeSuccessModal">
+        <text>好的</text>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 60rpx;"></view>
+</view>

@@ -1,2 +1,93 @@
-<!--pages/linpu/linpu.wxml-->
-<text>pages/linpu/linpu.wxml</text>
+<!-- 林浦印象 - 村落介绍页 -->
+<view class="linpu-page">
+  <!-- 顶部大图 -->
+  <view class="hero-section">
+    <image class="hero-img" src="https://asave.rutno.com/fileview?id=S8JAJK5wKDye" mode="aspectFill"></image>
+    <view class="hero-overlay"></view>
+    <view class="hero-content">
+      <text class="hero-title">林 浦 古 村</text>
+      <text class="hero-subtitle">千年宋风 · 文脉绵延</text>
+    </view>
+  </view>
+
+  <!-- 简介 -->
+  <view class="intro-card">
+    <view class="section-divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">村落概览</text>
+      <view class="divider-line"></view>
+    </view>
+    <text class="intro-text">
+      林浦村位于福州市仓山区城门镇濂江村，始建于唐末，距今已有千余年历史。南宋末年，益王赵昰曾在此驻跸登基，留下了丰富的历史文化遗存。村中"三代五尚书"的林氏家族更是人才辈出，与朱熹讲学的濂江书院共同铸就了这座古村深厚的文化底蕴。
+    </text>
+  </view>
+
+  <!-- 核心看点 -->
+  <view class="section-card">
+    <view class="section-divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">核心看点</text>
+      <view class="divider-line"></view>
+    </view>
+    <view class="highlight-grid">
+      <view class="highlight-item" wx:for="{{highlights}}" wx:key="id">
+        <view class="highlight-icon-wrap">
+          <text class="highlight-icon">{{item.icon}}</text>
+        </view>
+        <view class="highlight-info">
+          <text class="highlight-title">{{item.title}}</text>
+          <text class="highlight-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 历史脉络 -->
+  <view class="section-card">
+    <view class="section-divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">历史脉络</text>
+      <view class="divider-line"></view>
+    </view>
+    <view class="timeline">
+      <view class="timeline-item" wx:for="{{timeline}}" wx:key="era">
+        <view class="timeline-dot"></view>
+        <view class="timeline-content">
+          <text class="timeline-era">{{item.era}}</text>
+          <text class="timeline-event">{{item.event}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据概览 -->
+  <view class="stats-card">
+    <view class="stats-row">
+      <view class="stats-item" wx:for="{{villageStats}}" wx:key="label">
+        <text class="stats-num">{{item.value}}</text>
+        <text class="stats-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部探索入口 -->
+  <view class="explore-section">
+    <text class="explore-title">开始你的林浦文化之旅</text>
+    <view class="explore-btns">
+      <view class="explore-btn" bindtap="goToMap">
+        <text class="explore-btn-icon">🗺️</text>
+        <text class="explore-btn-text">地图导览</text>
+      </view>
+      <view class="explore-btn" bindtap="goToExperience">
+        <text class="explore-btn-icon">🎭</text>
+        <text class="explore-btn-text">文化解码</text>
+      </view>
+      <view class="explore-btn" bindtap="goToAR">
+        <text class="explore-btn-icon">📱</text>
+        <text class="explore-btn-text">AR体验</text>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 60rpx;"></view>
+</view>

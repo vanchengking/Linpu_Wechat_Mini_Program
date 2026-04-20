@@ -1,0 +1,272 @@
+/* ========== 给予建议页面样式 ========== */
+
+page {
+  background: linear-gradient(180deg, #fcf7e3 0%, #f5ead6 100%);
+  min-height: 100vh;
+}
+
+.feedback-page {
+  padding: 20rpx 24rpx 0;
+}
+
+/* ========== 顶部 ========== */
+.header-section {
+  text-align: center;
+  padding: 20rpx 0 28rpx;
+}
+
+.header-illustration {
+  width: 120rpx;
+  height: 120rpx;
+  background: linear-gradient(135deg, #d4a574, #b8895e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18rpx;
+  box-shadow: 0 8rpx 24rpx rgba(180,140,90,0.3);
+}
+
+.illustration-icon {
+  font-size: 52rpx;
+}
+
+.header-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #3c2a1e;
+  margin-bottom: 8rpx;
+}
+
+.header-desc {
+  font-size: 24rpx;
+  color: #8a7a68;
+}
+
+/* ========== 区块 ========== */
+.section {
+  background: #fffaf2;
+  border-radius: 20rpx;
+  padding: 24rpx 22rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(160,130,90,0.1);
+}
+
+.section-label {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #3c2a1e;
+  margin-bottom: 16rpx;
+}
+
+/* ========== 建议类型 ========== */
+.type-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+}
+
+.type-item {
+  display: flex;
+  align-items: center;
+  padding: 14rpx 20rpx;
+  background: #fef9ee;
+  border-radius: 12rpx;
+  border: 2rpx solid #efe0cc;
+  transition: all 0.2s ease;
+}
+
+.type-item.active {
+  background: linear-gradient(135deg, #d4a574, #b8895e);
+  border-color: transparent;
+  box-shadow: 0 4rpx 12rpx rgba(180,130,80,0.3);
+}
+
+.type-icon {
+  font-size: 26rpx;
+  margin-right: 8rpx;
+}
+
+.type-text {
+  font-size: 24rpx;
+  color: #3c2a1e;
+}
+
+.type-item.active .type-text {
+  color: #fff;
+}
+
+/* ========== 满意度评分 ========== */
+.rating-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 0;
+}
+
+.stars {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.star {
+  font-size: 52rpx;
+  color: #ddd;
+  transition: all 0.2s ease;
+}
+
+.star.active {
+  color: #ffc53d;
+  text-shadow: 0 2rpx 8rpx rgba(255,197,61,0.4);
+}
+
+.rating-text {
+  font-size: 24rpx;
+  color: #b8895e;
+  font-weight: 500;
+}
+
+/* ========== 输入框 ========== */
+.feedback-input {
+  width: 100%;
+  min-height: 200rpx;
+  font-size: 26rpx;
+  color: #3c2a1e;
+  line-height: 1.6;
+  padding: 16rpx;
+  background: #fef9ee;
+  border-radius: 12rpx;
+  border: 1rpx solid #efe0cc;
+  box-sizing: border-box;
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  font-size: 22rpx;
+  color: #b08a50;
+  margin-top: 8rpx;
+}
+
+.contact-input {
+  width: 100%;
+  font-size: 26rpx;
+  color: #3c2a1e;
+  padding: 18rpx 16rpx;
+  background: #fef9ee;
+  border-radius: 12rpx;
+  border: 1rpx solid #efe0cc;
+  box-sizing: border-box;
+}
+
+/* ========== 快捷标签 ========== */
+.quick-section {
+  padding-bottom: 18rpx;
+}
+
+.quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.quick-tag {
+  padding: 10rpx 20rpx;
+  background: #fef9ee;
+  border-radius: 20rpx;
+  border: 1rpx solid #efe0cc;
+  font-size: 23rpx;
+  color: #5a4a3a;
+}
+
+.quick-tag:active {
+  background: #fdf6e8;
+  border-color: #d4a574;
+  color: #b8895e;
+}
+
+/* ========== 提交按钮 ========== */
+.submit-section {
+  margin: 28rpx 0 20rpx;
+  text-align: center;
+}
+
+.submit-btn {
+  background: #e8ddd0;
+  padding: 24rpx 0;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  color: #a09080;
+  font-weight: 500;
+  margin-bottom: 14rpx;
+  transition: all 0.25s ease;
+}
+
+.submit-btn.active {
+  background: linear-gradient(135deg, #d4a574, #b8895e);
+  color: #fff;
+  box-shadow: 0 8rpx 24rpx rgba(180,130,80,0.35);
+}
+
+.submit-tip {
+  font-size: 22rpx;
+  color: #b8895e;
+}
+
+/* ========== 成功弹窗 ========== */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-modal {
+  width: 80%;
+  background: #fffaf2;
+  border-radius: 24rpx;
+  padding: 48rpx 32rpx 32rpx;
+  text-align: center;
+  box-shadow: 0 12rpx 48rpx rgba(0,0,0,0.25);
+}
+
+.success-icon {
+  display: block;
+  font-size: 72rpx;
+  margin-bottom: 16rpx;
+}
+
+.success-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #3c2a1e;
+  margin-bottom: 12rpx;
+}
+
+.success-desc {
+  display: block;
+  font-size: 25rpx;
+  color: #5a4a3a;
+  line-height: 1.6;
+  margin-bottom: 28rpx;
+}
+
+.success-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #d4a574, #b8895e);
+  color: #fff;
+  font-size: 28rpx;
+  padding: 16rpx 80rpx;
+  border-radius: 40rpx;
+  font-weight: 500;
+}

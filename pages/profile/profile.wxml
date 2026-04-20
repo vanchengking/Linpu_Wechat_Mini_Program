@@ -16,12 +16,12 @@
 
   <!-- 四大功能入口 -->
   <view class="feature-row">
-    <view class="feature-item">
+    <view class="feature-item" bindtap="goToLinpu">
       <image src="/resources/icons/云塔.png" class="feature-icon"></image>
       <text class="feature-text">林浦印象</text>
     </view>
 
-    <view class="feature-item">
+    <view class="feature-item" bindtap="goToMapLandmark">
       <image src="/resources/icons/地标.png" class="feature-icon"></image>
       <text class="feature-text">地标打卡</text>
     </view>
@@ -31,7 +31,7 @@
       <text class="feature-text">所获成就</text>
     </view>
 
-    <view class="feature-item">
+    <view class="feature-item" bindtap="goToRecord">
       <image src="/resources/icons/个人.png" class="feature-icon"></image>
       <text class="feature-text">个人记录</text>
     </view>
@@ -45,7 +45,7 @@
 
   <!-- 列表按钮 -->
   <view class="menu">
-    <view class="menu-item" bindtap="goToAchievement">
+    <view class="menu-item" bindtap="goToRanking">
       <view class="left">
         <image src="/resources/icons/成就.png" class="menu-icon"></image>
         <text>排行榜</text>
@@ -53,7 +53,7 @@
       <text class="arrow">></text>
     </view>
 
-    <view class="menu-item">
+    <view class="menu-item" bindtap="goToSettings">
       <view class="left">
         <image src="/resources/icons/个人.png" class="menu-icon"></image>
         <text>更多设置</text>
@@ -61,7 +61,7 @@
       <text class="arrow">></text>
     </view>
 
-    <view class="menu-item">
+    <view class="menu-item" bindtap="goToFeedback">
       <view class="left">
         <image src="/resources/icons/地标.png" class="menu-icon"></image>
         <text>给予建议</text>
@@ -69,7 +69,7 @@
       <text class="arrow">></text>
     </view>
 
-    <view class="menu-item">
+    <view class="menu-item" bindtap="goToTeam">
       <view class="left">
         <image src="/resources/icons/个人.png" class="menu-icon"></image>
         <text>研发团队</text>
