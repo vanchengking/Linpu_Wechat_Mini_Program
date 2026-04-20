@@ -20,11 +20,11 @@ Page({
         id: 2,
         title: "冲宫",
         tag: "激情巡游",
-        icon: "bl.meishipay.com/images/content/冲宫1.png",
+        icon: "https://bl.meishipay.com/images/content/冲宫1.png",
         image: "/images/hero_chonggong.jpg",
         images: [
-          "bl.meishipay.com/images/content/冲宫1.png",
-          "bl.meishipay.com/images/content/冲宫2.png"
+          "https://bl.meishipay.com/images/content/冲宫1.png",
+          "https://bl.meishipay.com/images/content/冲宫2.png"
         ],
         origin: "源于当年宋军\"平山点兵\"的军事传统。据史载，随同宋帝前来的军士有十数万，淮兵有余万，铲平山峰驻扎。",
         desc: "作为巡境活动中最具爆发力的环节，\"冲宫\"象征着当年宋军操练与急行军的威武气势。抬神轿的青壮年会在特定路段或入庙时急速奔跑，模拟冲锋陷阵，场面震撼，展现了林浦人对于那段波澜壮阔历史的肢体记忆。",
@@ -33,11 +33,11 @@ Page({
         id: 3,
         title: "演戏",
         tag: "安南伬",
-        icon: "bl.meishipay.com/images/content/演戏1.png",
+        icon: "https://bl.meishipay.com/images/content/演戏1.png",
         image: "/images/hero_annan.jpg",
         images: [
-          "bl.meishipay.com/images/content/演戏1.png",
-          "bl.meishipay.com/images/content/演戏2.png"
+          "https://bl.meishipay.com/images/content/演戏1.png",
+          "https://bl.meishipay.com/images/content/演戏2.png"
         ],
         origin: "省级非物质文化遗产。源于唐代古越南国（安南国）的贡乐，南宋末年随赵昰南逃队伍传入林浦，融合了闽曲琴唱。",
         desc: "在林浦的庆典中，你将听到这种独特的\"安南鼓\"。乐队由掌鼓（指挥）带领，配以大钹、高低呐、椰胡、逗管等乐器。乐曲时而激昂如《一枝花》，时而悠扬。这种曾被视为\"战鼓\"的高音鼓点，是林浦巡境队伍中不可或缺的听觉灵魂。",
@@ -46,11 +46,11 @@ Page({
         id: 4,
         title: "问杯",
         tag: "分米祈福",
-        icon: "bl.meishipay.com/images/content/问杯1.png",
+        icon: "https://bl.meishipay.com/images/content/问杯1.png",
         image: "/images/hero_baibai.jpg",
         images: [
-          "bl.meishipay.com/images/content/问杯1.png",
-          "bl.meishipay.com/images/content/问杯2.png"
+          "https://bl.meishipay.com/images/content/问杯1.png",
+          "https://bl.meishipay.com/images/content/问杯2.png"
         ],
         origin: "相传南宋末年，陈宜中丞相在宋军撤离前，将多余军粮挨家挨户分发给百姓，助民度过难关。",
         desc: "在林浦泰山宫的元宵祭祀等活动中，保留着独特的\"分米\"仪式。这不仅是向神明祈求丰衣足食，更是为了纪念陈宜中丞相留粮惠民的恩德。明代尚书林瀚曾赋诗\"至今遗恨江心水\"以感怀此事。参与分米，便是参与这份跨越千年的感恩与传承。",
