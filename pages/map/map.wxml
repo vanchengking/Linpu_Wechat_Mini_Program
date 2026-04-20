@@ -7,7 +7,7 @@
   <view class="map-area">
     <view class="map-view">
       <!-- 底图 -->
-      <image src="https://101.34.247.48:8888/down/ScTxYTX9VGGK.png" class="map-bg"></image>
+      <image src="https://bl.meishipay.com/images/content/地图导览.png" class="map-bg"></image>
       
       <!-- 动态渲染锚点 -->
       <view 
