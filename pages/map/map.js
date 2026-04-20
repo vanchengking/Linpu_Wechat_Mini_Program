@@ -120,6 +120,15 @@ Page({
     });
   },
 
+  onShow: function () {
+    // 强制当前页面竖屏显示
+    if (wx.setDeviceOrientation) {
+      wx.setDeviceOrientation({
+        value: 'portrait'
+      })
+    }
+  },
+
   // 用户点击地图上的锚点
   onAnchorTap(e) {
     const id = e.currentTarget.dataset.id;

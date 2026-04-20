@@ -4,5 +4,8 @@
   "navigationBarTextStyle": "black",
   "backgroundColor": "#f5f5f5",
   "enablePullDownRefresh": false,
-  "pageOrientation": "landscape"
+  "usingComponents": {
+    "float-npc": "/components/float-npc/float-npc"
+  },
+  "pageOrientation": "portrait"
 }
