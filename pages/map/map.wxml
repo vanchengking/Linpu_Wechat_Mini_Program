@@ -85,7 +85,7 @@
       animation="{{false}}"
     >
       <image 
-        src="bl.meishipay.com/images/characters/shangshubo.png" 
+        src="https://bl.meishipay.com/images/characters/shangshubo.png" 
         class="float-chat-icon-drag"
         bindtap="goToChat"
       ></image>
