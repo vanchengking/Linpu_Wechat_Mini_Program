@@ -1,9 +1,16 @@
+/* pages/ar/ar.wxss */
+/* 林浦古村 AR 体验游戏 —— 完整样式 */
+
+/* ============================================
+   基础布局
+   ============================================ */
+
 .container {
   width: 100vw;
   height: 100vh;
   position: relative;
   overflow: hidden;
-  background-color: #000;
+  background-color: #f8f5e9; /* 改为明亮的米色/浅纸色 */
 }
 
 .full-screen {
@@ -15,7 +22,7 @@
 }
 
 .design-bg {
-  filter: brightness(0.6);
+  filter: brightness(1.05) saturate(1.1); /* 提高亮度 */
 }
 
 .ar-canvas {
@@ -34,277 +41,1135 @@
   flex-direction: column;
 }
 
-/* 顶部状态栏 */
+/* ============================================
+   顶部状态栏
+   ============================================ */
+
 .top-bar {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 160rpx;
-  padding: 80rpx 40rpx 0;
+  padding: 80rpx 32rpx 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 50;
   box-sizing: border-box;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
 }
 
 .back-btn, .mode-toggle {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10rpx 30rpx;
-  border-radius: 30rpx;
-  color: #fff;
-  font-size: 24rpx;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.level-info {
-  color: #fff;
-  font-size: 32rpx;
-  font-weight: bold;
-  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.8);
-}
-
-/* 关卡选择界面 */
-.level-selection {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(15px);
-}
-
-.header {
-  padding: 120rpx 40rpx 60rpx;
-  text-align: center;
-}
-
-.title {
-  display: block;
-  font-size: 56rpx;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 6rpx;
-  text-shadow: 0 4rpx 10rpx rgba(0,0,0,0.3);
-}
-
-.subtitle {
-  display: block;
+  background: rgba(255, 255, 255, 0.7); /* 明亮的按钮 */
+  padding: 12rpx 32rpx;
+  border-radius: 40rpx;
+  color: #8B2323; /* 红色文字 */
   font-size: 26rpx;
-  color: #ccc;
-  margin-top: 20rpx;
-  letter-spacing: 2rpx;
-}
-
-.level-list {
-  flex: 1;
-  padding: 0 40rpx 40rpx;
-  box-sizing: border-box;
-}
-
-.level-card {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 32rpx;
-  padding: 40rpx;
-  margin-bottom: 30rpx;
+  border: 1px solid rgba(139, 35, 35, 0.2);
   display: flex;
   align-items: center;
-  transition: transform 0.2s;
+  gap: 8rpx;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
-.level-card:active {
-  transform: scale(0.98);
-}
-
-.level-card.locked {
-  opacity: 0.4;
-  filter: grayscale(1);
-}
-
-.level-num {
-  width: 90rpx;
-  height: 90rpx;
-  background: linear-gradient(135deg, #f1c40f, #f39c12);
-  border-radius: 24rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40rpx;
-  font-weight: bold;
+.back-btn:active, .mode-toggle:active {
+  background: #8B2323;
   color: #fff;
-  margin-right: 30rpx;
-  box-shadow: 0 4rpx 15rpx rgba(241, 196, 15, 0.3);
+}
+
+.back-icon {
+  font-size: 28rpx;
 }
 
 .level-info {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.level-chapter {
+  font-size: 24rpx;
+  color: #8B2323;
+  letter-spacing: 2rpx;
+  font-weight: bold;
 }
 
 .level-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 0 2rpx 4rpx rgba(255,255,255,0.8);
+}
+
+/* ============================================
+   关卡选择界面 —— 横向卡片式
+   ============================================ */
+
+.level-selection {
+  background: linear-gradient(180deg, rgba(248, 245, 233, 0.95) 0%, rgba(248, 245, 233, 0.8) 100%);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部标题 */
+.ls-header {
+  position: relative;
+  padding: 100rpx 48rpx 30rpx;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ls-header-glow {
+  position: absolute;
+  top: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600rpx;
+  height: 240rpx;
+  background: radial-gradient(ellipse, rgba(139, 35, 35, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ls-title {
   display: block;
+  font-size: 64rpx;
+  font-weight: bold;
+  color: #8B2323;
+  letter-spacing: 16rpx;
+  text-shadow: 0 4rpx 12rpx rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.ls-subtitle {
+  display: block;
+  font-size: 24rpx;
+  color: #7b6a5a; /* 加深一点 */
+  margin-top: 16rpx;
+  letter-spacing: 6rpx;
+  font-weight: 500;
+}
+
+.ls-divider {
+  width: 120rpx;
+  height: 4rpx;
+  background: linear-gradient(90deg, transparent, #8B2323, transparent);
+  margin: 30rpx auto 0;
+}
+
+/* 游客身份提示 */
+.ls-identity {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  margin: 20rpx 40rpx 40rpx;
+  padding: 30rpx 32rpx;
+  background: #ffffff; /* 更白更亮 */
+  border: 1rpx solid rgba(139, 35, 35, 0.15);
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(139, 35, 35, 0.05);
+}
+
+.ls-id-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #8B2323, #a52a2a);
+  border-radius: 18rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 4rpx 12rpx rgba(139, 35, 35, 0.3);
+}
+
+.ls-id-icon-text {
   font-size: 36rpx;
   font-weight: bold;
   color: #fff;
 }
 
-.level-desc {
+.ls-id-text {
+  flex: 1;
+}
+
+.ls-id-label {
   display: block;
-  font-size: 24rpx;
-  color: #bbb;
-  margin-top: 10rpx;
-}
-
-.level-status {
-  font-size: 24rpx;
-  color: #f1c40f;
+  font-size: 26rpx;
+  color: #8B2323;
   font-weight: bold;
+  letter-spacing: 2rpx;
+  margin-bottom: 6rpx;
 }
 
-/* 游戏对话界面 */
+.ls-id-desc {
+  display: block;
+  font-size: 22rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 横向滚动容器 */
+.ls-scroll {
+  flex: 1;
+  white-space: nowrap;
+  min-height: 520rpx;
+}
+
+.ls-card-track {
+  display: inline-flex;
+  gap: 32rpx;
+  padding: 10rpx 48rpx 30rpx;
+  align-items: stretch;
+}
+
+/* 章节卡片 */
+.ls-card {
+  display: inline-flex;
+  flex-direction: column;
+  width: 320rpx;
+  min-height: 480rpx;
+  background: #ffffff; /* 纯白卡片更明亮 */
+  border: 2rpx solid rgba(139, 35, 35, 0.1);
+  border-radius: 28rpx;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  vertical-align: top;
+  box-shadow: 0 10rpx 30rpx rgba(139, 35, 35, 0.08); /* 加点红色的阴影 */
+}
+
+.ls-card.ls-active {
+  border-color: #8B2323;
+  transform: scale(1.05);
+  box-shadow: 0 16rpx 40rpx rgba(139, 35, 35, 0.2);
+}
+
+.ls-card:active {
+  transform: scale(0.98);
+}
+
+.ls-card.ls-locked {
+  background: #f0f0f0;
+  opacity: 0.7;
+  filter: grayscale(0.8); /* 稍微保留点颜色 */
+}
+
+.ls-card.ls-locked:active {
+  transform: scale(0.98); /* 锁定也可以点击，只是不能进 */
+}
+
+.ls-card.ls-done {
+  border-color: #8B2323; /* 改为红色系，表示庄重 */
+  background: #fffcf5; /* 淡淡的纸张色 */
+  box-shadow: 0 10rpx 30rpx rgba(139, 35, 35, 0.1);
+}
+
+.ls-card.ls-done .ls-card-ch-num {
+  color: rgba(139, 35, 35, 0.15); /* 稍微深一点 */
+}
+
+/* 章节封面图 */
+.ls-card-cover {
+  width: 100%;
+  height: 180rpx;
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.ls-card-image {
+  width: 100%;
+  height: 100%;
+}
+
+.ls-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+}
+
+.ls-card-chapter {
+  position: absolute;
+  top: 16rpx;
+  left: 20rpx;
+  z-index: 5;
+}
+
+.ls-card-ch-num {
+  font-size: 72rpx; /* 大一点 */
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.5); /* 在图片上用白色半透明 */
+  letter-spacing: 2rpx;
+  line-height: 1;
+}
+
+/* 卡片主体 */
+.ls-card-body {
+  padding: 12rpx 32rpx 0;
+  flex: 1;
+}
+
+.ls-card-title {
+  display: block;
+  font-size: 38rpx; /* 大一点 */
+  font-weight: 900; /* 更粗 */
+  color: #333;
+  letter-spacing: 2rpx;
+}
+
+.ls-card-sub {
+  display: block;
+  font-size: 22rpx;
+  color: #8B2323;
+  margin-top: 10rpx;
+  font-weight: 500;
+}
+
+.ls-card-desc {
+  display: block;
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 16rpx;
+  line-height: 1.6;
+  white-space: normal;
+}
+
+/* NPC标签 */
+.ls-card-npcs {
+  padding: 20rpx 32rpx 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.ls-npc-tag {
+  font-size: 18rpx;
+  color: #8B2323;
+  background: rgba(139, 35, 35, 0.05);
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid rgba(139, 35, 35, 0.1);
+  white-space: nowrap;
+}
+
+/* 底部状态 */
+.ls-card-footer {
+  padding: 24rpx 32rpx 32rpx;
+}
+
+.ls-status-lock {
+  font-size: 22rpx;
+  color: #999;
+  letter-spacing: 2rpx;
+}
+
+.ls-status-done {
+  font-size: 22rpx;
+  color: #8B2323;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+
+.ls-status-play {
+  font-size: 22rpx;
+  color: #8B2323;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+
+/* 进度点 */
+.ls-dots {
+  display: flex;
+  justify-content: center;
+  gap: 16rpx;
+  padding: 24rpx 0 10rpx;
+}
+
+.ls-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.ls-dot.ls-dot-active {
+  width: 32rpx;
+  border-radius: 10rpx;
+  background: #8B2323;
+}
+
+.ls-dot.ls-dot-done {
+  background: #8B2323;
+}
+
+/* 底部操作 */
+.ls-bottom {
+  padding: 20rpx 40rpx 80rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.ls-reset {
+  padding: 16rpx 40rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0.1);
+  border-radius: 40rpx;
+  color: #999;
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   游戏对话界面
+   ============================================ */
+
 .game-play {
   justify-content: flex-end;
 }
 
-.character-area {
+/* 全屏点击推进层 */
+.progression-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 60; /* 提升层级，确保在所有对话内容之上 */
+  background: rgba(255, 255, 255, 0); /* 完全透明 */
+}
+
+.progression-overlay:active {
+  background: rgba(255, 255, 255, 0.05); /* 点击时的视觉反馈 */
+}
+
+/* ----- AR 场景描述 ----- */
+
+.ar-scene-overlay {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx;
+  pointer-events: none; /* 让点击穿透到 progression-overlay */
+}
+
+.ar-scene-content {
   position: relative;
+  text-align: center;
+  padding: 80rpx 40rpx;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 30rpx;
+}
+
+.ar-scene-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500rpx;
+  height: 500rpx;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.ar-scene-content.climax .ar-scene-glow {
+  width: 600rpx;
+  height: 600rpx;
+  background: radial-gradient(circle, rgba(255,215,0,0.25) 0%, transparent 70%);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.ar-scene-text {
+  position: relative;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 1.8;
+  text-shadow: 0 4rpx 12rpx rgba(0,0,0,0.5);
+  letter-spacing: 2rpx;
+}
+
+.ar-scene-content.climax .ar-scene-text {
+  font-size: 32rpx;
+  color: #ffd700;
+}
+
+.ar-scene-tap {
+  position: relative;
+  margin-top: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.ar-scene-tap text {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 2rpx;
+}
+
+.tap-arrow {
+  animation: bounce 1.5s infinite;
+}
+
+/* ----- 旁白模式 ----- */
+
+.narrator-overlay {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60rpx 40rpx;
+  pointer-events: none; /* 点击穿透 */
+}
+
+.narrator-content {
+  max-width: 85%;
+  text-align: center;
+  padding: 60rpx 50rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 40rpx;
+  box-shadow: 0 20rpx 60rpx rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.narrator-content::before {
+  content: '"';
+  position: absolute;
+  top: 20rpx;
+  left: 30rpx;
+  font-size: 80rpx;
+  color: rgba(139, 35, 35, 0.1);
+  font-family: serif;
+}
+
+.narrator-content.warm {
+  border-color: #c9a96e;
+}
+
+.narrator-content.distant {
+  border-color: #8faadc;
+}
+
+.narrator-speaker {
+  display: block;
+  font-size: 24rpx;
+  color: #8B2323;
+  margin-bottom: 24rpx;
+  letter-spacing: 4rpx;
+  font-weight: bold;
+}
+
+.narrator-content.distant .narrator-speaker {
+  color: #8faadc;
+}
+
+.narrator-text {
+  display: block;
+  font-size: 32rpx;
+  color: #333;
+  line-height: 1.8;
+  letter-spacing: 2rpx;
+  font-weight: 400;
+}
+
+.narrator-tap {
+  margin-top: 60rpx;
+  color: rgba(255,255,255,0.8);
+  font-size: 24rpx;
+  letter-spacing: 2rpx;
+}
+
+/* ----- NPC 对话区 ----- */
+
+.npc-dialogue-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 60rpx;
+  z-index: 30; /* 确保在全屏推进层之上，以便处理选项点击 */
+  position: relative;
+}
+
+/* NPC 立绘样式 */
+.npc-character-wrap {
+  position: absolute;
+  bottom: 240rpx; /* 位于对话框上方 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   pointer-events: none;
+  z-index: 1;
+  animation: npcIn 0.8s ease-out;
 }
 
-.character-image {
-  width: 80%;
-  height: 70%;
-  transition: all 0.5s ease-out;
+.npc-character-img {
+  width: 85%;
+  height: 100%;
 }
 
-.character-image.center { transform: translateY(0); }
-.character-image.left { transform: translateX(-20%); }
-.character-image.right { transform: translateX(20%); }
-
-.dialogue-container {
-  padding: 40rpx;
-  padding-bottom: 80rpx;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+.ghost-effect {
+  opacity: 0.6;
+  filter: drop-shadow(0 0 15rpx rgba(255, 215, 0, 0.4)) brightness(1.2);
 }
 
-.options-box {
-  margin-bottom: 40rpx;
+@keyframes npcIn {
+  from { opacity: 0; transform: translate(-50%, 40rpx); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.npc-header {
+  position: absolute;
+  top: 170rpx;
+  left: 32rpx;
   display: flex;
-  flex-direction: column;
-  gap: 20rpx;
+  align-items: center;
+  gap: 16rpx;
+  z-index: 30;
 }
 
-.option-item {
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  padding: 25rpx 40rpx;
-  border-radius: 50rpx;
-  font-size: 30rpx;
+.npc-location {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.6);
+}
+
+.npc-tags {
+  display: flex;
+  gap: 8rpx;
+}
+
+.npc-tags .npc-tag {
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+}
+
+/* 双NPC提示 */
+.dual-npc-hint {
   text-align: center;
-  box-shadow: 0 4rpx 15rpx rgba(0,0,0,0.2);
+  padding: 20rpx 0;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.dual-hint-text {
+  font-size: 24rpx;
+  color: rgba(201, 169, 110, 0.8);
+  letter-spacing: 4rpx;
+}
+
+/* ----- 辅助气泡 ----- */
+
+.aux-bubble {
+  display: flex;
+  align-items: flex-end;
+  gap: 12rpx;
+  padding: 0 40rpx;
+  margin-bottom: 16rpx;
   animation: fadeIn 0.3s ease-out;
 }
 
-.option-item:active {
-  background: #f1c40f;
+.aux-bubble-inner {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 24rpx 24rpx 4rpx 24rpx;
+  padding: 16rpx 24rpx;
+  max-width: 65%;
+  backdrop-filter: blur(6px);
+}
+
+.aux-bubble-speaker {
+  display: block;
+  font-size: 22rpx;
+  color: #c9a96e;
+  font-weight: bold;
+  margin-bottom: 6rpx;
+}
+
+.aux-bubble-text {
+  display: block;
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.5;
+}
+
+.aux-bubble-dismiss {
+  width: 44rpx;
+  height: 44rpx;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+  flex-shrink: 0;
+}
+
+/* ----- 主对话区 ----- */
+
+.dialogue-main {
+  padding: 0 32rpx;
+}
+
+.dialogue-container {
+  position: relative;
+}
+
+.dialogue-container.ghost-mode .dialogue-box {
+  border-color: rgba(255, 215, 0, 0.3);
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.dialogue-container.ghost-mode .npc-name-tag {
+  background: rgba(255, 215, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.npc-name-tag {
+  position: absolute;
+  top: -24rpx;
+  left: 40rpx;
+  background: #8B2323;
   color: #fff;
+  padding: 8rpx 32rpx;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(139, 35, 35, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  z-index: 5;
+}
+
+.npc-name-tag.ghost-tag {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.ghost-label {
+  font-size: 18rpx;
+  background: rgba(255, 215, 0, 0.25);
+  color: #ffd700;
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+  letter-spacing: 2rpx;
 }
 
 .dialogue-box {
-  background: rgba(0, 0, 0, 0.7);
-  border: 2rpx solid rgba(255, 255, 255, 0.3);
-  border-radius: 24rpx;
-  padding: 40rpx;
-  min-height: 200rpx;
-  position: relative;
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 4rpx solid #8B2323;
+  border-radius: 32rpx;
+  padding: 48rpx 40rpx;
+  min-height: 180rpx;
+  box-shadow: 0 12rpx 40rpx rgba(0,0,0,0.2);
+  transition: all 0.3s;
 }
 
-.name-tag {
-  position: absolute;
-  top: -30rpx;
-  left: 40rpx;
-  background: #f1c40f;
-  color: #333;
-  padding: 8rpx 30rpx;
-  border-radius: 12rpx;
-  font-size: 28rpx;
-  font-weight: bold;
-}
-
-.content {
+.dialogue-text {
   font-size: 32rpx;
-  color: #fff;
-  line-height: 1.6;
+  color: #333;
+  line-height: 1.7;
+  letter-spacing: 1rpx;
 }
+
+/* ----- 选项按钮 ----- */
+
+.options-box {
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  padding: 0 40rpx;
+  z-index: 40; /* 确保最高，方便点击 */
+}
+
+.option-item {
+  background: #fff;
+  color: #8B2323;
+  border: 2rpx solid #8B2323;
+  padding: 24rpx 40rpx;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  box-shadow: 0 6rpx 20rpx rgba(139, 35, 35, 0.1);
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+  transition: all 0.2s;
+  letter-spacing: 0.5rpx;
+}
+
+.option-item:active {
+  background: #8B2323;
+  color: #fff;
+  transform: scale(0.97);
+}
+
+/* ----- 继续指示器 ----- */
 
 .next-indicator {
   position: absolute;
-  bottom: 20rpx;
-  right: 30rpx;
-  color: #f1c40f;
-  font-size: 24rpx;
+  bottom: 16rpx;
+  right: 24rpx;
+  color: #c9a96e;
+  font-size: 22rpx;
   animation: bounce 1.5s infinite;
+  opacity: 0.7;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10rpx); }
+/* ----- 终幕触发 ----- */
+
+.ending-trigger {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10rpx); }
-  to { opacity: 1; transform: translateY(0); }
+.ending-trigger-btn {
+  text-align: center;
+  padding: 60rpx;
 }
 
-/* Modal */
+.ending-motto {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 30rpx rgba(255, 215, 0, 0.4);
+  letter-spacing: 4rpx;
+  margin-bottom: 40rpx;
+}
+
+.ending-tap {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.5);
+  animation: fadeIn 2s ease-in-out infinite;
+}
+
+/* ============================================
+   终幕成就视图 —— 明亮奖励式
+   ============================================ */
+
+.ending-view {
+  background: rgba(248, 245, 233, 0.85); /* 同样的米黄色背景 */
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+}
+
+.ending-content {
+  width: 90%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 48rpx;
+  padding: 60rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 30rpx 80rpx rgba(0,0,0,0.2);
+  border: 2rpx solid rgba(139, 35, 35, 0.1);
+  animation: fadeIn 1s ease-out;
+}
+
+.ending-header {
+  text-align: center;
+  margin-bottom: 50rpx;
+}
+
+.ending-motto-main {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #8B2323;
+  letter-spacing: 4rpx;
+}
+
+.ending-divider {
+  width: 160rpx;
+  height: 4rpx;
+  background: #8B2323;
+  margin: 30rpx auto 0;
+  opacity: 0.3;
+}
+
+/* 终幕统计 */
+.ending-stats {
+  display: flex;
+  justify-content: center;
+  gap: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.ending-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.ending-stat-num {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #8B2323;
+}
+
+.ending-stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 成就徽章 */
+.ending-badges {
+  width: 100%;
+  margin-bottom: 50rpx;
+}
+
+.badges-title {
+  display: block;
+  text-align: center;
+  font-size: 28rpx;
+  color: #8B2323;
+  margin-bottom: 24rpx;
+  letter-spacing: 2rpx;
+  font-weight: bold;
+}
+
+.badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20rpx;
+}
+
+.badge-item {
+  background: #fff;
+  border: 2rpx solid rgba(139, 35, 35, 0.15);
+  border-radius: 20rpx;
+  padding: 20rpx 28rpx;
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  box-shadow: 0 6rpx 16rpx rgba(0,0,0,0.05);
+}
+
+.badge-icon-wrap {
+  width: 48rpx;
+  height: 48rpx;
+  background: linear-gradient(135deg, #8B2323, #a52a2a);
+  border-radius: 12rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.badge-icon-text {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.badge-name {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 结尾语 */
+.ending-footer {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.ending-final-text {
+  font-size: 28rpx;
+  color: #8B2323;
+  letter-spacing: 3rpx;
+  font-weight: 500;
+}
+
+/* 老村长引言 */
+.ending-quote {
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  border-left: 2px solid rgba(139, 35, 35, 0.3);
+  border-right: 2px solid rgba(139, 35, 35, 0.3);
+}
+
+.quote-text {
+  display: block;
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.quote-speaker {
+  display: block;
+  font-size: 22rpx;
+  color: #8B2323;
+  margin-top: 16rpx;
+  font-weight: bold;
+}
+
+/* 终幕按钮 */
+.ending-actions {
+  display: flex;
+  gap: 24rpx;
+  width: 100%;
+  justify-content: center;
+}
+
+.ending-btn {
+  padding: 22rpx 48rpx;
+  border-radius: 44rpx;
+  font-size: 28rpx;
+  text-align: center;
+  letter-spacing: 1rpx;
+}
+
+.ending-btn.primary {
+  background: linear-gradient(135deg, #8B2323, #a52a2a);
+  color: #fff;
+  box-shadow: 0 8rpx 24rpx rgba(139, 35, 35, 0.3);
+}
+
+.ending-btn.secondary {
+  background: #f9f9f9;
+  color: #666;
+  border: 2rpx solid #ddd;
+}
+
+/* ============================================
+   章节完成弹窗 —— 奖励风格
+   ============================================ */
+
 .modal {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
   z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .modal-content {
   background: #fff;
   width: 80%;
-  padding: 80rpx 40rpx;
+  padding: 70rpx 40rpx;
   border-radius: 48rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  border: 1px solid rgba(139, 35, 35, 0.1);
+  box-shadow: 0 20rpx 60rpx rgba(0,0,0,0.2);
+}
+
+.modal-icon-wrap {
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #8B2323, #a52a2a);
+  border-radius: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 20rpx rgba(139, 35, 35, 0.3);
+}
+
+.modal-icon-text {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #fff;
 }
 
 .modal-title {
-  font-size: 48rpx;
+  font-size: 44rpx;
   font-weight: bold;
+  color: #8B2323;
+  margin-bottom: 12rpx;
+  letter-spacing: 4rpx;
+}
+
+.modal-chapter {
+  font-size: 30rpx;
   color: #333;
+  font-weight: 500;
   margin-bottom: 20rpx;
 }
 
 .modal-info {
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: #666;
-  margin-bottom: 60rpx;
+  margin-bottom: 40rpx;
+}
+
+.modal-rewards {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 50rpx;
+}
+
+.reward-item {
+  font-size: 26rpx;
+  color: #8B2323;
+  background: rgba(139, 35, 35, 0.05);
+  padding: 10rpx 28rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid rgba(139, 35, 35, 0.1);
+  font-weight: bold;
 }
 
 .modal-btn {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  background: linear-gradient(135deg, #8B2323, #a52a2a);
   color: #fff;
   font-size: 32rpx;
+  font-weight: bold;
   width: 360rpx !important;
-  height: 100rpx;
-  border-radius: 50rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 10rpx 25rpx rgba(46, 204, 113, 0.3);
+  box-shadow: 0 12rpx 30rpx rgba(139, 35, 35, 0.3);
+  letter-spacing: 2rpx;
+}
+
+/* ============================================
+   动画
+   ============================================ */
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8rpx); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10rpx); }
+  to { opacity: 1; transform: translateY(0); }
 }

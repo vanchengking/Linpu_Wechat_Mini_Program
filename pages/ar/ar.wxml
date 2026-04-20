@@ -20,94 +20,261 @@
   </view>
 
   <!-- 顶部状态栏 -->
-  <view class="top-bar" wx:if="{{currentView === 'game'}}">
+  <view class="top-bar" wx:if="{{currentView === 'playing'}}">
     <view class="back-btn" bindtap="exitGame">
+      <text class="back-icon">←</text>
       <text>退出</text>
     </view>
     <view class="level-info">
-      <text>{{levels[currentLevelIndex].title}}</text>
+      <text class="level-chapter">第{{currentLevelIndex + 1}}章</text>
+      <text class="level-title">{{levels[currentLevelIndex].title}}</text>
     </view>
     <view class="mode-toggle" bindtap="toggleMode">
       <text>{{isARMode ? '实景AR' : '背景模式'}}</text>
     </view>
   </view>
 
-  <!-- 关卡选择视图 -->
+  <!-- ==================== 关卡选择视图 ==================== -->
   <view class="view-overlay level-selection" wx:if="{{currentView === 'levels'}}">
-    <view class="header">
-      <text class="title">AR 体验林浦</text>
-      <text class="subtitle">沉浸式文字冒险之旅</text>
+    <!-- 顶部标题区 -->
+    <view class="ls-header">
+      <view class="ls-header-glow"></view>
+      <text class="ls-title">林浦古村</text>
+      <text class="ls-subtitle">AR 沉浸式叙事 · 虚实之间</text>
+      <view class="ls-divider"></view>
     </view>
 
-    <scroll-view scroll-y class="level-list">
-      <view 
-        wx:for="{{levels}}" 
-        wx:key="id" 
-        class="level-card {{item.unlocked ? '' : 'locked'}}"
-        bindtap="{{item.unlocked ? 'startLevel' : ''}}"
-        data-id="{{item.id}}"
-      >
-        <view class="level-num">{{index + 1}}</view>
-        <view class="level-info">
-          <text class="level-title">{{item.title}}</text>
-          <text class="level-desc">{{item.desc}}</text>
-        </view>
-        <view class="level-status">
-          <text wx:if="{{!item.unlocked}}">🔒 未解锁</text>
-          <text wx:elif="{{item.completed}}">✅ 已完成</text>
-          <text wx:else>开启章节</text>
+    <!-- 游客身份提示 -->
+    <view class="ls-identity">
+      <view class="ls-id-icon">
+        <text class="ls-id-icon-text">旅</text>
+      </view>
+      <view class="ls-id-text">
+        <text class="ls-id-label">你的身份</text>
+        <text class="ls-id-desc">远道而来的游客，触碰古村遗物，窥见八百年前的帝踪传说</text>
+      </view>
+    </view>
+
+    <!-- 横向滑动章节卡 -->
+    <scroll-view scroll-x class="ls-scroll" enhanced show-scrollbar="{{false}}">
+      <view class="ls-card-track">
+        <view 
+          wx:for="{{levels}}" 
+          wx:key="id" 
+          class="ls-card {{item.unlocked ? '' : 'ls-locked'}} {{item.completed ? 'ls-done' : ''}} {{currentPreviewIndex === index ? 'ls-active' : ''}}"
+          bindtap="{{item.unlocked ? 'startLevel' : 'previewLevel'}}"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+        >
+          <!-- 章节封面图 -->
+          <view class="ls-card-cover">
+            <image src="{{item.bgImage}}" mode="aspectFill" class="ls-card-image"></image>
+            <view class="ls-card-overlay"></view>
+            <view class="ls-card-chapter">
+              <text class="ls-card-ch-num">0{{index + 1}}</text>
+            </view>
+          </view>
+          <!-- 卡片主体 -->
+          <view class="ls-card-body">
+            <text class="ls-card-title">{{item.title}}</text>
+            <text class="ls-card-sub">{{item.subtitle}}</text>
+            <text class="ls-card-desc">{{item.desc}}</text>
+          </view>
+          <!-- NPC 标签 -->
+          <view class="ls-card-npcs">
+            <text class="ls-npc-tag" wx:for="{{item.npc}}" wx:for-item="npc" wx:key="*this">{{npc}}</text>
+          </view>
+          <!-- 底部状态 -->
+          <view class="ls-card-footer">
+            <text wx:if="{{!item.unlocked}}" class="ls-status-lock">未解锁</text>
+            <text wx:elif="{{item.completed}}" class="ls-status-done">已完成</text>
+            <text wx:else class="ls-status-play">进入探索</text>
+          </view>
         </view>
       </view>
     </scroll-view>
-  </view>
 
-  <!-- 游戏对话视图 -->
-  <view class="view-overlay game-play" wx:if="{{currentView === 'game'}}">
-    <!-- 人物立绘区域 -->
-    <view class="character-area">
-      <image 
-        wx:if="{{currentDialogue.characterImage}}"
-        src="{{currentDialogue.characterImage}}" 
-        mode="aspectFit" 
-        class="character-image {{currentDialogue.characterSide || 'center'}}"
-      ></image>
+    <!-- 章节进度指示器 -->
+    <view class="ls-dots">
+      <view 
+        wx:for="{{levels}}" 
+        wx:key="id" 
+        class="ls-dot {{item.completed ? 'ls-dot-done' : (item.unlocked ? 'ls-dot-active' : '')}}"
+      ></view>
     </view>
 
-    <!-- 对话交互区域 -->
-    <view class="dialogue-container">
-      <!-- 选项按钮 -->
-      <view class="options-box" wx:if="{{currentDialogue.options && currentDialogue.options.length > 0}}">
-        <view 
-          wx:for="{{currentDialogue.options}}" 
-          wx:key="text" 
-          class="option-item" 
-          bindtap="selectOption" 
-          data-option="{{item}}"
-        >
+    <!-- 底部操作 -->
+    <view class="ls-bottom">
+      <view class="ls-reset" bindtap="resetProgress">
+        <text>重置进度</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ==================== 游戏进行中视图 ==================== -->
+  <view class="view-overlay game-play" wx:if="{{currentView === 'playing' && currentDialogue}}">
+    
+    <!-- 全屏剧情推进层：解决用户点不到按键的问题 -->
+    <view class="progression-overlay" wx:if="{{!currentDialogue.options}}" bindtap="nextDialogue"></view>
+
+    <!-- 1. AR 场景描述模式 -->
+    <view class="ar-scene-overlay" wx:if="{{currentDialogue.type === 'ar_scene'}}">
+      <view class="ar-scene-content {{currentDialogue.climax ? 'climax' : ''}}">
+        <view class="ar-scene-glow"></view>
+        <text class="ar-scene-text">{{currentDialogue.text}}</text>
+        <view class="ar-scene-tap">
+          <text class="tap-hint">点击屏幕继续</text>
+          <text class="tap-arrow">▼</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 2. 旁白/独白模式 -->
+    <view class="narrator-overlay" wx:if="{{currentDialogue.type === 'narrator'}}">
+      <view class="narrator-content {{currentDialogue.narratorStyle || ''}}">
+        <text class="narrator-speaker" wx:if="{{currentDialogue.speaker}}">{{currentDialogue.speaker}}</text>
+        <text class="narrator-text">{{currentDialogue.text}}</text>
+        <view class="narrator-tap">—— 点击继续 ——</view>
+      </view>
+    </view>
+
+    <!-- 3. NPC 对话模式 -->
+    <view class="npc-dialogue-area" wx:if="{{currentDialogue.type === 'npc' || currentDialogue.type === 'bubble'}}">
+      
+      <!-- NPC 立绘预留位置 -->
+      <view class="npc-character-wrap" wx:if="{{currentDialogue.npcImage}}">
+        <image class="npc-character-img {{currentDialogue.side === 'ghost' ? 'ghost-effect' : ''}}" 
+               src="{{currentDialogue.npcImage}}" 
+               mode="aspectFit"></image>
+      </view>
+
+      <!-- 顶部信息：地标与标签 -->
+      <view class="npc-header">
+        <text class="npc-location">📍 {{levels[currentLevelIndex].title}}</text>
+        <view class="npc-tags">
+          <text class="npc-tag tag-history">历史</text>
+          <text class="npc-tag tag-story">故事</text>
+        </view>
+      </view>
+
+      <!-- 双NPC模式下的辅助提示 -->
+      <view class="dual-npc-hint" wx:if="{{levels[currentLevelIndex].special}}">
+        <text class="dual-hint-text">正在与 {{currentDialogue.speaker}} 交流...</text>
+      </view>
+
+      <!-- 辅助小气泡 (用于双人对话中的第二人) -->
+      <view class="aux-bubble" wx:if="{{currentDialogue.type === 'bubble'}}">
+        <view class="aux-bubble-inner">
+          <text class="aux-bubble-speaker">{{currentDialogue.speaker}}</text>
+          <text class="aux-bubble-text">{{currentDialogue.text}}</text>
+        </view>
+        <view class="aux-bubble-dismiss">...</view>
+      </view>
+
+      <!-- 主对话框区 -->
+      <view class="dialogue-main">
+        <view class="dialogue-container {{currentDialogue.side === 'ghost' ? 'ghost-mode' : ''}}">
+          <!-- 名字标签 -->
+          <view class="npc-name-tag {{currentDialogue.side === 'ghost' ? 'ghost-tag' : ''}}">
+            <text>{{currentDialogue.speaker}}</text>
+            <text class="ghost-label" wx:if="{{currentDialogue.side === 'ghost'}}">幻影</text>
+          </view>
+          
+          <!-- 对话内容 -->
+          <view class="dialogue-box" bindtap="{{!currentDialogue.options ? 'nextDialogue' : ''}}">
+            <text class="dialogue-text">{{currentDialogue.text}}</text>
+            <view class="next-indicator" wx:if="{{!currentDialogue.options}}">▼ 点击推进</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 选项区 -->
+      <view class="options-box" wx:if="{{currentDialogue.options}}">
+        <view class="option-item" 
+              wx:for="{{currentDialogue.options}}" 
+              wx:key="text" 
+              bindtap="selectOption" 
+              data-option="{{item}}">
           {{item.text}}
         </view>
       </view>
+    </view>
+  </view>
 
-      <!-- 对话框 -->
-      <view class="dialogue-box" bindtap="nextDialogue">
-        <view class="name-tag" wx:if="{{currentDialogue.speaker}}">
-          {{currentDialogue.speaker}}
+  <!-- ==================== 终幕成就视图 ==================== -->
+  <view class="view-overlay ending-view" wx:if="{{currentView === 'ending'}}">
+    <view class="ending-content">
+      <!-- 标题 -->
+      <view class="ending-header">
+        <text class="ending-motto-main">{{endingData.motto}}</text>
+        <view class="ending-divider"></view>
+      </view>
+
+      <!-- 探索数据 -->
+      <view class="ending-stats">
+        <view class="ending-stat-item">
+          <text class="ending-stat-num">{{endingData.stats.landmarksVisited}} / 6</text>
+          <text class="ending-stat-label">打卡地标</text>
         </view>
-        <view class="content">
-          <text class="typing-text">{{currentDialogue.text}}</text>
+        <view class="ending-stat-item">
+          <text class="ending-stat-num">{{endingData.stats.dialogueCount}}</text>
+          <text class="ending-stat-label">对话轮次</text>
         </view>
-        <view class="next-indicator" wx:if="{{!currentDialogue.options || currentDialogue.options.length === 0}}">
-          ▼
+        <view class="ending-stat-item">
+          <text class="ending-stat-num">{{endingData.achievements.length}}</text>
+          <text class="ending-stat-label">解锁成就</text>
+        </view>
+      </view>
+
+      <!-- 成就徽章阵列 -->
+      <view class="ending-badges" wx:if="{{endingData.achievements.length > 0}}">
+        <text class="badges-title">获得的成就</text>
+        <view class="badges-grid">
+          <view class="badge-item" wx:for="{{endingData.achievements}}" wx:key="name">
+            <view class="badge-icon-wrap">
+              <text class="badge-icon-text">{{item.iconText}}</text>
+            </view>
+            <text class="badge-name">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 结尾语 -->
+      <view class="ending-footer">
+        <text class="ending-final-text">「{{endingData.footer}}」</text>
+      </view>
+
+      <!-- 老村长最后一句 -->
+      <view class="ending-quote">
+        <text class="quote-text">"嘿，你听到了吗？那是八百年前的声音，也是林浦村在今天对你说的——欢迎回家。"</text>
+        <text class="quote-speaker">—— 古村长</text>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="ending-actions">
+        <view class="ending-btn primary" bindtap="backToLevels">
+          <text>再次游览</text>
+        </view>
+        <view class="ending-btn secondary" bindtap="resetProgress">
+          <text>开启新故事</text>
         </view>
       </view>
     </view>
   </view>
 
-  <!-- 关卡完成结算 -->
+  <!-- ==================== 章节完成弹窗 ==================== -->
   <view class="modal" wx:if="{{showSuccessModal}}">
     <view class="modal-content">
+      <view class="modal-icon-wrap">
+        <text class="modal-icon-text">完</text>
+      </view>
       <text class="modal-title">章节完成</text>
+      <text class="modal-chapter">{{levels[currentLevelIndex].title}}</text>
       <text class="modal-info">您已解锁林浦文化的新篇章</text>
+      <view class="modal-rewards">
+        <text class="reward-item">+100 积分</text>
+        <text class="reward-item">+30 经验</text>
+      </view>
       <button class="modal-btn" bindtap="backToLevels">继续探索</button>
     </view>
   </view>
