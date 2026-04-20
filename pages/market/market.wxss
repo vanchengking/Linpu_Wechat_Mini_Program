@@ -63,12 +63,12 @@ page {
 
 .floating-controls {
   position: fixed;
-  bottom: 80rpx;
+  bottom: 200rpx;
   right: 30rpx;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  z-index: 100;
+  z-index: 999;
 }
 
 .points-box {
@@ -259,6 +259,55 @@ page {
   color: #b0a898;
 }
 
+/* ========== 数量选择器 ========== */
+.qty-selector {
+  position: absolute;
+  right: 16rpx;
+  bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 30rpx;
+  border: 2rpx solid #8B2323;
+  overflow: hidden;
+  box-shadow: 0 4rpx 10rpx rgba(139, 35, 35, 0.2);
+}
+
+.qty-btn {
+  width: 52rpx;
+  height: 52rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #8B2323;
+  background-color: #fff;
+  transition: all 0.15s;
+}
+
+.qty-btn:active:not(.disabled) {
+  background-color: #8B2323;
+  color: #fff;
+}
+
+.qty-minus {
+  border-right: 2rpx solid #eee;
+}
+
+.qty-plus {
+  border-left: 2rpx solid #eee;
+}
+
+.qty-num {
+  min-width: 56rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B2323;
+  line-height: 52rpx;
+}
+
 .add-cart-btn {
   position: absolute;
   right: 20rpx;
@@ -393,6 +442,7 @@ page {
   font-weight: bold;
   color: #e74c3c;
   margin-bottom: 10rpx;
+  white-space: pre-line;
 }
 
 .coupon-desc {

@@ -196,3 +196,49 @@ page {
   background: #e74c3c;
   color: #fff;
 }
+
+/* ========== 开发者模式彩蛋页面 ========== */
+.easter-egg-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ee-back-btn {
+  position: absolute;
+  top: 60rpx;
+  left: 30rpx;
+  width: 70rpx;
+  height: 70rpx;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ee-back-icon {
+  font-size: 36rpx;
+  color: #333;
+}
+
+.ee-image {
+  width: 500rpx;
+  height: 500rpx;
+}
+
+.ee-text {
+  margin-top: 40rpx;
+  font-size: 36rpx;
+  color: #5d4b3c;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}

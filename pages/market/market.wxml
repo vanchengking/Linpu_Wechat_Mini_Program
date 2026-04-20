@@ -1,21 +1,4 @@
 <view class="container">
-  <!-- 悬浮功能区 -->
-  <view class="floating-controls">
-    <!-- 积分悬浮窗 -->
-    <view class="points-box" bindtap="openCouponModal">
-      <image src="/resources/icons/云塔.png" class="points-icon"></image>
-      <text class="points-num">{{userPoints}} 积分</text>
-      <text class="points-action">兑换 > </text>
-    </view>
-    
-    <!-- 购物车悬浮窗 -->
-    <view class="cart-box" bindtap="goToCart">
-      <view class="cart-badge" wx:if="{{cartCount > 0}}">{{cartCount}}</view>
-      <image src="/resources/icons/成就.png" class="cart-icon"></image>
-      <text class="cart-text">购物车</text>
-    </view>
-  </view>
-
   <!-- 分类导航 -->
   <scroll-view scroll-x class="category-scroll" scroll-with-animation>
     <view class="category-list">
@@ -42,7 +25,7 @@
         bindtap="viewDetail"
         data-id="{{item.id}}"
       >
-        <image src="{{item.image}}" mode="aspectFill" class="product-img"></image>
+        <image src="{{item.image}}" mode="aspectFill" class="product-img" lazy-load></image>
         <view class="product-info">
           <text class="product-name">{{item.name}}</text>
           <text class="product-desc">{{item.desc}}</text>
@@ -52,12 +35,17 @@
               <text class="currency">¥</text>
               <text class="price">{{item.price}}</text>
             </view>
-            <view class="sales-box">已售 {{item.sales}}</view>
           </view>
         </view>
-        
-        <!-- 悬浮购物车按钮 -->
-        <view class="add-cart-btn" catchtap="addToCart" data-id="{{item.id}}">
+
+        <!-- 数量选择器：默认显示加号，点击后显示 减-数字+加 -->
+        <view class="qty-selector" wx:if="{{item._qty > 0}}" catchtap="stopPropagation">
+          <view class="qty-btn qty-minus" catchtap="decreaseQty" data-id="{{item.id}}">−</view>
+          <text class="qty-num">{{item._qty}}</text>
+          <view class="qty-btn qty-plus" catchtap="increaseQty" data-id="{{item.id}}">+</view>
+        </view>
+        <!-- 初始加号按钮：点击展开数量选择器 -->
+        <view class="add-cart-btn" wx:else catchtap="increaseQty" data-id="{{item.id}}">
           +
         </view>
       </view>
@@ -70,9 +58,9 @@
   </scroll-view>
 
   <!-- 积分兑换弹窗 -->
-  <view class="coupon-modal {{showCouponModal ? 'active' : ''}}">
-    <view class="modal-mask" bindtap="closeCouponModal"></view>
-    <view class="modal-content">
+  <view class="coupon-modal {{showCouponModal ? 'active' : ''}}" catchtouchmove="preventScroll">
+    <view class="modal-mask" bindtap="closeCouponModal" catchtouchmove="preventScroll"></view>
+    <view class="modal-content" catchtouchmove="preventScroll">
       <view class="modal-header">
         <text class="modal-title">积分兑换抵用券</text>
         <view class="close-btn" bindtap="closeCouponModal">×</view>
@@ -94,5 +82,22 @@
         </view>
       </scroll-view>
     </view>
+  </view>
+</view>
+
+<!-- 悬浮功能区（放在container外，避免被scroll-view影响fixed定位） -->
+<view class="floating-controls">
+  <!-- 积分悬浮窗 -->
+  <view class="points-box" bindtap="openCouponModal">
+    <image src="/resources/icons/云塔.png" class="points-icon"></image>
+    <text class="points-num">{{userPoints}} 积分</text>
+    <text class="points-action">兑换 > </text>
+  </view>
+
+  <!-- 购物车悬浮窗 -->
+  <view class="cart-box" bindtap="goToCart">
+    <view class="cart-badge" wx:if="{{cartCount > 0}}">{{cartCount}}</view>
+    <image src="/resources/icons/cart.png" class="cart-icon"></image>
+    <text class="cart-text">购物车</text>
   </view>
 </view>

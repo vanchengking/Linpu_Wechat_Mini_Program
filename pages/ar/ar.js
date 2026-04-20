@@ -16,7 +16,7 @@ const STORY_LEVELS = [
     npc: ['宋端宗赵昰', '宋末帝赵昺'],
     node: '海上→林浦村口（AR场景过渡）',
     special: '双人同时出场，赵昰为主对话框，赵昺为辅助气泡',
-    bgImage: 'https://101.34.247.48:8888/down/6g63c6V4ZamB.png',
+    bgImage: 'https://bl.meishipay.com/images/background/background.png',
     dialogues: [
       // ===== 序章·游客入村 =====
       { id: 'p0', type: 'ar_scene',
@@ -150,7 +150,7 @@ const STORY_LEVELS = [
     desc: '千年林浦、牌坊来历、分米活动',
     npc: ['古村长'],
     node: '尚书里石牌坊',
-    bgImage: 'https://101.34.247.48:8888/down/6g63c6V4ZamB.png',
+    bgImage: 'https://bl.meishipay.com/images/background/background.png',
     dialogues: [
       // ===== 章节过渡 =====
       { id: 't0', type: 'narrator', speaker: '你的独白',
@@ -234,7 +234,7 @@ const STORY_LEVELS = [
     desc: '朱熹讲学、格物致知、文脉传承',
     npc: ['朱熹'],
     node: '濂江书院',
-    bgImage: 'https://101.34.247.48:8888/down/6g63c6V4ZamB.png',
+    bgImage: 'https://bl.meishipay.com/images/background/background.png',
     dialogues: [
       // ===== 章节过渡 =====
       { id: 't0', type: 'narrator', speaker: '你的独白',
@@ -287,7 +287,7 @@ const STORY_LEVELS = [
     desc: '三代五尚书、四正文化、家族荣耀',
     npc: ['尚书伯（林瀚）'],
     node: '世公保尚书家庙',
-    bgImage: 'https://101.34.247.48:8888/down/6g63c6V4ZamB.png',
+    bgImage: 'https://bl.meishipay.com/images/background/background.png',
     dialogues: [
       // ===== 章节过渡 =====
       { id: 't0', type: 'narrator', speaker: '你的独白',
@@ -340,7 +340,7 @@ const STORY_LEVELS = [
     desc: '安南伬、踩街游神、分米活动',
     npc: ['老艺人（更夫）'],
     node: '林浦街巷 / 游神路线',
-    bgImage: 'https://101.34.247.48:8888/down/6g63c6V4ZamB.png',
+    bgImage: 'https://bl.meishipay.com/images/background/background.png',
     dialogues: [
       // ===== 章节过渡 =====
       { id: 't0', type: 'narrator', speaker: '你的独白',
@@ -436,7 +436,7 @@ const STORY_LEVELS = [
     npc: ['赵昺', '赵昰'],
     node: '进士木牌坊 → 泰山宫（平山堂）',
     special: '赵昺半透明灵魂形态先行出场，赵昰随后在泰山宫现身，最终双帝短暂同框',
-    bgImage: 'https://101.34.247.48:8888/down/6g63c6V4ZamB.png',
+    bgImage: 'https://bl.meishipay.com/images/background/background.png',
     dialogues: [
       // ===== 章节过渡 =====
       { id: 't0', type: 'narrator', speaker: '你的独白',
@@ -1056,10 +1056,22 @@ Page({
 
   toggleMode() {
     if (!this.data.isARMode) {
-      // 开启 AR 模式前先检查权限
       wx.getSetting({
         success: (res) => {
-          if (!res.authSetting['scope.camera']) {
+          if (res.authSetting['scope.camera'] === false) {
+            wx.showModal({
+              title: '需要相机权限',
+              content: '请在设置中开启相机权限以体验实拍模式',
+              confirmText: '去设置',
+              success: (modalRes) => {
+                if (modalRes.confirm) {
+                  wx.openSetting();
+                }
+              }
+            });
+          } else if (res.authSetting['scope.camera'] === true) {
+            this.enableARMode();
+          } else {
             wx.authorize({
               scope: 'scope.camera',
               success: () => {
@@ -1068,7 +1080,7 @@ Page({
               fail: () => {
                 wx.showModal({
                   title: '需要相机权限',
-                  content: '请在设置中开启相机权限以体验 AR 模式',
+                  content: '请在设置中开启相机权限以体验实拍模式',
                   confirmText: '去设置',
                   success: (modalRes) => {
                     if (modalRes.confirm) {
@@ -1078,8 +1090,6 @@ Page({
                 });
               }
             });
-          } else {
-            this.enableARMode();
           }
         }
       });

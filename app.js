@@ -1,10 +1,15 @@
 // app.js
+const preloadUtil = require('./utils/preload');
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
+    // 🔥 启动时预加载核心图片（不阻塞启动流程）
+    preloadUtil.prelaunch();
 
     // 登录
     wx.login({

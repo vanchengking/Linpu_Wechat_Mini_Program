@@ -5,7 +5,7 @@
     "pages/market/market",
     "pages/blank/blank",
     "pages/decode/decode",
-    "pages/experience/experience",
+    "pages/jiema/jiema",
     "pages/map/map",
     "pages/profile/profile",
     "pages/guide/guide",
@@ -41,7 +41,7 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/experience/experience",
+        "pagePath": "pages/jiema/jiema",
         "text": "文化解码",
         "iconPath": "/resources/icons/佛像.png",
         "selectedIconPath": "/resources/icons/佛像.png"
@@ -60,9 +60,9 @@
       },
       {
         "pagePath": "pages/market/market",
-        "text": "文创市场",
-        "iconPath": "/resources/icons/云塔.png",
-        "selectedIconPath": "/resources/icons/云塔.png"
+        "text": "文创商城",
+        "iconPath": "/resources/icons/文创商城.png",
+        "selectedIconPath": "/resources/icons/文创商城.png"
       },
       {
         "pagePath": "pages/profile/profile",
@@ -84,6 +84,9 @@
     },
     "scope.camera": {
       "desc": "您的摄像头将用于AR沉浸式场景体验"
+    },
+    "scope.record": {
+      "desc": "您的麦克风将用于语音输入功能，与尚书伯对话"
     }
   },
   "requiredPrivateInfos": [

@@ -9,32 +9,33 @@
   z-index: 99999; /* 保证永远在最上层 */
 }
 
-/* 拖拽块 */
+/* 拖拽块（正圆形） */
 .movable-view {
-  width: 120rpx;
-  height: 120rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
   pointer-events: auto; /* 关键：让图标本身可以被点击和拖拽 */
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
+  border: 3rpx solid #D4AF37;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.3);
+  overflow: hidden;
 }
 
-/* NPC 图标 */
+/* NPC 图标（严格限制在圆形容器内） */
 .npc-icon {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
-  border: 4rpx solid #D4AF37;
-  background-color: #fff;
+  width: 70rpx;
+  height: 70rpx;
   z-index: 2;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.3);
 }
 
 /* 背景呼吸灯特效（增加AI灵动感） */
 .pulse-ring {
   position: absolute;
-  width: 100rpx;
-  height: 100rpx;
+  width: 90rpx;
+  height: 90rpx;
   background-color: rgba(212, 175, 55, 0.5);
   border-radius: 50%;
   z-index: 1;

@@ -7,7 +7,9 @@ Page({
     soundOn: true,
     vibrateOn: true,
     cacheSize: '2.3 MB',
-    showResetModal: false
+    showResetModal: false,
+    devTaps: 0,        // 开发者模式点击计数
+    showEasterEgg: false // 彩蛋页面显示状态
   },
 
   onLoad() {
@@ -155,5 +157,35 @@ Page({
 
   goToTeam() {
     wx.navigateTo({ url: '/pages/team/team' });
+  },
+
+  // 开发者模式：连续点击5次触发彩蛋
+  tapDevMode() {
+    let count = this.data.devTaps + 1;
+    
+    if (count < 5) {
+      this.setData({ devTaps: count });
+      wx.vibrateShort({ type: 'light' });
+      // 3秒内未点满，重置计数
+      if (this._devTimer) clearTimeout(this._devTimer);
+      this._devTimer = setTimeout(() => {
+        this.setData({ devTaps: 0 });
+      }, 3000);
+    } else {
+      // 点满5次，显示彩蛋
+      if (this._devTimer) clearTimeout(this._devTimer);
+      this.setData({
+        devTaps: 5,
+        showEasterEgg: true
+      });
+      wx.vibrateShort({ type: 'medium' });
+    }
+  },
+
+  closeEasterEgg() {
+    this.setData({
+      showEasterEgg: false,
+      devTaps: 0
+    });
   }
 });

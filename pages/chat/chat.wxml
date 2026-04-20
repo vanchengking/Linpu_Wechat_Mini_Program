@@ -4,16 +4,17 @@
   <!-- 背景图 -->
   <image 
     class="bg-img"
-    src="https://asave.rutno.com/fileview?id=otoA9Jvt6lnG"
+    src="https://bl.meishipay.com/images/background/background5.png"
     mode="aspectFill"
   ></image>
 
   <!-- 尚书伯 -->
-  <view wx:if="{{showCharacter}}" class="character-area">
-    <image 
+  <view wx:if="{{showCharacter}}" class="character-area" animation="{{characterAnimData}}">
+    <image
       class="character"
-      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+      src="https://bl.meishipay.com/images/characters/shangshubo.png"
       mode="widthFix"
+      lazy-load
     ></image>
   </view>
 
@@ -61,7 +62,7 @@
     <!-- 语音按钮 -->
     <view class="voice-btn" bindtap="startVoice">
       <image 
-        src="/resources/icons/语音输入.png"
+        src="/resources/icons/microphone.png"
         class="voice-icon"
       ></image>
     </view>

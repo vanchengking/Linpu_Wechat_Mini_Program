@@ -16,7 +16,7 @@
   <!-- 背景图 -->
   <image 
     class="bg-img"
-    src="https://asave.rutno.com/fileview?id=7w4kaSoIQxra"
+    src="https://bl.meishipay.com/images/content/世公保1.jpg"
     mode="aspectFill"
   ></image>
 
@@ -35,10 +35,11 @@
 
   <!-- 尚书伯 -->
   <view wx:if="{{showCharacter}}" class="character-area">
-    <image 
+    <image
       class="character"
-      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+      src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png"
       mode="widthFix"
+      lazy-load
     ></image>
   </view>
 

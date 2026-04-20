@@ -8,7 +8,7 @@
       class="map-view" 
       direction="all" 
       scale="true" 
-      scale-min="0.5" 
+      scale-min="0.25" 
       scale-max="4" 
       scale-value="{{scale}}"
       out-of-bounds="true"
@@ -85,9 +85,10 @@
       animation="{{false}}"
     >
       <image 
-        src="https://bl.meishipay.com/images/characters/shangshubo.png" 
+        src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png" 
         class="float-chat-icon-drag"
         bindtap="goToChat"
+        lazy-load
       ></image>
     </movable-view>
   </movable-area>

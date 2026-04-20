@@ -1,13 +1,13 @@
 <view class="experience-container">
   <!-- 背景图 -->
-  <image class="bg-image" src="https://asave.rutno.com/fileview?id=S8JAJK5wKDye" mode="aspectFill"></image>
+  <image class="bg-image" src="https://bl.meishipay.com/images/background/background5.png" mode="aspectFill"></image>
   
   <!-- 背景遮罩层 -->
   <view class="bg-overlay"></view>
 
   <view class="content-wrapper">
     <view class="section-header">
-      <view class="title">民俗体验</view>
+      <view class="title">文化解码</view>
       <view class="subtitle">沉浸式感受千年宋风遗韵</view>
     </view>
 
@@ -15,7 +15,7 @@
       <block wx:for="{{experiences}}" wx:key="id">
         <view class="experience-card" bindtap="showDetail" data-index="{{index}}" hover-class="card-hover">
           <view class="card-icon-box">
-            <image class="card-icon" src="{{item.icon}}" mode="aspectFit"></image>
+            <image class="card-icon" src="{{item.icon}}" mode="aspectFit" lazy-load></image>
           </view>
           <view class="card-label">{{item.title}}</view>
           <view class="card-tag">{{item.tag}}</view>
@@ -38,7 +38,7 @@
           <swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
             <block wx:for="{{currentItem.images}}" wx:key="*this">
               <swiper-item>
-                <image class="swiper-image" src="{{item}}" mode="aspectFill"></image>
+                <image class="swiper-image" src="{{item}}" mode="aspectFill" lazy-load></image>
               </swiper-item>
             </block>
           </swiper>
@@ -63,9 +63,11 @@
 
   <!-- 全局浮窗聊天按钮 -->
   <view class="float-chat-btn" bindtap="goToChat">
-    <image 
-      src="https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+    <image
+      src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png"
       class="float-chat-icon"
+      mode="aspectFill"
+      lazy-load
     ></image>
   </view>
 

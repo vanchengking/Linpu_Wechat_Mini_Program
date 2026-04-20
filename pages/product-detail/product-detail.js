@@ -30,17 +30,10 @@ Page({
         category: 'culture',
         price: '39.00',
         sales: 128,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: [
-          'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-          'https://101.34.247.48:8888/down/eTzNzBC9Pu65.jpg'
-        ],
+        image: 'https://bl.meishipay.com/images/content/product/帆布袋.png',
+        images: ['https://bl.meishipay.com/images/content/product/帆布袋.png'],
         desc: '融合朱子理学元素的环保帆布袋，日常出行皆可展现文化底蕴。',
-        detailImages: [
-          // 预留商品详情图
-          // 'https://example.com/detail1.png',
-          // 'https://example.com/detail2.png'
-        ]
+        detailImages: []
       },
       {
         id: 2,
@@ -48,8 +41,8 @@ Page({
         category: 'book',
         price: '88.00',
         sales: 56,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: ['https://asave.rutno.com/fileview?id=BMumLU82n7ZG'],
+        image: 'https://bl.meishipay.com/images/content/product/《林浦志》.png',
+        images: ['https://bl.meishipay.com/images/content/product/《林浦志》.png'],
         desc: '精装线装书，收录林浦千年历史变迁与名人事迹。',
         detailImages: []
       },
@@ -59,19 +52,19 @@ Page({
         category: 'souvenir',
         price: '19.90',
         sales: 452,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: ['https://asave.rutno.com/fileview?id=BMumLU82n7ZG'],
+        image: 'https://bl.meishipay.com/images/content/product/御守.png',
+        images: ['https://bl.meishipay.com/images/content/product/御守.png'],
         desc: '源自泰山宫的平安御守，寓意福泽绵长，出入平安。',
         detailImages: []
       },
       {
         id: 4,
-        name: '“三代五尚书”主题书签',
+        name: '"三代五尚书"主题书签',
         category: 'culture',
         price: '15.00',
         sales: 320,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: ['https://asave.rutno.com/fileview?id=BMumLU82n7ZG'],
+        image: 'https://bl.meishipay.com/images/content/product/书签1.png',
+        images: ['https://bl.meishipay.com/images/content/product/书签1.png'],
         desc: '黄铜镂空工艺，以林浦世公保建筑特色为设计灵感。',
         detailImages: []
       },
@@ -81,8 +74,8 @@ Page({
         category: 'souvenir',
         price: '128.00',
         sales: 45,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: ['https://asave.rutno.com/fileview?id=BMumLU82n7ZG'],
+        image: 'https://bl.meishipay.com/images/content/product/宋代茶盏.png',
+        images: ['https://bl.meishipay.com/images/content/product/宋代茶盏.png'],
         desc: '体验宋代点茶文化的必备器具，重温南宋风雅。',
         detailImages: []
       },
@@ -92,8 +85,8 @@ Page({
         category: 'culture',
         price: '25.00',
         sales: 210,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: ['https://asave.rutno.com/fileview?id=BMumLU82n7ZG'],
+        image: 'https://bl.meishipay.com/images/content/product/明信片.png',
+        images: ['https://bl.meishipay.com/images/content/product/明信片.png'],
         desc: '一套8张，水彩手绘还原林浦古村的静谧角落与历史建筑。',
         detailImages: []
       },
@@ -103,8 +96,8 @@ Page({
         category: 'book',
         price: '68.00',
         sales: 89,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: ['https://asave.rutno.com/fileview?id=BMumLU82n7ZG'],
+        image: 'https://bl.meishipay.com/images/content/product/建筑图鉴1.png',
+        images: ['https://bl.meishipay.com/images/content/product/建筑图鉴1.png'],
         desc: '深入解析林浦古建筑群的榫卯结构与雕花艺术，附赠建筑线稿。',
         detailImages: []
       },
@@ -114,8 +107,8 @@ Page({
         category: 'souvenir',
         price: '45.00',
         sales: 156,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: ['https://asave.rutno.com/fileview?id=BMumLU82n7ZG'],
+        image: 'https://bl.meishipay.com/images/content/product/剪纸摆件1.png',
+        images: ['https://bl.meishipay.com/images/content/product/剪纸摆件1.png'],
         desc: '非遗传承人手工剪制，亚克力封装，展现林浦民俗风情。',
         detailImages: []
       },
@@ -125,9 +118,9 @@ Page({
         category: 'culture',
         price: '58.00',
         sales: 198,
-        image: 'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
-        images: ['https://asave.rutno.com/fileview?id=BMumLU82n7ZG'],
-        desc: '竹骨折扇，扇面题写“三代五尚书”家训，夏日纳凉尽显文人气息。',
+        image: 'https://bl.meishipay.com/images/content/product/折扇1.png',
+        images: ['https://bl.meishipay.com/images/content/product/折扇1.png'],
+        desc: '竹骨折扇，扇面题写"三代五尚书"家训，夏日纳凉尽显文人气息。',
         detailImages: []
       }
     ];

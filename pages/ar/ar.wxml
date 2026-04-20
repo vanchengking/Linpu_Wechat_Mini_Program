@@ -13,7 +13,7 @@
     </camera>
     <image 
       wx:else
-      src="{{levels[currentLevelIndex].bgImage || 'https://101.34.247.48:8888/down/6g63c6V4ZamB.png'}}" 
+      src="{{levels[currentLevelIndex].bgImage || 'https://bl.meishipay.com/images/background/background.png'}}" 
       mode="aspectFill" 
       class="full-screen design-bg"
     ></image>
@@ -29,9 +29,14 @@
       <text class="level-chapter">第{{currentLevelIndex + 1}}章</text>
       <text class="level-title">{{levels[currentLevelIndex].title}}</text>
     </view>
-    <view class="mode-toggle" bindtap="toggleMode">
-      <text>{{isARMode ? '实景AR' : '背景模式'}}</text>
-    </view>
+    <view class="mode-switch">
+  <view class="switch-item {{!isARMode ? 'active' : ''}}" bindtap="toggleMode">
+    <text>背景模式</text>
+  </view>
+  <view class="switch-item {{isARMode ? 'active' : ''}}" bindtap="toggleMode">
+    <text>实拍模式</text>
+  </view>
+</view>
   </view>
 
   <!-- ==================== 关卡选择视图 ==================== -->

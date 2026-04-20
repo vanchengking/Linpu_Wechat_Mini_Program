@@ -97,6 +97,15 @@
         </view>
         <text class="arrow">></text>
       </view>
+
+      <view class="setting-item" bindtap="tapDevMode">
+        <view class="setting-left">
+          <text class="setting-icon">⚙️</text>
+          <text class="setting-label">开发者模式</text>
+        </view>
+        <text class="arrow" wx:if="{{devTaps > 0 && devTaps < 5}}">({{5 - devTaps}})</text>
+        <text class="arrow" wx:if="{{devTaps >= 5}}">✓</text>
+      </view>
     </view>
   </view>
 
@@ -120,6 +129,19 @@
         </view>
       </view>
     </view>
+  </view>
+
+  <!-- 彩蛋页面（开发者模式） -->
+  <view class="easter-egg-page" wx:if="{{showEasterEgg}}">
+    <view class="ee-back-btn" bindtap="closeEasterEgg">
+      <text class="ee-back-icon">←</text>
+    </view>
+    <image
+      class="ee-image"
+      src="https://bl.meishipay.com/images/characters/laobo.png"
+      mode="aspectFit"
+    ></image>
+    <text class="ee-text">孩子们常回来看看牢伯！</text>
   </view>
 
   <view style="height: 60rpx;"></view>

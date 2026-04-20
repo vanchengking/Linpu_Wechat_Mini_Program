@@ -4,24 +4,24 @@ const BASE_URL = "http://112.126.80.115:8024";
 // 场景配置字典：把所有景点的差异化数据集中管理
 const sceneConfig = {
   guide: {
-    bgImg: "https://asave.rutno.com/fileview?id=otoA9Jvt6lnG",
+    bgImg: "https://bl.meishipay.com/images/background/background.png",
     initialText: "诶！那是谁家的小书生？快跟上！我是林浦的尚书伯，也是这里的'巡境百事通'，有什么想问的尽管说！\n听见锣鼓声了吗？咱们村的巡境队伍马上就要出发了！\n第一站，你想随我去哪里打卡？",
-    characterImg: "https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.png"
   },
   lianshu: {
-    bgImg: "https://asave.rutno.com/fileview?id=fhuPaix7GDJc",
+    bgImg: "https://bl.meishipay.com/images/content/濂江书院1.jpg",
     initialText: "濂江书院是福州现存最完好的古书院，始建于唐末，南宋朱熹曾在此讲学，'宋朱熹讲学处' 巨碑、'文光射斗' 石栏等遗迹，见证千年学风传承。",
-    characterImg: "https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.png"
   },
   shigong: {
-    bgImg: "https://asave.rutno.com/fileview?id=7w4kaSoIQxra",
+    bgImg: "https://bl.meishipay.com/images/content/世公保1.jpg",
     initialText: "世公保全称世宫保尚书林公家庙，由明代林瀚始建，是 '三代五尚书' 家族的纪念地，木结构建筑群与 '形如乌纱' 的庙前水池，尽显闽派建筑特色与望族底蕴。",
-    characterImg: "https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.png"
   },
   taishan: {
-    bgImg: "https://asave.rutno.com/fileview?id=Qh7Qtw6RhrA9",
+    bgImg: "https://bl.meishipay.com/images/content/location/泰山宫1.png",
     initialText: "原为南宋端宗驻跸的平山阁，建筑雕饰精美，宫前古榕与辕门相映，承载着宋末抗元历史与民间信仰。",
-    characterImg: "https://asave.rutno.com/fileview?id=BMumLU82n7ZG"
+    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.png"
   }
 };
 

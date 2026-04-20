@@ -477,7 +477,7 @@ Page({
         break;
 
       case 'experience':
-        wx.switchTab({ url: '/pages/experience/experience' });
+        wx.switchTab({ url: '/pages/jiema/jiema' });
         break;
 
       case 'ar':

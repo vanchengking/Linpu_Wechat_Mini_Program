@@ -4,7 +4,7 @@ page {
   padding-bottom: 100rpx;
 }
 
-/* 调整底部导航栏样式，增加高度 */
+/* 调整底部导航栏样式 */
 .tabbar {
   position: fixed;
   bottom: 0;
@@ -38,6 +38,22 @@ page {
 .container {
   min-height: 100vh;
   width: 100%;
+}
+
+/* ========== 页面进入过渡动画（只作用于容器，不破坏fixed定位） ========== */
+.container {
+  animation: pageIn 0.3s ease-out both;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(12rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 通用按钮样式 */
@@ -117,37 +133,54 @@ page {
 .float-chat-btn {
   position: fixed;
   right: 50rpx;
-  bottom: 250rpx;
-  width: 120rpx;
-  height: 120rpx;
-  background: transparent;
-  border-radius: 0;
+  bottom: 100rpx;
+  width: 90rpx;
+  height: 90rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 3rpx solid #D4AF37;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 99999;
-  box-shadow: none;
   transition: all 0.3s ease;
-  animation: float 3s ease-in-out infinite;
   pointer-events: auto;
+  overflow: hidden;
 }
 
 .float-chat-btn:active {
   transform: scale(0.9);
 }
 
+/* 图片严格限制在圆形容器内 */
 .float-chat-icon {
-  width: 120rpx;
-  height: 120rpx;
+  width: 70rpx;
+  height: 70rpx;
   pointer-events: none;
-  border-radius: 0;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10rpx);
-  }
+/* 图片加载占位（仅对需要骨架屏的类生效） */
+.bg-image, .bg-img, .bg, .bg-image {
+  background-color: #f5f0e8;
+  min-height: 200rpx;
+}
+
+/* 商品图片/卡片图片 加载中骨架效果 */
+.product-img, .card-icon, .swiper-image, .slide-image, .map-bg, .map-img {
+  background: linear-gradient(90deg, #f0ece0 25%, #faf7f0 50%, #f0ece0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  min-height: 200rpx;
+}
+
+/* 人物图标加载中 */
+.character, .npc-icon {
+  background-color: rgba(245, 240, 232, 0.6);
+}
+
+/* 骨架屏微光动画 */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }

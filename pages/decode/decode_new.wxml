@@ -1,6 +1,6 @@
 <view class="container" catchtouchstart="handleTouchStart" catchtouchend="handleTouchEnd">
   <!-- 背景图 -->
-  <image class="bg" src="https://asave.rutno.com/fileview?id=zTeB1JKeCmMA" mode="aspectFill"></image>
+  <image class="bg" src="https://bl.meishipay.com/images/background/background.png" mode="aspectFill"></image>
   
   <!-- 背景遮罩层，增加文字可读性 -->
   <view class="bg-overlay"></view>

@@ -195,14 +195,14 @@ page {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100rpx;
+  min-height: 110rpx;
   background-color: #fff;
   display: flex;
   align-items: center;
-  padding: 0 30rpx;
+  padding: 16rpx 30rpx;
   box-sizing: border-box;
   box-shadow: 0 -4rpx 10rpx rgba(0,0,0,0.05);
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 16rpx);
   z-index: 100;
 }
 
