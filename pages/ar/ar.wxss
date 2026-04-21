@@ -634,21 +634,21 @@
 /* NPC 立绘样式 */
 .npc-character-wrap {
   position: absolute;
-  bottom: 240rpx; /* 位于对话框上方 */
+  bottom: 280rpx; /* 位于对话框上方，留出更多空间 */
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 60vh;
+  height: 50vh; /* 降低高度，避免过度遮挡 */
   display: flex;
   justify-content: center;
   align-items: flex-end;
   pointer-events: none;
-  z-index: 1;
+  z-index: 1; /* 立绘层级低于对话框区域 */
   animation: npcIn 0.8s ease-out;
 }
 
 .npc-character-img {
-  width: 85%;
+  width: 70%; /* 缩小宽度，避免遮挡对话框两侧 */
   height: 100%;
 }
 
@@ -752,10 +752,13 @@
 
 .dialogue-main {
   padding: 0 32rpx;
+  position: relative;
+  z-index: 10; /* 确保对话框在 NPC 立绘之上 */
 }
 
 .dialogue-container {
   position: relative;
+  z-index: 10; /* 对话框容器层级高于 NPC 立绘 */
 }
 
 .dialogue-container.ghost-mode .dialogue-box {
@@ -782,7 +785,7 @@
   display: flex;
   align-items: center;
   gap: 8rpx;
-  z-index: 5;
+  z-index: 15; /* 名字标签层级高于对话框和立绘 */
 }
 
 .npc-name-tag.ghost-tag {
@@ -808,6 +811,8 @@
   min-height: 180rpx;
   box-shadow: 0 12rpx 40rpx rgba(0,0,0,0.2);
   transition: all 0.3s;
+  position: relative;
+  z-index: 10; /* 对话框内容层级高于 NPC 立绘 */
 }
 
 .dialogue-text {

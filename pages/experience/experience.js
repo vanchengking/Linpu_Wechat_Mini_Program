@@ -5,55 +5,75 @@ Page({
     experiences: [
       {
         id: 1,
-        title: "巡境",
-        tag: "泰山信仰",
-        icon: "https://bl.meishipay.com/images/content/巡境1.png",
-        image: "/images/hero_youshen.jpg",
+        title: "初识林浦",
+        tag: "尚书里",
+        icon: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景1-尚书里.png",
+        image: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景1-尚书里.png",
         images: [
-          "https://bl.meishipay.com/images/content/巡境1.png",
-          "https://bl.meishipay.com/images/content/巡境2.png"
+          "/www/wwwroot/bl.meishipay.com/images/content/scene/场景1-尚书里.png"
         ],
-        origin: "南宋德祐二年(1276)，宋端宗赵驻跸林浦，随行军士十数万。宋亡后，百姓为纪念君臣，将行宫改为泰山宫，神像均影射南宋君臣，如以宋高宗影射泰山，并祀文天祥、陆秀夫等。",
-        desc: "林浦的巡境活动不仅是祈福，更是对忠义精神的缅怀。巡游队伍中，你能看到装饰华丽的轿辇与神像，这些神像实为南宋君臣的化身。以此形式避开元廷猜忌，世代沿袭，形成了独特的爱国主义信仰仪式。",
+        origin: "明隆庆年间皇帝赐修。上面刻着林氏'三代五尚书'的名字——林瀚、林庭㭿、林庭机、林燫、林烃。一门三代，五尚书，七科八进士！《明史》都夸赞说'明代三世五尚书，并得谥文，林氏一家而已'。",
+        desc: "欢迎来到林浦村！古村长带你从这'尚书里'牌坊开始旅程。这是林浦的骄傲，一门三代五尚书的荣耀从这里开始。林氏有'四正文化'——养正心、崇正道、务正学、亲正人，做官先做人，清廉是本。",
       },
       {
         id: 2,
-        title: "冲宫",
-        tag: "激情巡游",
-        icon: "https://bl.meishipay.com/images/content/冲宫1.png",
-        image: "/images/hero_chonggong.jpg",
+        title: "书院论道",
+        tag: "濂江书院",
+        icon: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景2-廉江书院.png",
+        image: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景2-廉江书院.png",
         images: [
-          "https://bl.meishipay.com/images/content/冲宫1.png",
-          "https://bl.meishipay.com/images/content/冲宫2.png"
+          "/www/wwwroot/bl.meishipay.com/images/content/scene/场景2-廉江书院.png"
         ],
-        origin: "源于当年宋军\"平山点兵\"的军事传统。据史载，随同宋帝前来的军士有十数万，淮兵有余万，铲平山峰驻扎。",
-        desc: "作为巡境活动中最具爆发力的环节，\"冲宫\"象征着当年宋军操练与急行军的威武气势。抬神轿的青壮年会在特定路段或入庙时急速奔跑，模拟冲锋陷阵，场面震撼，展现了林浦人对于那段波澜壮阔历史的肢体记忆。",
+        origin: "朱熹当年游历至此，见此地山水清秀，学子勤勉，便在此讲学数载。濂江书院是福州唯一保存至今的古书院。",
+        desc: "朱熹在此教他们'格物致知'——探究万物，获得真知。照壁上'文光射斗'四字，便是朱夫子对学子们的期许。那石臼是师生洗笔之处，旁刻'知鱼乐'——读书要用心体会。后来的三代五尚书，皆受此学风熏陶。",
       },
       {
         id: 3,
-        title: "演戏",
-        tag: "安南伬",
-        icon: "https://bl.meishipay.com/images/content/演戏1.png",
-        image: "/images/hero_annan.jpg",
+        title: "家庙荣光",
+        tag: "世公保尚书家庙",
+        icon: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png",
+        image: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png",
         images: [
-          "https://bl.meishipay.com/images/content/演戏1.png",
-          "https://bl.meishipay.com/images/content/演戏2.png"
+          "/www/wwwroot/bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png"
         ],
-        origin: "省级非物质文化遗产。源于唐代古越南国（安南国）的贡乐，南宋末年随赵昰南逃队伍传入林浦，融合了闽曲琴唱。",
-        desc: "在林浦的庆典中，你将听到这种独特的\"安南鼓\"。乐队由掌鼓（指挥）带领，配以大钹、高低呐、椰胡、逗管等乐器。乐曲时而激昂如《一枝花》，时而悠扬。这种曾被视为\"战鼓\"的高音鼓点，是林浦巡境队伍中不可或缺的听觉灵魂。",
+        origin: "按明制，三品以上官员方可建家庙。林瀚官至南京兵部尚书，正二品，故有此规制。门前'乌纱池'形如官帽，寓意官运亨通。",
+        desc: "尚书伯林瀚告诉你：我父林元美（赠尚书），我林瀚，长子庭㭿，次子庭机，孙林燫。一门三代，五尚书，七科八进士。'四正文化'——养正心、崇正道、务正学、亲正人，是我林氏家训之本。'四知堂'取自杨震'天知地知你知我知'，一生自勉。",
       },
       {
         id: 4,
-        title: "问杯",
-        tag: "分米祈福",
-        icon: "https://bl.meishipay.com/images/content/问杯1.png",
-        image: "/images/hero_baibai.jpg",
+        title: "非遗传承",
+        tag: "林浦街巷",
+        icon: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景4-街巷.png",
+        image: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景4-街巷.png",
         images: [
-          "https://bl.meishipay.com/images/content/问杯1.png",
-          "https://bl.meishipay.com/images/content/问杯2.png"
+          "/www/wwwroot/bl.meishipay.com/images/content/scene/场景4-街巷.png"
         ],
-        origin: "相传南宋末年，陈宜中丞相在宋军撤离前，将多余军粮挨家挨户分发给百姓，助民度过难关。",
-        desc: "在林浦泰山宫的元宵祭祀等活动中，保留着独特的\"分米\"仪式。这不仅是向神明祈求丰衣足食，更是为了纪念陈宜中丞相留粮惠民的恩德。明代尚书林瀚曾赋诗\"至今遗恨江心水\"以感怀此事。参与分米，便是参与这份跨越千年的感恩与传承。",
+        origin: "安南伬是从安南国传来的鼓乐，南宋皇帝逃到林浦时随行乐师所教。踩街游神抬着泰山神像巡游，分米活动纪念陈宜中丞相分粮惠民之恩。",
+        desc: "老艺人告诉你：再过几天就是元宵，咱们林浦的'迎泰山'游神可热闹了！咚咚咚的鼓点一响整条街都震起来！战鼓、唢呐、椰胡、大锣小锣……《一枝花》从宋朝传下来。塔骨神将三米多高，小孩子看了又怕又爱看！每年元宵分米纪念陈宜中——'义重山丘陈宜中'！",
+      },
+      {
+        id: 5,
+        title: "帝昺还魂",
+        tag: "进士木牌坊",
+        icon: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png",
+        image: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png",
+        images: [
+          "/www/wwwroot/bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png"
+        ],
+        origin: "崖山海战，宋军全军覆没。陆秀夫背着年仅七岁的宋少帝赵昺跳海殉国，十万军民随之赴死。这是中国历史上最悲壮的一页。",
+        desc: "'朕……好冷。朕是赵昺……那年才七岁。'宋少帝的灵魂在进士牌坊徘徊。元兵围船，陆先生背着他跳入海中。他想念林浦百姓送的大米，想念哥哥端宗皇帝。'告诉哥哥……朕想他。'去泰山宫帮他转告吧。",
+      },
+      {
+        id: 6,
+        title: "泰山守护",
+        tag: "泰山宫",
+        icon: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景6-泰山宫.png",
+        image: "/www/wwwroot/bl.meishipay.com/images/content/scene/场景6-泰山宫.png",
+        images: [
+          "/www/wwwroot/bl.meishipay.com/images/content/scene/场景6-泰山宫.png"
+        ],
+        origin: "1276年元兵攻陷临安，陆秀夫、张世杰护着两个小皇帝从海上逃到林浦，在泰山宫住下并拥立端宗皇帝改元景炎。百姓称此为'崖山行宫'。",
+        desc: "'这里就是朕住过的地方——平山堂。'宋端宗赵昰在此等了你七百多年。这里的百姓给朕送米，小朋友陪朕玩。朕好想抱抱弟弟……谢谢你帮我们传话。'这片土地就交给你们了。记住林浦，记住这里的百姓，记住这段历史。'"
       }
     ]
   },
@@ -97,10 +117,10 @@ Page({
         
         wx.setStorageSync('linpu_user_data', userData);
         
-        console.log(`体验 ${experienceId} 已记录完成，总计: ${done.length}/4`);
+        console.log(`体验 ${experienceId} 已记录完成，总计: ${done.length}/6`);
 
-        // 检查是否4个全部看完
-        if (done.length >= 4) {
+        // 检查是否6个全部看完
+        if (done.length >= 6) {
           const hasGotAllPoints = wx.getStorageSync('experience_all_points_got');
           if (!hasGotAllPoints) {
             getApp().addPoints(50, '阅读全部文化解码');
