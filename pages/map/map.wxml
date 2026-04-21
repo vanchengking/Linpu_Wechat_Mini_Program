@@ -3,6 +3,11 @@
     <text>双指缩放地图，点击锚点查看地标</text>
   </view>
 
+  <!-- 左上角底图缩略图 -->
+  <view class="map-thumbnail">
+    <image src="https://bl.meishipay.com/images/content/地图导览.png" mode="aspectFill" class="thumbnail-img"></image>
+  </view>
+
   <movable-area class="map-area" scale-area>
     <movable-view 
       class="map-view" 
@@ -76,20 +81,6 @@
     </view>
   </view>
 
-  <movable-area class="chat-drag-area">
-    <movable-view 
-      class="chat-drag-view" 
-      direction="all" 
-      x="{{chatX}}" 
-      y="{{chatY}}" 
-      animation="{{false}}"
-    >
-      <image 
-        src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png" 
-        class="float-chat-icon-drag"
-        bindtap="goToChat"
-        lazy-load
-      ></image>
-    </movable-view>
-  </movable-area>
+  <!-- 全局浮窗组件 -->
+  <float-npc />
 </view>

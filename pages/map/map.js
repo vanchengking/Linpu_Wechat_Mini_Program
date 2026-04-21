@@ -3,9 +3,6 @@ Page({
     scale: 1.2, // 默认放大一点点
     activeLocation: null, // 当前选中的地点
     showModal: false, // 是否显示中央悬浮窗
-    // 新增：拖拽图标的初始坐标
-    chatX: 300, 
-    chatY: 500,
     // 地图锚点数据 (left/top 为相对于地图容器的百分比位置，与底图标签位置对齐)
     locations: [
       {
@@ -113,11 +110,6 @@ Page({
   },
 
   onLoad() {
-    const sysInfo = wx.getSystemInfoSync();
-    this.setData({
-      chatX: sysInfo.windowWidth - 70,  // 屏幕宽度减去70，靠右
-      chatY: sysInfo.windowHeight - 120 // 屏幕高度减去120，靠下
-    });
   },
 
   onShow: function () {
@@ -222,12 +214,5 @@ Page({
       this.setData({ showModal: false });
       wx.showTabBar();
     }, 500);
-  },
-
-  // 跳转到聊天页面
-  goToChat() {
-    wx.navigateTo({
-      url: '/pages/chat/chat'
-    });
   }
 });

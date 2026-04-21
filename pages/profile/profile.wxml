@@ -78,16 +78,8 @@
     </view>
   </view>
 
-  <!-- 全局浮窗聊天按钮 -->
-  <view class="float-chat-btn" bindtap="goToChat">
-    <image
-      src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png"
-      class="float-chat-icon"
-      mode="aspectFill"
-      lazy-load
-    ></image>
-  </view>
-
+  <!-- 全局浮窗组件 -->
+  <float-npc />
   </view>
 
 <!-- ===== 所获成就弹窗 ===== -->

@@ -200,24 +200,5 @@ Page({
     wx.navigateTo({
       url: `/pages/scene/scene?id=${sceneId}`
     });
-  },
-
-  // 跳转到聊天页面
-  goToChat() {
-    console.log("浮窗按钮被点击了");
-    wx.navigateTo({
-      url: '/pages/chat/chat',
-      success: (res) => {
-        console.log('跳转到聊天页面成功');
-      },
-      fail: (err) => {
-        console.error('跳转到聊天页面失败:', err);
-        wx.showToast({
-          title: '跳转失败，请稍后重试',
-          icon: 'none',
-          duration: 2000
-        });
-      }
-    });
   }
 })

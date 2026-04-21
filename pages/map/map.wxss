@@ -32,6 +32,30 @@ page {
   border: 1px solid rgba(212, 175, 55, 0.4);
 }
 
+/* ======= 左上角底图缩略图 ======= */
+.map-thumbnail {
+  position: absolute;
+  top: 40rpx;
+  left: 30rpx;
+  width: 200rpx;
+  height: 120rpx;
+  z-index: 50;
+  border-radius: 12rpx;
+  overflow: hidden;
+  border: 1rpx solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
+  /* 羽化效果：使用 mask-image 让边缘模糊 */
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+}
+
+.thumbnail-img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+
 /* 地图区域 */
 .map-area {
   position: absolute;
@@ -313,51 +337,4 @@ page {
 .action-btn:active {
   transform: scale(0.98);
   opacity: 0.9;
-}
-
-/* ======= 可自由拖拽浮窗聊天按钮 ======= */
-.chat-drag-area {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-.chat-drag-view {
-  width: 90rpx;
-  height: 90rpx;
-  border-radius: 50%;
-  pointer-events: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  border: 3rpx solid #D4AF37;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.3);
-  overflow: hidden;
-}
-
-/* 图片严格限制在圆形容器内 */
-.float-chat-icon-drag {
-  width: 70rpx;
-  height: 70rpx;
-}
-
-/* 呼吸灯特效 */
-.npc-pulse-ring {
-  position: absolute;
-  width: 90rpx;
-  height: 90rpx;
-  background-color: rgba(212, 175, 55, 0.5);
-  border-radius: 50%;
-  z-index: 1;
-  animation: npc-pulse 2s infinite ease-in-out;
-}
-
-@keyframes npc-pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(1.6); opacity: 0; }
 }

@@ -36,6 +36,9 @@
   <view class="switch-item {{isARMode ? 'active' : ''}}" bindtap="toggleMode">
     <text>实拍模式</text>
   </view>
+
+  <!-- 全局浮窗组件 -->
+  <float-npc />
 </view>
   </view>
 
@@ -283,4 +286,7 @@
       <button class="modal-btn" bindtap="backToLevels">继续探索</button>
     </view>
   </view>
+  
+  <!-- 全局浮窗组件 -->
+  <float-npc />
 </view>

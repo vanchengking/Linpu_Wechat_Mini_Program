@@ -83,6 +83,9 @@
       </scroll-view>
     </view>
   </view>
+
+  <!-- 全局浮窗组件 -->
+  <float-npc />
 </view>
 
 <!-- 悬浮功能区（放在container外，避免被scroll-view影响fixed定位） -->

@@ -129,37 +129,6 @@ page {
 .p-20 { padding: 20rpx; }
 .p-30 { padding: 30rpx; }
 
-/* 浮窗按钮样式 */
-.float-chat-btn {
-  position: fixed;
-  right: 50rpx;
-  bottom: 100rpx;
-  width: 90rpx;
-  height: 90rpx;
-  background-color: #fff;
-  border-radius: 50%;
-  border: 3rpx solid #D4AF37;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-  transition: all 0.3s ease;
-  pointer-events: auto;
-  overflow: hidden;
-}
-
-.float-chat-btn:active {
-  transform: scale(0.9);
-}
-
-/* 图片严格限制在圆形容器内 */
-.float-chat-icon {
-  width: 70rpx;
-  height: 70rpx;
-  pointer-events: none;
-}
-
 /* 图片加载占位（仅对需要骨架屏的类生效） */
 .bg-image, .bg-img, .bg, .bg-image {
   background-color: #f5f0e8;
