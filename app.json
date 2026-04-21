@@ -22,7 +22,8 @@
     "pages/ranking/ranking",
     "pages/settings/settings",
     "pages/feedback/feedback",
-    "pages/team/team"
+    "pages/team/team",
+    "pages/scene/scene"
   ],
   "window": {
     "backgroundTextStyle": "light",

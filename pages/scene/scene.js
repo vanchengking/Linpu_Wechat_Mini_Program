@@ -72,9 +72,13 @@ Page({
   },
 
   goHome() {
-    // 返回到主页或地图页
-    wx.switchTab({
-      url: '/pages/index/index'
+    wx.navigateBack({
+      delta: 1,
+      fail: () => {
+        wx.switchTab({
+          url: '/pages/jiema/jiema'
+        });
+      }
     });
   },
 

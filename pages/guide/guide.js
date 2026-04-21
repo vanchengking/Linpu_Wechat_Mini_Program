@@ -31,13 +31,11 @@ Page({
   },
 
   goHome() {
-    wx.switchTab({
-      url: '/pages/index/index',
-      fail: (err) => {
-        console.error('跳转到index页面失败:', err);
-        wx.showToast({
-          title: '跳转失败',
-          icon: 'none'
+    wx.navigateBack({
+      delta: 1,
+      fail: () => {
+        wx.switchTab({
+          url: '/pages/jiema/jiema'
         });
       }
     });
