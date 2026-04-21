@@ -11,6 +11,9 @@ App({
     // 🔥 启动时预加载核心图片（不阻塞启动流程）
     preloadUtil.prelaunch();
 
+    // 初始化积分和数据
+    this.loadStorageData();
+
     // 登录
     wx.login({
       success: res => {
@@ -61,23 +64,39 @@ App({
   // 加载存储的数据
   loadStorageData: function() {
     const points = wx.getStorageSync('userPoints');
+    // 如果存储中存在积分（包括0分），则加载
+    if (points !== undefined && points !== null && points !== '') {
+      this.globalData.userPoints = parseInt(points) || 0;
+    } else {
+      // 如果存储中没有，初始化为0并保存一次
+      this.globalData.userPoints = 0;
+      wx.setStorageSync('userPoints', 0);
+    }
+    
     const coupons = wx.getStorageSync('ownedCoupons');
-    this.globalData.userPoints = points || 0;
-    this.globalData.ownedCoupons = coupons || [];
+    if (coupons) {
+      this.globalData.ownedCoupons = coupons;
+    } else {
+      this.globalData.ownedCoupons = [];
+      wx.setStorageSync('ownedCoupons', []);
+    }
   },
 
   // 获取积分
   getPoints: function() {
-    if (this.globalData.userPoints === 0) {
-      this.loadStorageData();
-    }
+    // 确保数据已加载
+    this.loadStorageData();
     return this.globalData.userPoints;
   },
 
   // 增加积分
   addPoints: function(amount, source) {
+    this.loadStorageData();
+    const oldPoints = this.globalData.userPoints;
     this.globalData.userPoints += amount;
     wx.setStorageSync('userPoints', this.globalData.userPoints);
+    console.log(`积分增加: ${oldPoints} -> ${this.globalData.userPoints} (来源: ${source})`);
+    
     wx.showToast({
       title: `获得 ${amount} 积分\n(${source})`,
       icon: 'none',
@@ -88,6 +107,7 @@ App({
 
   // 扣减积分（例如购买抵用券）
   deductPoints: function(amount) {
+    this.loadStorageData();
     if (this.globalData.userPoints >= amount) {
       this.globalData.userPoints -= amount;
       wx.setStorageSync('userPoints', this.globalData.userPoints);

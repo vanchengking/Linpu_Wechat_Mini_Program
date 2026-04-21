@@ -982,7 +982,20 @@ Page({
   // ========== 章节完成 ==========
 
   completeLevel() {
-    this.setData({ showSuccessModal: true });
+    const { currentLevelIndex, levels } = this.data;
+    const newLevels = [...levels];
+    if (!newLevels[currentLevelIndex].completed) {
+      newLevels[currentLevelIndex].completed = true;
+      this.setData({
+        levels: newLevels,
+        showSuccessModal: true
+      });
+      this.updateCompletedCount();
+      this.saveProgress();
+      this.recordLevelComplete(currentLevelIndex, newLevels[currentLevelIndex].title);
+    } else {
+      this.setData({ showSuccessModal: true });
+    }
   },
 
   completeAndUnlock(levelIndex) {
@@ -997,7 +1010,7 @@ Page({
     });
     this.updateCompletedCount();
     this.saveProgress();
-    this.recordLevelComplete(levelIndex);
+    this.recordLevelComplete(levelIndex, newLevels[levelIndex].title);
   },
 
   completeAndUnlockBonus(levelIndex) {
@@ -1012,7 +1025,7 @@ Page({
     });
     this.updateCompletedCount();
     this.saveProgress();
-    this.recordLevelComplete(levelIndex);
+    this.recordLevelComplete(levelIndex, newLevels[levelIndex].title);
     // 额外奖励：帝踪寻觅者碎片
     try {
       let userData = wx.getStorageSync('linpu_user_data') || { totalExp: 0 };
@@ -1024,8 +1037,12 @@ Page({
     }
   },
 
-  recordLevelComplete(levelIndex) {
+  recordLevelComplete(levelIndex, passedTitle) {
     try {
+      const app = getApp();
+      const level = this.data.levels[levelIndex];
+      const levelTitle = passedTitle || (level ? level.title : `第${levelIndex + 1}章`);
+
       let userData = wx.getStorageSync('linpu_user_data') || { totalExp: 0 };
       userData.totalExp = (userData.totalExp || 0) + 30;
       userData.arScanned = (userData.arScanned || 0) + 1;
@@ -1036,10 +1053,20 @@ Page({
       wx.setStorageSync('linpu_user_data', userData);
 
       // 积分发放（每章只一次）
-      const arPointsKey = `ar_points_level_${levelIndex}`;
-      if (!wx.getStorageSync(arPointsKey)) {
-        getApp().addPoints && getApp().addPoints(100, `完成AR游戏章节：${this.data.levels[levelIndex].title}`);
-        wx.setStorageSync(arPointsKey, true);
+      // 使用更明确的 key，并加上版本/日期前缀以防旧数据干扰
+      const arPointsKey = `ar_points_v1_level_${levelIndex}`;
+      const hasGotPoints = wx.getStorageSync(arPointsKey);
+      
+      console.log(`AR章节完成检查: index=${levelIndex}, title=${levelTitle}, hasGotPoints=${hasGotPoints}`);
+
+      if (!hasGotPoints) {
+        if (app && typeof app.addPoints === 'function') {
+          console.log(`正在发放积分: 100, 来源: 完成AR游戏章节：${levelTitle}`);
+          app.addPoints(100, `完成AR游戏章节：${levelTitle}`);
+          wx.setStorageSync(arPointsKey, true);
+        } else {
+          console.error('getApp().addPoints 不可用');
+        }
       }
     } catch (e) {
       console.log('记录完成失败:', e);
@@ -1057,7 +1084,7 @@ Page({
       this.setData({ levels: newLevels });
       this.updateCompletedCount();
       this.saveProgress();
-      this.recordLevelComplete(lastIdx);
+      this.recordLevelComplete(lastIdx, newLevels[lastIdx].title);
     }
 
     const stats = {

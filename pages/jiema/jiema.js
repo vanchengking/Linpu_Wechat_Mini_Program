@@ -97,10 +97,13 @@ Page({
         
         wx.setStorageSync('linpu_user_data', userData);
         
-        console.log(`体验 ${experienceId} 已记录完成，总计: ${done.length}/4`);
+        // 发放积分：每次阅读文化解码奖励
+        getApp().addPoints(10, `文化解码：${this.data.currentItem.title}`);
+        
+        console.log(`体验 ${experienceId} 已记录完成，总计: ${done.length}/${this.data.experiences.length}`);
 
-        // 检查是否4个全部看完
-        if (done.length >= 4) {
+        // 检查是否全部看完
+        if (done.length >= this.data.experiences.length) {
           const hasGotAllPoints = wx.getStorageSync('experience_all_points_got');
           if (!hasGotAllPoints) {
             getApp().addPoints(50, '阅读全部文化解码');

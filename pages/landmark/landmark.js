@@ -133,6 +133,9 @@ Page({
         
         wx.setStorageSync('linpu_user_data', userData);
         
+        // 发放积分：浏览地标详情奖励
+        getApp().addPoints(20, `了解地标：${this.data.currentBuilding.name}`);
+        
         console.log(`地标 ${landmarkId} 已记录访问，总计: ${visited.length}/6`);
       }
     } catch (e) {
