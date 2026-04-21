@@ -1,5 +1,5 @@
 // 定义后端地址（注意端口是 8024）
-const BASE_URL = "http://112.126.80.115:8024";
+const BASE_URL = "http://127.0.0.1:8024";
 
 Page({
   data: {

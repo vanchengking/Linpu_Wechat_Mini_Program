@@ -21,8 +21,8 @@ dashscope.api_key = "sk-7f1a7826e0ed482cadaedc8e2aabd5c7"
 
 # 3. Dify 的地址
 # 如果你用的是 Dify 官网 (dify.ai)，请用下面这个地址：
-DIFY_API_URL = "http://localhost/v1/chat-messages"
-# 如果你是本地部署的 Docker，请用： "http://localhost/v1/chat-messages"
+DIFY_API_URL = "https://api.dify.ai/v1/chat-messages"
+# 如果你是本地部署的 Docker，请用： "https://api.dify.ai/v1/chat-messages"
 
 # =======================================================
 
