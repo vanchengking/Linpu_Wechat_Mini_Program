@@ -16,7 +16,7 @@ const STORY_LEVELS = [
     npc: ['宋端宗赵昰', '宋末帝赵昺'],
     node: '海上→林浦村口（AR场景过渡）',
     special: '双人同时出场，赵昰为主对话框，赵昺为辅助气泡',
-    bgImage: 'https://bl.meishipay.com/images/content/scene/场景1-尚书里.webp',
+    bgImage: 'https://bl.meishipay.com/images/content/scene/场景4-街巷.png',
     dialogues: [
       // ===== 序章·游客入村 =====
       { id: 'p0', type: 'ar_scene',
@@ -93,7 +93,8 @@ const STORY_LEVELS = [
       // 第3轮·初到林浦
       {
         id: 8, type: 'ar_scene',
-        text: '海浪推动小船靠岸，画面渐变——古代林浦村的轮廓从薄雾中浮现，村民夹道跪迎，两幼帝在臣僚簇拥下步入村落。'
+        text: '海浪推动小船靠岸，画面渐变——古代林浦村的轮廓从薄雾中浮现，村民夹道跪迎，两幼帝在臣僚簇拥下步入村落。',
+        gameId: 'chapter1'
       },
       {
         id: 9, type: 'narrator', speaker: '旁白',
@@ -234,7 +235,8 @@ const STORY_LEVELS = [
       {
         id: 11, type: 'npc', speaker: '古村长',
         npcImage: 'https://bl.meishipay.com/images/content/人物/古村长.webp',
-        text: '去走走看吧，这林浦的旅程，就从这牌坊开始。对了，你知道吗？林浦元宵还有"分米"的习俗。当年陈宜中丞相把军粮分给百姓，百姓感念他的恩德，每年都分米纪念。你来得巧，还能赶上！前面就是濂江书院了，朱老夫子可能还在那儿讲课呢。',
+        text: '去走走看吧，这林浦的旅程，就从这牌坊开始。对了，你知道吗？林浦元宵还有"分米"的习俗。当年陈宜中丞相把军粮分给百姓，百姓感念他的恩德，每年都分米纪念。来来来，你也试试当年陈丞相分米的感觉！',
+        gameId: 'chapter2',
         options: [
           { text: '好的，我这就去', nextId: -1, action: 'unlock_next', actionText: '解锁第三章，跳转濂江书院' },
           { text: '再聊一会儿', nextId: 0 }
@@ -271,7 +273,8 @@ const STORY_LEVELS = [
       {
         id: 1, type: 'npc', speaker: '朱熹',
         npcImage: 'https://bl.meishipay.com/images/content/人物/朱熹.webp',
-        text: '老夫教他们"格物致知"——探究万物，获得真知。你看那照壁上"文光射斗"四字，便是老夫对学子们的期许。还有那石臼，是师生洗笔之处，旁刻"知鱼乐"，出自庄子——读书要用心体会。',
+        text: '老夫教他们"格物致知"——探究万物，获得真知。你看那照壁上"文光射斗"四字，便是老夫对学子们的期许。说得再多不如动手一试。——来，老夫考考你。',
+        gameId: 'chapter3',
         options: [
           { text: '先生说得真好', nextId: 5 },
           { text: '下一站去哪里？', nextId: 5 }
@@ -328,7 +331,8 @@ const STORY_LEVELS = [
       {
         id: 1, type: 'npc', speaker: '尚书伯',
         npcImage: 'https://bl.meishipay.com/images/content/人物/尚书伯.png',
-        text: '我父林元美（赠尚书），我林瀚，长子庭㭿，次子庭机，孙林燫。一门三代，五尚书，七科八进士。你看这门前"乌纱池"，形如官帽，寓意官运亨通。不过嘛……终究要靠真才实学。',
+        text: '我父林元美（赠尚书），我林瀚，长子庭㭿，次子庭机，孙林燫。一门三代，五尚书，七科八进士。我林氏家谱在此，你可知这些先祖各自的功绩？——来，理一理。',
+        gameId: 'chapter4',
         options: [
           { text: '尚书伯教诲的是', nextId: 5 },
           { text: '下一站去哪里？', nextId: 5 }
@@ -386,7 +390,8 @@ const STORY_LEVELS = [
       {
         id: 1, type: 'npc', speaker: '老艺人',
         npcImage: 'https://bl.meishipay.com/images/content/人物/老艺人.png',
-        text: '那是从安南国传来的鼓乐！南宋皇帝逃到林浦的时候，随行的乐师把这音乐教给了咱们。你听——（模仿鼓点）咚咚咚，咚咚咚！像不像战鼓？每逢节庆，我们就在街上敲起来，整条街都跟着跳！',
+        text: '那是从安南国传来的鼓乐！南宋皇帝逃到林浦的时候，随行的乐师把这音乐教给了咱们。来试试！咱们安南伬的鼓点可是有讲究的！',
+        gameId: 'chapter5',
         options: [
           { text: '这鼓声真带劲！', nextId: 7 },
           { text: '还有其他乐器吗？', nextId: 2 }
@@ -692,6 +697,7 @@ const STORY_LEVELS = [
       {
         id: 31, type: 'narrator', speaker: '旁白',
         text: '帝踪已远。可故事没有结束——因为每一个来到林浦的人，都在续写着它。',
+        gameId: 'chapter6',
         narratorStyle: 'warm'
       },
       {
@@ -718,6 +724,8 @@ Page({
     isARMode: false,
     showSuccessModal: false,
     showEndingView: false,
+    showGameModal: false,
+    pendingGameId: null,
     currentLevelIndex: 0,
     currentDialogueId: 0,
     currentDialogue: null,
@@ -740,11 +748,26 @@ Page({
     preloadUtil.preloadPageImages('ar');
     this.initLevels();
     this.updateCompletedCount();
+    this.setLatestUnlockedChapter();
   },
 
   onShow() {
     this.loadProgress();
     this.updateCompletedCount();
+    this.setLatestUnlockedChapter();
+  },
+
+  setLatestUnlockedChapter() {
+    const levels = this.data.levels;
+    let latestIndex = 0;
+    // 寻找最后一个解锁的章节索引
+    for (let i = levels.length - 1; i >= 0; i--) {
+      if (levels[i].unlocked) {
+        latestIndex = i;
+        break;
+      }
+    }
+    this.setData({ currentPreviewIndex: latestIndex });
   },
 
   onUnload() {
@@ -850,6 +873,9 @@ Page({
       currentLevelIndex: index,
       currentDialogueId: firstDialogue.id,
       currentDialogue: firstDialogue
+    }, () => {
+      this.lastPromptedGameId = null;
+      this.checkGameTrigger(firstDialogue);
     });
 
     // 更新对话计数
@@ -915,21 +941,13 @@ Page({
 
     const nextDialogue = dialogues[currentIdx + 1];
 
-    // 处理 after 附加气泡
-    if (nextDialogue.after) {
-      this.setData({
-        currentDialogueId: nextDialogue.id,
-        currentDialogue: {
-          ...nextDialogue,
-          afterBubble: nextDialogue.after
-        }
-      });
-    } else {
-      this.setData({
-        currentDialogueId: nextDialogue.id,
-        currentDialogue: nextDialogue
-      });
-    }
+    this.setData({
+      currentDialogueId: nextDialogue.id,
+      currentDialogue: nextDialogue
+    }, () => {
+      // 在新对话加载后检查触发
+      this.checkGameTrigger(nextDialogue);
+    });
 
     this.addDialogueCount();
   },
@@ -949,21 +967,12 @@ Page({
     if (option.nextId !== undefined && option.nextId !== -1) {
       const targetDialogue = level.dialogues.find(d => d.id === option.nextId);
       if (targetDialogue) {
-        // 处理 after 附加气泡
-        if (targetDialogue.after) {
-          this.setData({
-            currentDialogueId: targetDialogue.id,
-            currentDialogue: {
-              ...targetDialogue,
-              afterBubble: targetDialogue.after
-            }
-          });
-        } else {
-          this.setData({
-            currentDialogueId: targetDialogue.id,
-            currentDialogue: targetDialogue
-          });
-        }
+        this.setData({
+          currentDialogueId: targetDialogue.id,
+          currentDialogue: targetDialogue
+        }, () => {
+          this.checkGameTrigger(targetDialogue);
+        });
         this.addDialogueCount();
       }
     }
@@ -1244,6 +1253,58 @@ Page({
       title: '相机启动失败，已切回背景模式',
       icon: 'none'
     });
+  },
+
+  // ========== 游戏触发 ==========
+
+  checkGameTrigger(dialogue) {
+    if (dialogue && dialogue.gameId) {
+      // 如果已经为此对话提示过，不再重复
+      if (this.lastPromptedGameId === dialogue.gameId + '_' + dialogue.id) {
+        return;
+      }
+      this.lastPromptedGameId = dialogue.gameId + '_' + dialogue.id;
+
+      this.setData({
+        showGameModal: true,
+        pendingGameId: dialogue.gameId
+      });
+      return true;
+    }
+    return false;
+  },
+
+  confirmGame() {
+    const gameId = this.data.pendingGameId;
+    this.setData({ showGameModal: false });
+    if (gameId) {
+      this.enterGame(gameId);
+    }
+  },
+
+  cancelGame() {
+    this.setData({ 
+      showGameModal: false,
+      pendingGameId: null
+    });
+  },
+
+  enterGame(gameId) {
+    const gamePaths = {
+      'chapter1': '/pages/ar_games/chapter1/chapter1',
+      'chapter2': '/pages/ar_games/chapter2/chapter2',
+      'chapter3': '/pages/ar_games/chapter3/chapter3',
+      'chapter4': '/pages/ar_games/chapter4/chapter4',
+      'chapter5': '/pages/ar_games/chapter5/chapter5',
+      'chapter6': '/pages/ar_games/chapter6/chapter6'
+    };
+
+    const path = gamePaths[gameId];
+    if (path) {
+      wx.navigateTo({
+        url: path
+      });
+    }
   },
 
   // ========== 重置进度 ==========

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "第二章：分米传情",
+  "usingComponents": {
+    "ScorePanel": "/components/ar_games/ScorePanel/ScorePanel",
+    "ResultDialog": "/components/ar_games/ResultDialog/ResultDialog"
+  },
+  "disableScroll": true
+}

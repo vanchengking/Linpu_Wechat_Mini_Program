@@ -1,0 +1,95 @@
+<view class="game-container">
+  <view class="memory-glow"></view>
+  <view class="aurora-glow"></view>
+  <view class="floating-lights">
+    <view class="light-dot dot1"></view>
+    <view class="light-dot dot2"></view>
+    <view class="light-dot dot3"></view>
+  </view>
+  <view class="star-bg"></view>
+
+  <view class="score-panel-wrap">
+    <ScorePanel score="{{score}}" timeLeft="{{timeLeft}}" showTime="{{true}}" endHint="收集齐所有碎片即可完成"></ScorePanel>
+  </view>
+
+  <!-- 随机事件提示 -->
+  <view class="event-toast" wx:if="{{randomEventHint}}">
+    <text>{{randomEventHint}}</text>
+  </view>
+
+  <!-- 游戏开始前的引导 -->
+  <view class="tutorial-overlay" wx:if="{{showTutorial}}">
+    <view class="tutorial-content">
+      <view class="npc-portrait-placeholder">
+        <text>📜</text>
+      </view>
+      <view class="speech-bubble">
+        <text class="npc-name">记忆之灵：</text>
+        <text class="npc-text">“每一个来到林浦的人，都在续写着它的故事。请在星空中寻找并收集散落的 12 个记忆碎片，集齐它们，重现林浦的往昔。”</text>
+      </view>
+      <view class="guide-steps">
+        <view class="step">
+          <view class="step-icon">✦</view>
+          <text>点击发光的碎片</text>
+        </view>
+        <view class="step">
+          <view class="step-icon">📖</view>
+          <text>重拾章节回忆</text>
+        </view>
+      </view>
+      <button class="start-btn" bindtap="onStartGame">开始收集</button>
+    </view>
+  </view>
+
+  <!-- 倒计时提示 -->
+  <view class="countdown-overlay" wx:if="{{countdown > 0}}">
+    <text class="countdown-text">{{countdown === 1 ? 'Go!' : countdown - 1}}</text>
+  </view>
+
+  <view class="fragment-layer">
+    <view 
+      wx:for="{{fragments}}" 
+      wx:key="id" 
+      class="fragment-item {{item.collected ? 'collected' : ''}} {{highlightIndex === index ? 'highlight' : ''}}"
+      style="left: {{item.x}}vw; top: {{item.y}}vh;"
+      bindtap="onTapFragment"
+      data-index="{{index}}"
+    >
+      <view class="fragment-star">✦</view>
+    </view>
+  </view>
+
+  <!-- 碎片详情弹窗 -->
+  <view class="fragment-dialog" wx:if="{{showFragmentDetail}}">
+    <view class="fragment-content">
+      <text class="f-title">{{currentFragment.name}}</text>
+      <text class="f-chapter">第{{currentFragment.chapter}}章回忆</text>
+      <text class="f-desc">"{{currentFragment.desc}}"</text>
+      <button class="btn primary-btn" bindtap="onCloseDetail">收下</button>
+    </view>
+  </view>
+
+  <!-- 最终结算弹窗 -->
+  <view class="final-result-dialog" wx:if="{{showFinalResult}}">
+    <view class="final-content">
+      <view class="final-header">林浦史官 · 旅程总结</view>
+      <view class="final-body">
+        <view class="final-item">游戏总积分: <text class="highlight">{{globalData.totalPoints}}</text></view>
+        <view class="final-item">碎片收集率: <text class="highlight">{{collectedCount}} / 12</text></view>
+        <view class="final-item">获得徽章数: <text class="highlight">{{globalData.badges.length}}</text></view>
+        
+        <view class="badges-list">
+          <view class="badge-tag" wx:for="{{globalData.badges}}" wx:key="*this">{{item}}</view>
+        </view>
+        
+        <view class="final-quote">
+          <text>"谢谢你，记住了这里的一切。"</text>
+        </view>
+      </view>
+      <view class="final-footer">
+        <button class="btn primary-btn share-btn" bindtap="onShare">生成纪念海报</button>
+        <button class="btn secondary-btn" bindtap="onNext">结束旅程</button>
+      </view>
+    </view>
+  </view>
+</view>

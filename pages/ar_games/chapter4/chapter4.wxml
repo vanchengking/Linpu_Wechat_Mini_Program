@@ -1,0 +1,85 @@
+<view class="game-container">
+  <!-- 游戏背景图 -->
+  <image class="game-bg" src="https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png" mode="aspectFill"></image>
+  <view class="game-overlay"></view>
+
+  <view class="score-panel-wrap">
+    <ScorePanel score="{{score}}" timeLeft="{{timeLeft}}" showTime="{{true}}" endHint="{{phase === 1 ? '正确连线所有祖先进入下一阶段' : '配对所有卡片即结束'}}"></ScorePanel>
+  </view>
+
+  <!-- 随机事件提示 -->
+  <view class="event-toast" wx:if="{{randomEventHint}}">
+    <text>{{randomEventHint}}</text>
+  </view>
+
+  <!-- 游戏开始前的引导 -->
+  <view class="tutorial-overlay" wx:if="{{showTutorial}}">
+    <view class="tutorial-content">
+      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/尚书伯.png" mode="aspectFit"></image>
+      <view class="speech-bubble">
+        <text class="npc-name">尚书伯：</text>
+        <text class="npc-text">“我林氏家谱在此，你可知这些先祖各自的功绩？请先将名字与成就连线，随后完成‘四正’家训卡牌配对。”</text>
+      </view>
+      <view class="guide-steps">
+        <view class="step">
+          <view class="step-icon">↔️</view>
+          <text>拖动圆点连线</text>
+        </view>
+        <view class="step">
+          <view class="step-icon">🃏</view>
+          <text>点击翻牌配对</text>
+        </view>
+      </view>
+      <button class="start-btn" bindtap="onStartGame">领命，开始！</button>
+    </view>
+  </view>
+
+  <!-- 倒计时提示 -->
+  <view class="countdown-overlay" wx:if="{{countdown > 0}}">
+    <text class="countdown-text">{{countdown === 1 ? 'Go!' : countdown - 1}}</text>
+  </view>
+
+  <!-- 阶段一：连线 -->
+  <view class="phase1" wx:if="{{phase === 1}}">
+    <canvas type="2d" id="lineCanvas" class="line-canvas" bindtouchstart="onLineTouchStart" bindtouchmove="onLineTouchMove" bindtouchend="onLineTouchEnd"></canvas>
+    
+    <view class="names-col">
+      <view class="name-item {{item.matched ? 'matched' : ''}}" wx:for="{{names}}" wx:key="id" id="name-{{index}}">
+        <text>{{item.text}}</text>
+        <view class="dot right"></view>
+      </view>
+    </view>
+    
+    <view class="descs-col">
+      <view class="desc-item {{item.matched ? 'matched' : ''}}" wx:for="{{descs}}" wx:key="id" id="desc-{{index}}">
+        <view class="dot left"></view>
+        <text>{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 阶段二：翻牌游戏 -->
+  <view class="phase2" wx:if="{{phase === 2}}">
+    <view class="grid-container">
+      <view class="card {{item.flipped || item.matched ? 'flipped' : ''}}" wx:for="{{cards}}" wx:key="index" bindtap="onFlipCard" data-index="{{index}}">
+        <view class="card-inner">
+          <view class="card-front"></view>
+          <view class="card-back">
+            <text>{{item.text}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <ResultDialog 
+    visible="{{showResult}}" 
+    title="{{resultTitle}}" 
+    score="{{score}}" 
+    stars="{{stars}}" 
+    comment="{{npcComment}}"
+    fragment="{{fragmentName}}"
+    showRetry="{{false}}"
+    bind:next="onNext">
+  </ResultDialog>
+</view>

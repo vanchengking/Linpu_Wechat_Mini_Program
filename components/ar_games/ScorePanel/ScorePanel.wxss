@@ -1,0 +1,64 @@
+.score-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #fff;
+  z-index: 100;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.score-container, .timer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-label, .time-label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.score-value, .time-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.combo-container {
+  background: linear-gradient(90deg, #FF4500, #FF8C00);
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.combo-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  font-style: italic;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.animate-bounce {
+  animation: bounce 0.3s ease;
+}
+
+.end-hint-container {
+  margin-top: 4px;
+}
+
+.end-hint-text {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}

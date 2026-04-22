@@ -1,0 +1,33 @@
+<view class="dialog-mask" wx:if="{{visible}}">
+  <view class="dialog-content">
+    <view class="dialog-header">
+      <text class="dialog-title">{{title}}</text>
+    </view>
+    
+    <view class="dialog-body">
+      <view class="score-display">
+        <text class="score-big">{{score}}</text>
+        <text class="score-unit">分</text>
+      </view>
+      
+      <view class="stars-container" wx:if="{{stars > 0}}">
+        <text class="star {{stars >= 1 ? 'active' : ''}}">★</text>
+        <text class="star {{stars >= 2 ? 'active' : ''}}">★</text>
+        <text class="star {{stars >= 3 ? 'active' : ''}}">★</text>
+      </view>
+      
+      <view class="npc-comment" wx:if="{{comment}}">
+        <text class="comment-text">"{{comment}}"</text>
+      </view>
+
+      <view class="fragment-info" wx:if="{{fragment}}">
+        <text>获得隐藏碎片：{{fragment}}</text>
+      </view>
+    </view>
+
+    <view class="dialog-footer">
+      <button class="btn primary-btn" bindtap="onNext">继续旅程</button>
+      <button class="btn secondary-btn" bindtap="onRetry" wx:if="{{showRetry}}">再试一次</button>
+    </view>
+  </view>
+</view>

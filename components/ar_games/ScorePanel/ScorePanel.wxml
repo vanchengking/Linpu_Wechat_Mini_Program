@@ -1,0 +1,16 @@
+<view class="score-panel">
+  <view class="score-container">
+    <text class="score-label">分数:</text>
+    <text class="score-value">{{score}}</text>
+  </view>
+  <view wx:if="{{combo > 1}}" class="combo-container animate-bounce">
+    <text class="combo-text">COMBO x{{combo}}</text>
+  </view>
+  <view class="timer-container" wx:if="{{showTime}}">
+    <text class="time-label">时间:</text>
+    <text class="time-value">{{timeLeft}}s</text>
+  </view>
+  <view class="end-hint-container" wx:if="{{endHint}}">
+    <text class="end-hint-text">（{{endHint}}）</text>
+  </view>
+</view>

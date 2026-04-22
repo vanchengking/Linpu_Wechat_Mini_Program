@@ -7,7 +7,6 @@
     animation="{{false}}"
     catchtap="goToChat"
   >
-    <view class="pulse-ring"></view>
     <image src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png" class="npc-icon" lazy-load></image>
   </movable-view>
 </movable-area>

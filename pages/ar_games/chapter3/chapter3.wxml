@@ -1,0 +1,102 @@
+<view class="game-container">
+  <!-- 游戏背景图 -->
+  <image class="game-bg" src="https://bl.meishipay.com/images/content/scene/场景2-廉江书院.webp" mode="aspectFill"></image>
+  <view class="game-overlay"></view>
+
+  <view class="score-panel-wrap">
+    <ScorePanel score="{{score}}" timeLeft="{{timeLeft}}" showTime="{{true}}" endHint="{{phase === 1 ? '拼合所有汉字进入下一阶段' : '完成所有题目即结束'}}"></ScorePanel>
+  </view>
+
+  <!-- 随机事件提示 -->
+  <view class="event-toast" wx:if="{{randomEventHint}}">
+    <text>{{randomEventHint}}</text>
+  </view>
+
+  <!-- 游戏开始前的引导 -->
+  <view class="tutorial-overlay" wx:if="{{showTutorial}}">
+    <view class="tutorial-content">
+      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/朱熹.webp" mode="aspectFit"></image>
+      <view class="speech-bubble">
+        <text class="npc-name">朱熹：</text>
+        <text class="npc-text">“格物致知，方能得真意。请先将散落的偏旁拖拽到正确位置拼出目标汉字，随后回答老夫的提问。”</text>
+      </view>
+      <view class="guide-steps">
+        <view class="step">
+          <view class="step-icon">👆</view>
+          <text>拖拽偏旁组合</text>
+        </view>
+        <view class="step">
+          <view class="step-icon">📝</view>
+          <text>选择正确答案</text>
+        </view>
+      </view>
+      <button class="start-btn" bindtap="onStartGame">领教了，开始！</button>
+    </view>
+  </view>
+
+  <!-- 倒计时提示 -->
+  <view class="countdown-overlay" wx:if="{{countdown > 0}}">
+    <text class="countdown-text">{{countdown === 1 ? 'Go!' : countdown - 1}}</text>
+  </view>
+
+  <!-- 阶段一：拼字游戏 -->
+  <view class="phase1" wx:if="{{phase === 1}}">
+    <view class="target-word-display">
+      <text class="hint-text">目标字：</text>
+      <text class="target-char">{{currentWord.char}}</text>
+    </view>
+    
+    <!-- 组合区域 -->
+    <view class="combine-area">
+      <view class="slot {{slot.filled ? 'filled' : ''}}" wx:for="{{currentWord.slots}}" wx:key="index">
+        <text wx:if="{{slot.filled}}">{{slot.filledChar}}</text>
+      </view>
+    </view>
+    
+    <!-- 散落的偏旁 -->
+    <view class="parts-area">
+      <view 
+        class="part-item {{item.used ? 'used' : ''}}" 
+        wx:for="{{parts}}" 
+        wx:key="index"
+        style="left: {{item.x}}px; top: {{item.y}}px;"
+        bindtouchstart="onPartTouchStart"
+        bindtouchmove="onPartTouchMove"
+        bindtouchend="onPartTouchEnd"
+        data-index="{{index}}"
+      >
+        {{item.char}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 阶段二：答题游戏 -->
+  <view class="phase2" wx:if="{{phase === 2}}">
+    <view class="quiz-card">
+      <view class="question-text">{{currentQuiz.q}}</view>
+      <view class="options-container">
+        <view 
+          class="option-item {{selectedOption === index ? (index === currentQuiz.a ? 'correct' : 'wrong') : ''}} {{showAnswer && index === currentQuiz.a ? 'correct' : ''}}"
+          wx:for="{{currentQuiz.options}}" 
+          wx:key="index"
+          bindtap="onSelectOption"
+          data-index="{{index}}"
+        >
+          <text class="opt-label">{{['A', 'B', 'C', 'D'][index]}}</text>
+          <text class="opt-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <ResultDialog 
+    visible="{{showResult}}" 
+    title="{{resultTitle}}" 
+    score="{{score}}" 
+    stars="{{stars}}" 
+    comment="{{npcComment}}"
+    fragment="{{fragmentName}}"
+    showRetry="{{false}}"
+    bind:next="onNext">
+  </ResultDialog>
+</view>

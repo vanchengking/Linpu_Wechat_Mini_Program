@@ -9,19 +9,15 @@
   z-index: 99999; /* 保证永远在最上层 */
 }
 
-/* 拖拽块（正圆形） */
+/* 拖拽块 */
 .movable-view {
   width: 90rpx;
   height: 90rpx;
-  border-radius: 50%;
   pointer-events: auto; /* 关键：让图标本身可以被点击和拖拽 */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  border: 3rpx solid #D4AF37;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.3);
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* NPC 图标（严格限制在圆形容器内） */

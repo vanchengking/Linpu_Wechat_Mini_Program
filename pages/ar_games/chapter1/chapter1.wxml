@@ -1,0 +1,62 @@
+<view class="game-container" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd">
+  <!-- 游戏背景：海面 -->
+  <view class="sea-bg">
+    <view class="wave wave1"></view>
+    <view class="wave wave2"></view>
+    <view class="wave wave3"></view>
+  </view>
+  
+  <canvas type="2d" id="gameCanvas" class="game-canvas"></canvas>
+  
+  <view class="score-panel-wrap">
+    <ScorePanel score="{{score}}" timeLeft="{{timeLeft}}" showTime="{{true}}" endHint="坚持到靠岸即可完成"></ScorePanel>
+  </view>
+
+  <!-- 追兵距离指示器 -->
+  <view class="enemy-distance" style="width: {{enemyProgress}}%">
+    <text class="enemy-label">追兵逼近</text>
+  </view>
+
+  <!-- 游戏开始前的引导 -->
+  <view class="tutorial-overlay" wx:if="{{showTutorial}}">
+    <view class="tutorial-content">
+      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/宋端宗.webp" mode="aspectFit"></image>
+      <view class="speech-bubble">
+        <text class="npc-name">赵昰：</text>
+        <text class="npc-text">“昺儿莫怕，我们快到林浦了！请帮我们稳住船只，收集海上的粮草💰和淡水💧，避开暗礁🪨和漩涡🌀！”</text>
+      </view>
+      <view class="guide-steps">
+        <view class="step">
+          <view class="step-icon">↔️</view>
+          <text>左右滑动控制船只</text>
+        </view>
+        <view class="step">
+          <view class="step-icon">⛵</view>
+          <text>避开障碍，收集物资</text>
+        </view>
+      </view>
+      <button class="start-btn" bindtap="onStartGame">领命，出发！</button>
+    </view>
+  </view>
+
+  <!-- 倒计时提示 -->
+  <view class="countdown-overlay" wx:if="{{countdown > 0}}">
+    <text class="countdown-text">{{countdown === 1 ? 'Go!' : countdown - 1}}</text>
+  </view>
+
+  <!-- 随机事件提示 -->
+  <view class="event-toast" wx:if="{{randomEventHint}}">
+    <text>{{randomEventHint}}</text>
+  </view>
+
+  <ResultDialog 
+    visible="{{showResult}}" 
+    title="{{resultTitle}}" 
+    score="{{score}}" 
+    stars="{{stars}}" 
+    comment="{{npcComment}}"
+    fragment="{{fragmentName}}"
+    showRetry="{{false}}"
+    bind:next="onNext">
+  </ResultDialog>
+</view>

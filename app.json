@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/ar/ar",
+    "pages/ar_games/chapter1/chapter1",
     "pages/market/market",
     "pages/blank/blank",
     "pages/decode/decode",
@@ -23,7 +24,12 @@
     "pages/settings/settings",
     "pages/feedback/feedback",
     "pages/team/team",
-    "pages/scene/scene"
+    "pages/scene/scene",
+    "pages/ar_games/chapter2/chapter2",
+    "pages/ar_games/chapter3/chapter3",
+    "pages/ar_games/chapter4/chapter4",
+    "pages/ar_games/chapter5/chapter5",
+    "pages/ar_games/chapter6/chapter6"
   ],
   "window": {
     "backgroundTextStyle": "light",

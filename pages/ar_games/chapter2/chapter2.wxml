@@ -1,0 +1,54 @@
+<view class="game-container" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd">
+  <!-- 游戏背景图 -->
+  <image class="game-bg" src="https://bl.meishipay.com/images/content/scene/场景4-街巷.png" mode="aspectFill"></image>
+  <view class="game-overlay"></view>
+
+  <canvas type="2d" id="gameCanvas" class="game-canvas"></canvas>
+  
+  <view class="score-panel-wrap">
+    <ScorePanel score="{{score}}" timeLeft="{{timeLeft}}" combo="{{combo}}" showTime="{{true}}" endHint="倒计时结束即完成"></ScorePanel>
+  </view>
+
+  <!-- 游戏开始前的引导 -->
+  <view class="tutorial-overlay" wx:if="{{showTutorial}}">
+    <view class="tutorial-content">
+      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/古村长.webp" mode="aspectFit"></image>
+      <view class="speech-bubble">
+        <text class="npc-name">古村长：</text>
+        <text class="npc-text">“快来帮陈丞相分米给乡亲们！左右滑动簸箕接住落下的米束。遇到金色的米束记得双击抢收哦！”</text>
+      </view>
+      <view class="guide-steps">
+        <view class="step">
+          <view class="step-icon">↔️</view>
+          <text>左右滑动移动簸箕</text>
+        </view>
+        <view class="step">
+          <view class="step-icon">👆👆</view>
+          <text>双击接住金色米束</text>
+        </view>
+      </view>
+      <button class="start-btn" bindtap="onStartGame">我知道了，开始！</button>
+    </view>
+  </view>
+
+  <!-- 倒计时提示 -->
+  <view class="countdown-overlay" wx:if="{{countdown > 0}}">
+    <text class="countdown-text">{{countdown === 1 ? 'Go!' : countdown - 1}}</text>
+  </view>
+
+  <!-- 随机事件提示 -->
+  <view class="event-toast" wx:if="{{randomEventHint}}">
+    <text>{{randomEventHint}}</text>
+  </view>
+
+  <ResultDialog 
+    visible="{{showResult}}" 
+    title="{{resultTitle}}" 
+    score="{{score}}" 
+    stars="{{stars}}" 
+    comment="{{npcComment}}"
+    fragment="{{fragmentName}}"
+    showRetry="{{false}}"
+    bind:next="onNext">
+  </ResultDialog>
+</view>

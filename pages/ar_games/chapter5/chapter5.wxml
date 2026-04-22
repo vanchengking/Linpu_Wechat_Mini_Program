@@ -1,0 +1,65 @@
+<view class="game-container">
+  <!-- 游戏背景图 (Phase 2 专用，Phase 1 黑色背景更有音游感) -->
+  <image class="game-bg" src="https://bl.meishipay.com/images/content/scene/场景4-街巷.png" mode="aspectFill" wx:if="{{phase === 2}}"></image>
+  <view class="game-overlay" wx:if="{{phase === 2}}"></view>
+
+  <view class="score-panel-wrap">
+    <ScorePanel score="{{score}}" timeLeft="{{timeLeft}}" combo="{{combo}}" showTime="{{true}}" endHint="{{phase === 1 ? '跟随节奏敲击完成音乐' : '引导神像到达泰山宫'}}"></ScorePanel>
+  </view>
+
+  <!-- 随机事件提示 -->
+  <view class="event-toast" wx:if="{{randomEventHint}}">
+    <text>{{randomEventHint}}</text>
+  </view>
+
+  <!-- 游戏开始前的引导 -->
+  <view class="tutorial-overlay" wx:if="{{showTutorial}}">
+    <view class="tutorial-content">
+      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/老艺人.png" mode="aspectFit"></image>
+      <view class="speech-bubble">
+        <text class="npc-name">老艺人：</text>
+        <text class="npc-text">“来试试！咱们安南伬的鼓点可是有讲究的！先跟随节拍点击音符，随后指引泰山神像巡游街道，避开鞭炮障碍。”</text>
+      </view>
+      <view class="guide-steps">
+        <view class="step">
+          <view class="step-icon">🥁</view>
+          <text>点击落下的音符</text>
+        </view>
+        <view class="step">
+          <view class="step-icon">⛩️</view>
+          <text>拖动引导神像</text>
+        </view>
+      </view>
+      <button class="start-btn" bindtap="onStartGame">领教了，开始！</button>
+    </view>
+  </view>
+
+  <!-- 倒计时提示 -->
+  <view class="countdown-overlay" wx:if="{{countdown > 0}}">
+    <text class="countdown-text">{{countdown === 1 ? 'Go!' : countdown - 1}}</text>
+  </view>
+
+  <!-- 阶段一：安南鼓韵 -->
+  <view class="phase1" wx:if="{{phase === 1}}">
+    <canvas type="2d" id="rhythmCanvas" class="rhythm-canvas"></canvas>
+    <view class="tap-area">
+      <view class="track-btn" wx:for="{{[0,1,2,3]}}" wx:key="index" bindtouchstart="onTrackTouchStart" bindtouchend="onTrackTouchEnd" data-track="{{index}}"></view>
+    </view>
+  </view>
+
+  <!-- 阶段二：游神引路 -->
+  <view class="phase2" wx:if="{{phase === 2}}">
+    <canvas type="2d" id="guideCanvas" class="guide-canvas" bindtouchstart="onGuideTouchStart" bindtouchmove="onGuideTouchMove" bindtouchend="onGuideTouchEnd"></canvas>
+  </view>
+
+  <ResultDialog 
+    visible="{{showResult}}" 
+    title="{{resultTitle}}" 
+    score="{{score}}" 
+    stars="{{stars}}" 
+    comment="{{npcComment}}"
+    fragment="{{fragmentName}}"
+    showRetry="{{false}}"
+    bind:next="onNext">
+  </ResultDialog>
+</view>

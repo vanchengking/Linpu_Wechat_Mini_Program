@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "第六章：帝踪归处",
+  "usingComponents": {
+    "ScorePanel": "/components/ar_games/ScorePanel/ScorePanel"
+  },
+  "disableScroll": true
+}

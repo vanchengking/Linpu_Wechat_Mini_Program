@@ -30,16 +30,13 @@
       <text class="level-title">{{levels[currentLevelIndex].title}}</text>
     </view>
     <view class="mode-switch">
-  <view class="switch-item {{!isARMode ? 'active' : ''}}" bindtap="toggleMode">
-    <text>背景模式</text>
-  </view>
-  <view class="switch-item {{isARMode ? 'active' : ''}}" bindtap="toggleMode">
-    <text>实拍模式</text>
-  </view>
-
-  <!-- 全局浮窗组件 -->
-  <float-npc />
-</view>
+      <view class="switch-item {{!isARMode ? 'active' : ''}}" bindtap="toggleMode">
+        <text>背景模式</text>
+      </view>
+      <view class="switch-item {{isARMode ? 'active' : ''}}" bindtap="toggleMode">
+        <text>实拍模式</text>
+      </view>
+    </view>
   </view>
 
   <!-- ==================== 关卡选择视图 ==================== -->
@@ -64,11 +61,12 @@
     </view>
 
     <!-- 横向滑动章节卡 -->
-    <scroll-view scroll-x class="ls-scroll" enhanced show-scrollbar="{{false}}">
+    <scroll-view scroll-x class="ls-scroll" enhanced show-scrollbar="{{false}}" scroll-into-view="card-{{currentPreviewIndex}}">
       <view class="ls-card-track">
         <view 
           wx:for="{{levels}}" 
           wx:key="id" 
+          id="card-{{index}}"
           class="ls-card {{item.unlocked ? '' : 'ls-locked'}} {{item.completed ? 'ls-done' : ''}} {{currentPreviewIndex === index ? 'ls-active' : ''}}"
           bindtap="{{item.unlocked ? 'startLevel' : 'previewLevel'}}"
           data-id="{{item.id}}"
@@ -289,4 +287,18 @@
   
   <!-- 全局浮窗组件 -->
   <float-npc />
+
+  <!-- 自定义游戏进入弹窗 -->
+  <view class="game-entry-modal {{showGameModal ? 'active' : ''}}" wx:if="{{showGameModal}}">
+    <view class="game-modal-content">
+      <view class="game-modal-body">
+        <text class="game-modal-title">开启章节互动</text>
+        <text class="game-modal-desc">通过轻量级互动，深度体验本章故事</text>
+      </view>
+      <view class="game-modal-footer">
+        <view class="game-btn cancel" bindtap="cancelGame">跳过</view>
+        <view class="game-btn confirm" bindtap="confirmGame">开启</view>
+      </view>
+    </view>
+  </view>
 </view>

@@ -1,0 +1,144 @@
+.dialog-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.dialog-content {
+  width: 80%;
+  max-width: 320px;
+  background: #fdfaf6;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  border: 2px solid #8b5a2b;
+}
+
+.dialog-header {
+  background: #8b5a2b;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.dialog-title {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.dialog-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-display {
+  display: flex;
+  align-items: baseline;
+  color: #d32f2f;
+  margin-bottom: 15px;
+}
+
+.score-big {
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.score-unit {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.stars-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.star {
+  font-size: 32px;
+  color: #ccc;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.star.active {
+  color: #FFD700;
+}
+
+.npc-comment {
+  background: rgba(139, 90, 43, 0.1);
+  padding: 12px 20px;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.npc-comment::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent rgba(139, 90, 43, 0.1) transparent;
+}
+
+.comment-text {
+  font-size: 14px;
+  color: #5d4037;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.fragment-info {
+  font-size: 14px;
+  color: #8b5a2b;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.dialog-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px 20px;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.primary-btn {
+  background: #8b5a2b;
+  color: #fff;
+  border: none;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: #8b5a2b;
+  border: 1px solid #8b5a2b;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
