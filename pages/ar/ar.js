@@ -710,6 +710,8 @@ const STORY_LEVELS = [
   }
 ];
 
+const preloadUtil = require('../../utils/preload');
+
 Page({
   data: {
     currentView: 'levels', // 'levels' | 'playing' | 'ending'
@@ -734,6 +736,8 @@ Page({
   },
 
   onLoad() {
+    // 进入 AR 页时立即预加载所有 NPC 立绘和场景背景图
+    preloadUtil.preloadPageImages('ar');
     this.initLevels();
     this.updateCompletedCount();
   },

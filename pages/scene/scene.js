@@ -1,5 +1,6 @@
 // 定义后端地址
 const BASE_URL = "http://127.0.0.1:8024";
+const preloadUtil = require('../../utils/preload');
 
 // 场景配置字典：把所有景点的差异化数据集中管理
 const sceneConfig = {
@@ -38,6 +39,9 @@ Page({
   },
 
   onLoad(options) {
+    // 预加载场景相关图片（背景图 + 人物图）
+    preloadUtil.preloadPageImages('scene');
+
     // 获取通过路由传过来的 id，如果没有传则默认为 'guide'
     const sceneId = options.id || 'guide';
     

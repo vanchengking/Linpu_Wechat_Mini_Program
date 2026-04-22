@@ -18,6 +18,8 @@ const CORE_IMAGES = {
   // ===== 人物图标（全局复用）=====
   characters: [
     'https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png',
+    'https://bl.meishipay.com/images/characters/shangshubo.png',
+    'https://bl.meishipay.com/images/characters/laobo.png',
   ],
 };
 
@@ -66,16 +68,17 @@ const PAGE_IMAGES = {
     'https://bl.meishipay.com/images/content/product/折扇1.png',
   ],
 
-  // 体验活动页
+  // 文化解码/体验活动页（卡片封面图）
   experience: [
-    'https://bl.meishipay.com/images/content/巡境1.png',
-    'https://bl.meishipay.com/images/content/巡境2.png',
-    'https://bl.meishipay.com/images/content/冲宫1.png',
-    'https://bl.meishipay.com/images/content/冲宫2.png',
-    'https://bl.meishipay.com/images/content/演戏1.png',
-    'https://bl.meishipay.com/images/content/演戏2.png',
-    'https://bl.meishipay.com/images/content/问杯1.png',
-    'https://bl.meishipay.com/images/content/问杯2.png',
+    'https://bl.meishipay.com/images/content/scene/场景1-尚书里.png',
+    'https://bl.meishipay.com/images/content/scene/场景2-廉江书院.png',
+    'https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png',
+    'https://bl.meishipay.com/images/content/scene/场景4-街巷.png',
+    'https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png',
+    'https://bl.meishipay.com/images/content/scene/场景6-泰山宫.png',
+    // 背景图
+    'https://asave.rutno.com/fileview?id=S8JAJK5wKDye',
+    'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
   ],
 
   // 地标详情页
@@ -83,9 +86,23 @@ const PAGE_IMAGES = {
     // 地标图片在 map 页已覆盖，这里主要确保 landmark.js 的图片可用
   ],
 
-  // AR游戏页
+  // AR游戏页（场景背景图 + 所有 NPC 立绘）
   ar: [
+    // 背景图
     'https://bl.meishipay.com/images/background/background.png',
+    'https://bl.meishipay.com/images/content/scene/场景1-尚书里.png',
+    'https://bl.meishipay.com/images/content/scene/场景2-廉江书院.png',
+    'https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png',
+    'https://bl.meishipay.com/images/content/scene/场景4-街巷.png',
+    'https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png',
+    'https://bl.meishipay.com/images/content/scene/场景6-泰山宫.png',
+    // NPC 人物立绘（对话中反复出现，必须预加载）
+    'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+    'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+    'https://bl.meishipay.com/images/content/人物/古村长.png',
+    'https://bl.meishipay.com/images/content/人物/朱熹.png',
+    'https://bl.meishipay.com/images/content/人物/尚书伯.png',
+    'https://bl.meishipay.com/images/content/人物/老艺人.png',
   ],
 };
 
@@ -179,10 +196,22 @@ function prelaunch() {
   });
 
   // 延迟预加载其他页面图片（给启动留出时间）
+  // 第一批（3秒后）：地图、商城 —— 用户最常用的两个页面
   setTimeout(() => {
     preloadPageImages('map');
     preloadPageImages('market');
-  }, 3000); // 3秒后开始后台预加载
+  }, 3000);
+
+  // 第二批（8秒后）：场景、文化解码、AR —— 体验类页面
+  setTimeout(() => {
+    preloadPageImages('scene');
+    preloadPageImages('experience');
+  }, 8000);
+
+  // 第三批（15秒后）：AR 人物图（体积较大，最后预加载）
+  setTimeout(() => {
+    preloadPageImages('ar');
+  }, 15000);
 }
 
 /**
