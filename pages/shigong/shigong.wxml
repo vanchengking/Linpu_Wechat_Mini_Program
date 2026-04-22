@@ -16,7 +16,7 @@
   <!-- 背景图 -->
   <image 
     class="bg-img"
-    src="https://bl.meishipay.com/images/content/世公保1.jpg"
+    src="https://bl.meishipay.com/images/content/世公保1.webp"
     mode="aspectFill"
   ></image>
 
@@ -37,7 +37,7 @@
   <view wx:if="{{showCharacter}}" class="character-area">
     <image
       class="character"
-      src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png"
+      src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.webp"
       mode="widthFix"
       lazy-load
     ></image>

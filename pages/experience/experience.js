@@ -9,10 +9,10 @@ Page({
         id: 1,
         title: "初识林浦",
         tag: "尚书里",
-        icon: "https://bl.meishipay.com/images/content/scene/场景1-尚书里.png",
-        image: "https://bl.meishipay.com/images/content/scene/场景1-尚书里.png",
+        icon: "https://bl.meishipay.com/images/content/scene/场景1-尚书里.webp",
+        image: "https://bl.meishipay.com/images/content/scene/场景1-尚书里.webp",
         images: [
-          "https://bl.meishipay.com/images/content/scene/场景1-尚书里.png"
+          "https://bl.meishipay.com/images/content/scene/场景1-尚书里.webp"
         ],
         origin: "明隆庆年间皇帝赐修。上面刻着林氏'三代五尚书'的名字——林瀚、林庭㭿、林庭机、林燫、林烃。一门三代，五尚书，七科八进士！《明史》都夸赞说'明代三世五尚书，并得谥文，林氏一家而已'。",
         desc: "欢迎来到林浦村！古村长带你从这'尚书里'牌坊开始旅程。这是林浦的骄傲，一门三代五尚书的荣耀从这里开始。林氏有'四正文化'——养正心、崇正道、务正学、亲正人，做官先做人，清廉是本。",
@@ -21,10 +21,10 @@ Page({
         id: 2,
         title: "书院论道",
         tag: "濂江书院",
-        icon: "https://bl.meishipay.com/images/content/scene/场景2-廉江书院.png",
-        image: "https://bl.meishipay.com/images/content/scene/场景2-廉江书院.png",
+        icon: "https://bl.meishipay.com/images/content/scene/场景2-廉江书院.webp",
+        image: "https://bl.meishipay.com/images/content/scene/场景2-廉江书院.webp",
         images: [
-          "https://bl.meishipay.com/images/content/scene/场景2-廉江书院.png"
+          "https://bl.meishipay.com/images/content/scene/场景2-廉江书院.webp"
         ],
         origin: "朱熹当年游历至此，见此地山水清秀，学子勤勉，便在此讲学数载。濂江书院是福州唯一保存至今的古书院。",
         desc: "朱熹在此教他们'格物致知'——探究万物，获得真知。照壁上'文光射斗'四字，便是朱夫子对学子们的期许。那石臼是师生洗笔之处，旁刻'知鱼乐'——读书要用心体会。后来的三代五尚书，皆受此学风熏陶。",
@@ -33,10 +33,10 @@ Page({
         id: 3,
         title: "家庙荣光",
         tag: "世公保尚书家庙",
-        icon: "https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png",
-        image: "https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png",
+        icon: "https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.webp",
+        image: "https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.webp",
         images: [
-          "https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png"
+          "https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.webp"
         ],
         origin: "按明制，三品以上官员方可建家庙。林瀚官至南京兵部尚书，正二品，故有此规制。门前'乌纱池'形如官帽，寓意官运亨通。",
         desc: "尚书伯林瀚告诉你：我父林元美（赠尚书），我林瀚，长子庭㭿，次子庭机，孙林燫。一门三代，五尚书，七科八进士。'四正文化'——养正心、崇正道、务正学、亲正人，是我林氏家训之本。'四知堂'取自杨震'天知地知你知我知'，一生自勉。",
@@ -45,10 +45,10 @@ Page({
         id: 4,
         title: "非遗传承",
         tag: "林浦街巷",
-        icon: "https://bl.meishipay.com/images/content/scene/场景4-街巷.png",
-        image: "https://bl.meishipay.com/images/content/scene/场景4-街巷.png",
+        icon: "https://bl.meishipay.com/images/content/scene/场景4-街巷.webp",
+        image: "https://bl.meishipay.com/images/content/scene/场景4-街巷.webp",
         images: [
-          "https://bl.meishipay.com/images/content/scene/场景4-街巷.png"
+          "https://bl.meishipay.com/images/content/scene/场景4-街巷.webp"
         ],
         origin: "安南伬是从安南国传来的鼓乐，南宋皇帝逃到林浦时随行乐师所教。踩街游神抬着泰山神像巡游，分米活动纪念陈宜中丞相分粮惠民之恩。",
         desc: "老艺人告诉你：再过几天就是元宵，咱们林浦的'迎泰山'游神可热闹了！咚咚咚的鼓点一响整条街都震起来！战鼓、唢呐、椰胡、大锣小锣……《一枝花》从宋朝传下来。塔骨神将三米多高，小孩子看了又怕又爱看！每年元宵分米纪念陈宜中——'义重山丘陈宜中'！",
@@ -57,10 +57,10 @@ Page({
         id: 5,
         title: "帝昺还魂",
         tag: "进士木牌坊",
-        icon: "https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png",
-        image: "https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png",
+        icon: "https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.webp",
+        image: "https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.webp",
         images: [
-          "https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png"
+          "https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.webp"
         ],
         origin: "崖山海战，宋军全军覆没。陆秀夫背着年仅七岁的宋少帝赵昺跳海殉国，十万军民随之赴死。这是中国历史上最悲壮的一页。",
         desc: "'朕……好冷。朕是赵昺……那年才七岁。'宋少帝的灵魂在进士牌坊徘徊。元兵围船，陆先生背着他跳入海中。他想念林浦百姓送的大米，想念哥哥端宗皇帝。'告诉哥哥……朕想他。'去泰山宫帮他转告吧。",
@@ -69,10 +69,10 @@ Page({
         id: 6,
         title: "泰山守护",
         tag: "泰山宫",
-        icon: "https://bl.meishipay.com/images/content/scene/场景6-泰山宫.png",
-        image: "https://bl.meishipay.com/images/content/scene/场景6-泰山宫.png",
+        icon: "https://bl.meishipay.com/images/content/scene/场景6-泰山宫.webp",
+        image: "https://bl.meishipay.com/images/content/scene/场景6-泰山宫.webp",
         images: [
-          "https://bl.meishipay.com/images/content/scene/场景6-泰山宫.png"
+          "https://bl.meishipay.com/images/content/scene/场景6-泰山宫.webp"
         ],
         origin: "1276年元兵攻陷临安，陆秀夫、张世杰护着两个小皇帝从海上逃到林浦，在泰山宫住下并拥立端宗皇帝改元景炎。百姓称此为'崖山行宫'。",
         desc: "'这里就是朕住过的地方——平山堂。'宋端宗赵昰在此等了你七百多年。这里的百姓给朕送米，小朋友陪朕玩。朕好想抱抱弟弟……谢谢你帮我们传话。'这片土地就交给你们了。记住林浦，记住这里的百姓，记住这段历史。'"

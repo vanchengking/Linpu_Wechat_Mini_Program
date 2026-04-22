@@ -26,7 +26,7 @@ Page({
         category: 'culture',
         price: '39.00',
         sales: 128,
-        image: 'https://bl.meishipay.com/images/content/product/帆布袋.png',
+        image: 'https://bl.meishipay.com/images/content/product/帆布袋.webp',
         desc: '融合朱子理学元素的环保帆布袋，日常出行皆可展现文化底蕴。'
       },
       {
@@ -35,7 +35,7 @@ Page({
         category: 'book',
         price: '88.00',
         sales: 56,
-        image: 'https://bl.meishipay.com/images/content/product/《林浦志》.png',
+        image: 'https://bl.meishipay.com/images/content/product/《林浦志》.webp',
         desc: '精装线装书，收录林浦千年历史变迁与名人事迹。'
       },
       {
@@ -44,7 +44,7 @@ Page({
         category: 'souvenir',
         price: '19.90',
         sales: 452,
-        image: 'https://bl.meishipay.com/images/content/product/御守.png',
+        image: 'https://bl.meishipay.com/images/content/product/御守.webp',
         desc: '源自泰山宫的平安御守，寓意福泽绵长，出入平安。'
       },
       {
@@ -53,7 +53,7 @@ Page({
         category: 'culture',
         price: '15.00',
         sales: 320,
-        image: 'https://bl.meishipay.com/images/content/product/书签1.png',
+        image: 'https://bl.meishipay.com/images/content/product/书签1.webp',
         desc: '黄铜镂空工艺，以林浦世公保建筑特色为设计灵感。'
       },
       {
@@ -62,7 +62,7 @@ Page({
         category: 'souvenir',
         price: '128.00',
         sales: 45,
-        image: 'https://bl.meishipay.com/images/content/product/宋代茶盏.png',
+        image: 'https://bl.meishipay.com/images/content/product/宋代茶盏.webp',
         desc: '体验宋代点茶文化的必备器具，重温南宋风雅。'
       },
       {
@@ -71,7 +71,7 @@ Page({
         category: 'culture',
         price: '25.00',
         sales: 210,
-        image: 'https://bl.meishipay.com/images/content/product/明信片.png',
+        image: 'https://bl.meishipay.com/images/content/product/明信片.webp',
         desc: '一套8张，水彩手绘还原林浦古村的静谧角落与历史建筑。'
       },
       {
@@ -80,7 +80,7 @@ Page({
         category: 'book',
         price: '68.00',
         sales: 89,
-        image: 'https://bl.meishipay.com/images/content/product/建筑图鉴1.png',
+        image: 'https://bl.meishipay.com/images/content/product/建筑图鉴1.webp',
         desc: '深入解析林浦古建筑群的榫卯结构与雕花艺术，附赠建筑线稿。'
       },
       {
@@ -89,7 +89,7 @@ Page({
         category: 'souvenir',
         price: '45.00',
         sales: 156,
-        image: 'https://bl.meishipay.com/images/content/product/剪纸摆件1.png',
+        image: 'https://bl.meishipay.com/images/content/product/剪纸摆件1.webp',
         desc: '非遗传承人手工剪制，亚克力封装，展现林浦民俗风情。'
       },
       {
@@ -98,7 +98,7 @@ Page({
         category: 'culture',
         price: '58.00',
         sales: 198,
-        image: 'https://bl.meishipay.com/images/content/product/折扇1.png',
+        image: 'https://bl.meishipay.com/images/content/product/折扇1.webp',
         desc: '竹骨折扇，扇面题写"三代五尚书"家训，夏日纳凉尽显文人气息。'
       }
     ],

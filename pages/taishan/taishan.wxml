@@ -37,7 +37,7 @@
   <view wx:if="{{showCharacter}}" class="character-area">
     <image
       class="character"
-      src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png"
+      src="https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.webp"
       mode="widthFix"
       lazy-load
     ></image>

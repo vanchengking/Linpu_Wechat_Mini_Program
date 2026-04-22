@@ -11,15 +11,15 @@
 const CORE_IMAGES = {
   // ===== 背景图（最高优先级）=====
   backgrounds: [
-    'https://bl.meishipay.com/images/background/background.png',
-    'https://bl.meishipay.com/images/background/background5.png',
+    'https://bl.meishipay.com/images/background/background.webp',
+    'https://bl.meishipay.com/images/background/background5.webp',
   ],
   
   // ===== 人物图标（全局复用）=====
   characters: [
-    'https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png',
-    'https://bl.meishipay.com/images/characters/shangshubo.png',
-    'https://bl.meishipay.com/images/characters/laobo.png',
+    'https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.webp',
+    'https://bl.meishipay.com/images/characters/shangshubo.webp',
+    'https://bl.meishipay.com/images/characters/laobo.webp',
   ],
 };
 
@@ -27,55 +27,55 @@ const CORE_IMAGES = {
 const PAGE_IMAGES = {
   // 场景探索页
   scene: [
-    'https://bl.meishipay.com/images/content/濂江书院1.jpg',
-    'https://bl.meishipay.com/images/content/世公保1.jpg',
+    'https://bl.meishipay.com/images/content/濂江书院1.webp',
+    'https://bl.meishipay.com/images/content/世公保1.webp',
     'https://bl.meishipay.com/images/content/location/泰山宫1.png',
-    'https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.png',
+    'https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.webp',
   ],
   
   // 地图页
   map: [
-    'https://bl.meishipay.com/images/content/map.png',
+    'https://bl.meishipay.com/images/content/map.webp',
     // 地标图片（用户进入地图时预加载）
-    'https://bl.meishipay.com/images/content/濂江书院1.jpg',
-    'https://bl.meishipay.com/images/content/濂江书院2.jpg',
-    'https://bl.meishipay.com/images/content/濂江书院3.jpg',
-    'https://bl.meishipay.com/images/content/世公保1.jpg',
-    'https://bl.meishipay.com/images/content/世公保2.png',
+    'https://bl.meishipay.com/images/content/濂江书院1.webp',
+    'https://bl.meishipay.com/images/content/濂江书院2.webp',
+    'https://bl.meishipay.com/images/content/濂江书院3.webp',
+    'https://bl.meishipay.com/images/content/世公保1.webp',
+    'https://bl.meishipay.com/images/content/世公保2.webp',
     'https://bl.meishipay.com/images/content/location/泰山宫1.png',
     'https://bl.meishipay.com/images/content/location/泰山宫2.png',
     'https://bl.meishipay.com/images/content/location/泰山宫3.jpg',
-    'https://bl.meishipay.com/images/content/尚书里.png',
-    'https://bl.meishipay.com/images/content/尚书里石牌坊.jpg',
-    'https://bl.meishipay.com/images/content/断桥1.jpg',
-    'https://bl.meishipay.com/images/content/断桥2.jpg',
-    'https://bl.meishipay.com/images/content/断桥3.jpg',
-    'https://bl.meishipay.com/images/content/进士木牌坊1.png',
-    'https://bl.meishipay.com/images/content/进士木牌坊2.jpg',
-    'https://bl.meishipay.com/images/content/进士木牌坊3.jpg',
+    'https://bl.meishipay.com/images/content/尚书里.webp',
+    'https://bl.meishipay.com/images/content/尚书里石牌坊.webp',
+    'https://bl.meishipay.com/images/content/断桥1.webp',
+    'https://bl.meishipay.com/images/content/断桥2.webp',
+    'https://bl.meishipay.com/images/content/断桥3.webp',
+    'https://bl.meishipay.com/images/content/进士木牌坊1.webp',
+    'https://bl.meishipay.com/images/content/进士木牌坊2.webp',
+    'https://bl.meishipay.com/images/content/进士木牌坊3.webp',
   ],
 
   // 文创商城页
   market: [
-    'https://bl.meishipay.com/images/content/product/帆布袋.png',
-    'https://bl.meishipay.com/images/content/product/《林浦志》.png',
-    'https://bl.meishipay.com/images/content/product/御守.png',
-    'https://bl.meishipay.com/images/content/product/书签1.png',
-    'https://bl.meishipay.com/images/content/product/宋代茶盏.png',
-    'https://bl.meishipay.com/images/content/product/明信片.png',
-    'https://bl.meishipay.com/images/content/product/建筑图鉴1.png',
-    'https://bl.meishipay.com/images/content/product/帆纸摆件.png',
-    'https://bl.meishipay.com/images/content/product/折扇1.png',
+    'https://bl.meishipay.com/images/content/product/帆布袋.webp',
+    'https://bl.meishipay.com/images/content/product/《林浦志》.webp',
+    'https://bl.meishipay.com/images/content/product/御守.webp',
+    'https://bl.meishipay.com/images/content/product/书签1.webp',
+    'https://bl.meishipay.com/images/content/product/宋代茶盏.webp',
+    'https://bl.meishipay.com/images/content/product/明信片.webp',
+    'https://bl.meishipay.com/images/content/product/建筑图鉴1.webp',
+    'https://bl.meishipay.com/images/content/product/帆纸摆件.webp',
+    'https://bl.meishipay.com/images/content/product/折扇1.webp',
   ],
 
   // 文化解码/体验活动页（卡片封面图）
   experience: [
-    'https://bl.meishipay.com/images/content/scene/场景1-尚书里.png',
-    'https://bl.meishipay.com/images/content/scene/场景2-廉江书院.png',
-    'https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png',
-    'https://bl.meishipay.com/images/content/scene/场景4-街巷.png',
-    'https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png',
-    'https://bl.meishipay.com/images/content/scene/场景6-泰山宫.png',
+    'https://bl.meishipay.com/images/content/scene/场景1-尚书里.webp',
+    'https://bl.meishipay.com/images/content/scene/场景2-廉江书院.webp',
+    'https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.webp',
+    'https://bl.meishipay.com/images/content/scene/场景4-街巷.webp',
+    'https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.webp',
+    'https://bl.meishipay.com/images/content/scene/场景6-泰山宫.webp',
     // 背景图
     'https://asave.rutno.com/fileview?id=S8JAJK5wKDye',
     'https://asave.rutno.com/fileview?id=BMumLU82n7ZG',
@@ -89,20 +89,20 @@ const PAGE_IMAGES = {
   // AR游戏页（场景背景图 + 所有 NPC 立绘）
   ar: [
     // 背景图
-    'https://bl.meishipay.com/images/background/background.png',
-    'https://bl.meishipay.com/images/content/scene/场景1-尚书里.png',
-    'https://bl.meishipay.com/images/content/scene/场景2-廉江书院.png',
-    'https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.png',
-    'https://bl.meishipay.com/images/content/scene/场景4-街巷.png',
-    'https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.png',
-    'https://bl.meishipay.com/images/content/scene/场景6-泰山宫.png',
+    'https://bl.meishipay.com/images/background/background.webp',
+    'https://bl.meishipay.com/images/content/scene/场景1-尚书里.webp',
+    'https://bl.meishipay.com/images/content/scene/场景2-廉江书院.webp',
+    'https://bl.meishipay.com/images/content/scene/场景3-世公保尚书家庙.webp',
+    'https://bl.meishipay.com/images/content/scene/场景4-街巷.webp',
+    'https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.webp',
+    'https://bl.meishipay.com/images/content/scene/场景6-泰山宫.webp',
     // NPC 人物立绘（对话中反复出现，必须预加载）
-    'https://bl.meishipay.com/images/content/人物/宋端宗.png',
-    'https://bl.meishipay.com/images/content/人物/宋少帝.png',
-    'https://bl.meishipay.com/images/content/人物/古村长.png',
-    'https://bl.meishipay.com/images/content/人物/朱熹.png',
-    'https://bl.meishipay.com/images/content/人物/尚书伯.png',
-    'https://bl.meishipay.com/images/content/人物/老艺人.png',
+    'https://bl.meishipay.com/images/content/人物/宋端宗.webp',
+    'https://bl.meishipay.com/images/content/人物/宋少帝.webp',
+    'https://bl.meishipay.com/images/content/人物/古村长.webp',
+    'https://bl.meishipay.com/images/content/人物/朱熹.webp',
+    'https://bl.meishipay.com/images/content/人物/尚书伯.webp',
+    'https://bl.meishipay.com/images/content/人物/老艺人.webp',
   ],
 };
 
