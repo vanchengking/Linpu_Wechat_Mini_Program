@@ -20,7 +20,7 @@
   <!-- 游戏开始前的引导 -->
   <view class="tutorial-overlay" wx:if="{{showTutorial}}">
     <view class="tutorial-content">
-      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/宋端宗.webp" mode="aspectFit"></image>
+      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/宋端宗.png" mode="aspectFit"></image>
       <view class="speech-bubble">
         <text class="npc-name">赵昰：</text>
         <text class="npc-text">“昺儿莫怕，我们快到林浦了！请帮我们稳住船只，收集海上的粮草💰和淡水💧，避开暗礁🪨和漩涡🌀！”</text>

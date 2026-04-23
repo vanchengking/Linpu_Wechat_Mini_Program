@@ -97,12 +97,12 @@ const PAGE_IMAGES = {
     'https://bl.meishipay.com/images/content/scene/场景5-进士木牌坊2.webp',
     'https://bl.meishipay.com/images/content/scene/场景6-泰山宫.webp',
     // NPC 人物立绘（对话中反复出现，必须预加载）
-    'https://bl.meishipay.com/images/content/人物/宋端宗.webp',
-    'https://bl.meishipay.com/images/content/人物/宋少帝.webp',
-    'https://bl.meishipay.com/images/content/人物/古村长.webp',
-    'https://bl.meishipay.com/images/content/人物/朱熹.webp',
-    'https://bl.meishipay.com/images/content/人物/尚书伯.webp',
-    'https://bl.meishipay.com/images/content/人物/老艺人.webp',
+    'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+    'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+    'https://bl.meishipay.com/images/content/人物/古村长.png',
+    'https://bl.meishipay.com/images/content/人物/朱熹.png',
+    'https://bl.meishipay.com/images/content/人物/尚书伯.png',
+    'https://bl.meishipay.com/images/content/人物/老艺人.png',
   ],
 };
 

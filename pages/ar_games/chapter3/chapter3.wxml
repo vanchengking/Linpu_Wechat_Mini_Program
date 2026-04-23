@@ -15,7 +15,7 @@
   <!-- 游戏开始前的引导 -->
   <view class="tutorial-overlay" wx:if="{{showTutorial}}">
     <view class="tutorial-content">
-      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/朱熹.webp" mode="aspectFit"></image>
+      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/朱熹.png" mode="aspectFit"></image>
       <view class="speech-bubble">
         <text class="npc-name">朱熹：</text>
         <text class="npc-text">“格物致知，方能得真意。请先将散落的偏旁拖拽到正确位置拼出目标汉字，随后回答老夫的提问。”</text>

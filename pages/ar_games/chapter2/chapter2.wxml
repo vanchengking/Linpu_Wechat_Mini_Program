@@ -12,7 +12,7 @@
   <!-- 游戏开始前的引导 -->
   <view class="tutorial-overlay" wx:if="{{showTutorial}}">
     <view class="tutorial-content">
-      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/古村长.webp" mode="aspectFit"></image>
+      <image class="npc-portrait" src="https://bl.meishipay.com/images/content/人物/古村长.png" mode="aspectFit"></image>
       <view class="speech-bubble">
         <text class="npc-name">古村长：</text>
         <text class="npc-text">“快来帮陈丞相分米给乡亲们！左右滑动簸箕接住落下的米束。遇到金色的米束记得双击抢收哦！”</text>
