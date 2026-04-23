@@ -1,6 +1,8 @@
 Page({
   data: {
-    scale: 1.2, // 默认放大一点点
+    scale: 1,   // 初始缩放，onLoad 中动态计算
+    mapX: 0,    // movable-view 初始 X 偏移
+    mapY: 0,    // movable-view 初始 Y 偏移
     activeLocation: null, // 当前选中的地点
     showModal: false, // 是否显示中央悬浮窗
     // 地图锚点数据 (left/top 为相对于地图容器的百分比位置，与底图标签位置对齐)
@@ -110,6 +112,39 @@ Page({
   },
 
   onLoad() {
+    // 计算初始缩放：让地图上下填充屏幕（以屏幕高度为基准）
+    const sysInfo = wx.getSystemInfoSync();
+    const screenW = sysInfo.windowWidth;
+    const screenH = sysInfo.windowHeight;
+
+    // 地图原图比例 1356:744
+    const mapRatio = 1356 / 744;
+
+    // movable-view 的自然尺寸（由 CSS 决定：宽 = max(100vw, 100vh*ratio)，高 = max(100vh, 100vw/ratio)）
+    const naturalW = Math.max(screenW, screenH * mapRatio);
+    const naturalH = Math.max(screenH, screenW / mapRatio);
+
+    // 需要让地图高度恰好填满屏幕高度
+    // 缩放后高度 = naturalH * scale = screenH  =>  scale = screenH / naturalH
+    let initScale = screenH / naturalH;
+    // 保证不超过 scale-max=4，不低于 scale-min=0.25
+    initScale = Math.min(4, Math.max(0.25, initScale));
+
+    // 缩放后地图宽高
+    const scaledW = naturalW * initScale;
+    const scaledH = naturalH * initScale;
+
+    // movable-area 是 100vw×100vh，movable-view 在 area 内居中
+    // movable-view 的可移动范围由 movable-area 决定，x/y 为左上角相对 area 的偏移
+    // 要让地图水平居中：x = (screenW - scaledW) / 2
+    const initX = (screenW - scaledW) / 2;
+    const initY = (screenH - scaledH) / 2;
+
+    this.setData({
+      scale: initScale,
+      mapX: initX,
+      mapY: initY
+    });
   },
 
   onShow: function () {

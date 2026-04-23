@@ -37,8 +37,8 @@
 /* 调整计分板位置，避免被返回键挡住 */
 .score-panel-wrap {
   position: absolute;
-  top: 100rpx;
-  left: 30rpx;
+  top: 30rpx;
+  right: 20rpx;
   z-index: 100;
 }
 

@@ -69,6 +69,8 @@ Page({
 
   startGame() {
     this.gameState.isPlaying = true;
+    // 重新获取节点坐标，确保布局稳定后坐标准确
+    this.getNodeRects();
     this.startTimer();
     if (this.ctx) this.drawLines();
   },
@@ -182,17 +184,22 @@ Page({
     if (this.data.phase !== 1) return;
     const touch = e.touches[0];
     
-    // 查找点击了哪个name node
+    // 重新刷新节点坐标（防止布局变化后坐标过期）
+    if (!this.nameNodes || !this.nameNodes.length) {
+      this.getNodeRects();
+      return;
+    }
+
+    // 查找点击了哪个 name-item（整个文字框区域，含 8px buffer）
     let startIndex = -1;
-    let startType = '';
-    
+    const HIT_BUFFER = 8; // px，扩大点击容忍区域
+
     for (let i = 0; i < this.nameNodes.length; i++) {
       const node = this.nameNodes[i];
-      if (touch.clientY >= node.top && touch.clientY <= node.bottom &&
-          touch.clientX >= node.left && touch.clientX <= node.right) {
+      if (touch.clientY >= node.top - HIT_BUFFER && touch.clientY <= node.bottom + HIT_BUFFER &&
+          touch.clientX >= node.left - HIT_BUFFER && touch.clientX <= node.right + HIT_BUFFER) {
         if (!this.data.names[i].matched) {
           startIndex = i;
-          startType = 'name';
           break;
         }
       }
@@ -202,7 +209,7 @@ Page({
       this.setData({
         currentLine: {
           startX: this.nameNodes[startIndex].right,
-          startY: this.nameNodes[startIndex].top + this.nameNodes[startIndex].height/2,
+          startY: this.nameNodes[startIndex].top + this.nameNodes[startIndex].height / 2,
           endX: touch.clientX,
           endY: touch.clientY,
           startId: this.data.names[startIndex].id,
@@ -226,11 +233,12 @@ Page({
     
     const touch = e.changedTouches[0];
     let endIndex = -1;
+    const HIT_BUFFER = 8; // px，扩大落点容忍区域
     
     for (let i = 0; i < this.descNodes.length; i++) {
       const node = this.descNodes[i];
-      if (touch.clientY >= node.top && touch.clientY <= node.bottom &&
-          touch.clientX >= node.left && touch.clientX <= node.right) {
+      if (touch.clientY >= node.top - HIT_BUFFER && touch.clientY <= node.bottom + HIT_BUFFER &&
+          touch.clientX >= node.left - HIT_BUFFER && touch.clientX <= node.right + HIT_BUFFER) {
         if (!this.data.descs[i].matched) {
           endIndex = i;
           break;

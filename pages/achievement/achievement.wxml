@@ -132,6 +132,9 @@
   <view style="height: 60rpx;"></view>
 </view>
 
+<!-- 悬浮NPC按钮（fixed定位，不随页面滚动） -->
+<float-npc />
+
 <!-- 徽章详情弹窗 -->
 <view class="badge-modal-mask" wx:if="{{showBadgeModal}}" bindtap="closeBadgeModal">
   <view class="badge-modal" catchtap="">

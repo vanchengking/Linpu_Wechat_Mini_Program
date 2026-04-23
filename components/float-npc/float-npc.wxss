@@ -18,6 +18,10 @@
   justify-content: center;
   align-items: center;
   overflow: visible;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 3rpx solid rgba(212, 165, 116, 0.85);
+  box-shadow: 0 4rpx 16rpx rgba(180, 130, 80, 0.35);
 }
 
 /* NPC 图标（严格限制在圆形容器内） */

@@ -8,8 +8,8 @@
 
 .score-panel-wrap {
   position: absolute;
-  top: 100rpx;
-  left: 30rpx;
+  top: 30rpx;
+  right: 20rpx;
   z-index: 100;
 }
 

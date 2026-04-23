@@ -16,6 +16,8 @@
       scale-min="0.25" 
       scale-max="4" 
       scale-value="{{scale}}"
+      x="{{mapX}}"
+      y="{{mapY}}"
       out-of-bounds="true"
     >
       <image src="https://bl.meishipay.com/images/content/地图导览.png" class="map-bg"></image>
