@@ -120,6 +120,7 @@ Page({
         
         wx.setStorageSync('linpu_user_data', userData);
         
+        getApp().syncProfileSummary({ silent: true });
         console.log(`体验 ${experienceId} 已记录完成，总计: ${done.length}/6`);
 
         // 检查是否6个全部看完

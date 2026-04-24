@@ -1045,6 +1045,7 @@ Page({
       userData.emperorFragment1 = true;
       userData.totalExp = (userData.totalExp || 0) + 50;
       wx.setStorageSync('linpu_user_data', userData);
+      getApp().syncProfileSummary({ silent: true });
     } catch (e) {
       console.log('记录碎片失败:', e);
     }
@@ -1126,6 +1127,7 @@ Page({
         userData.doubleEmperorGuide = true;
         userData.totalExp = (userData.totalExp || 0) + 200;
         wx.setStorageSync('linpu_user_data', userData);
+        getApp().syncProfileSummary({ silent: true });
       } catch (e) { /* ignore */ }
     }
   },

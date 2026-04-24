@@ -1,78 +1,45 @@
-// app.js
 const preloadUtil = require('./utils/preload');
+const auth = require('./utils/auth');
+const api = require('./utils/api');
 
 App({
-  onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  onLaunch() {
+    const logs = wx.getStorageSync('logs') || [];
+    logs.unshift(Date.now());
+    wx.setStorageSync('logs', logs);
 
-    // 🔥 启动时预加载核心图片（不阻塞启动流程）
     preloadUtil.prelaunch();
-
-    // 初始化积分和数据
     this.loadStorageData();
+    this.bootstrapSession();
+  },
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
-      }
-    })
-  },
-  
-  onShow: function (options) {
-    // 小程序启动，或从后台进入前台显示时触发
-  },
-  
-  onHide: function () {
-    // 小程序从前台进入后台时触发
-  },
-  
-  onError: function (msg) {
-    // 小程序发生脚本错误，或者 api 调用失败时触发
-    console.log(msg)
-  },
-  
   globalData: {
     userInfo: null,
-    userPoints: 0, // 用户积分余额
-    ownedCoupons: [] // 用户拥有的优惠券
+    userPoints: 0,
+    ownedCoupons: [],
+    cloudProfile: null
   },
 
-  // 加载存储的数据
-  loadStorageData: function() {
+  async bootstrapSession(force = false) {
+    try {
+      await auth.ensureLogin(force);
+      await this.syncProfileSummary({ silent: true });
+      return await this.refreshUserProfile();
+    } catch (error) {
+      console.error('bootstrapSession failed:', error);
+      return null;
+    }
+  },
+
+  loadStorageData() {
     const points = wx.getStorageSync('userPoints');
-    // 如果存储中存在积分（包括0分），则加载
     if (points !== undefined && points !== null && points !== '') {
-      this.globalData.userPoints = parseInt(points) || 0;
+      this.globalData.userPoints = parseInt(points, 10) || 0;
     } else {
-      // 如果存储中没有，初始化为0并保存一次
       this.globalData.userPoints = 0;
       wx.setStorageSync('userPoints', 0);
     }
-    
+
     const coupons = wx.getStorageSync('ownedCoupons');
     if (coupons) {
       this.globalData.ownedCoupons = coupons;
@@ -82,61 +49,118 @@ App({
     }
   },
 
-  // 获取积分
-  getPoints: function() {
-    // 确保数据已加载
+  setCloudProfile(profile) {
+    if (!profile) return;
+
+    this.globalData.cloudProfile = profile;
+    wx.setStorageSync('linpu_cloud_profile', profile);
+
+    if (typeof profile.points === 'number') {
+      this.globalData.userPoints = profile.points;
+      wx.setStorageSync('userPoints', profile.points);
+    }
+  },
+
+  async refreshUserProfile() {
+    await auth.ensureLogin();
+    const response = await api.request({
+      url: '/api/profile/me',
+      method: 'GET'
+    });
+
+    if (response.profile) {
+      this.setCloudProfile(response.profile);
+    }
+
+    return response.profile || null;
+  },
+
+  async syncProfileSummary({ silent = true } = {}) {
+    const localUserData = wx.getStorageSync('linpu_user_data') || {};
+    const payload = {
+      points: this.getPoints(),
+      totalExp: localUserData.totalExp || 0,
+      landmarkVisited: localUserData.landmarkVisited || 0,
+      experienceDone: localUserData.experienceDone || 0,
+      arScanned: localUserData.arScanned || 0
+    };
+
+    try {
+      await auth.ensureLogin();
+      const response = await api.request({
+        url: '/api/profile/sync',
+        method: 'POST',
+        data: payload
+      });
+
+      if (response.profile) {
+        this.setCloudProfile(response.profile);
+      }
+
+      return response.profile || null;
+    } catch (error) {
+      if (!silent) {
+        wx.showToast({
+          title: '同步云端资料失败',
+          icon: 'none'
+        });
+      }
+      console.error('syncProfileSummary failed:', error);
+      return null;
+    }
+  },
+
+  getPoints() {
     this.loadStorageData();
     return this.globalData.userPoints;
   },
 
-  // 增加积分
-  addPoints: function(amount, source) {
+  addPoints(amount, source) {
     this.loadStorageData();
     const oldPoints = this.globalData.userPoints;
     this.globalData.userPoints += amount;
     wx.setStorageSync('userPoints', this.globalData.userPoints);
-    console.log(`积分增加: ${oldPoints} -> ${this.globalData.userPoints} (来源: ${source})`);
-    
+
+    console.log(`积分增加: ${oldPoints} -> ${this.globalData.userPoints} (${source})`);
     wx.showToast({
-      title: `获得 ${amount} 积分\n(${source})`,
+      title: `获得 ${amount} 积分`,
       icon: 'none',
-      duration: 2000
+      duration: 1800
     });
+
+    this.syncProfileSummary({ silent: true });
     return this.globalData.userPoints;
   },
 
-  // 扣减积分（例如购买抵用券）
-  deductPoints: function(amount) {
+  deductPoints(amount) {
     this.loadStorageData();
     if (this.globalData.userPoints >= amount) {
       this.globalData.userPoints -= amount;
       wx.setStorageSync('userPoints', this.globalData.userPoints);
-      return true; // 扣减成功
+      this.syncProfileSummary({ silent: true });
+      return true;
     }
-    return false; // 余额不足
+    return false;
   },
 
-  // 添加优惠券
-  addCoupon: function(coupon) {
+  addCoupon(coupon) {
     const newCoupon = {
       ...coupon,
-      id: Date.now(), // 给个唯一ID
+      id: Date.now(),
       used: false
     };
     this.globalData.ownedCoupons.push(newCoupon);
     wx.setStorageSync('ownedCoupons', this.globalData.ownedCoupons);
   },
 
-  // 获取可用优惠券
-  getAvailableCoupons: function() {
-    return this.globalData.ownedCoupons.filter(c => !c.used);
+  getAvailableCoupons() {
+    return this.globalData.ownedCoupons.filter((coupon) => !coupon.used);
   },
 
-  // 使用优惠券
-  useCoupon: function(couponId) {
-    const idx = this.globalData.ownedCoupons.findIndex(c => c.id === couponId);
-    if (idx > -1) {
-      this.globalData.ownedCoupons[idx].used = true;
+  useCoupon(couponId) {
+    const targetIndex = this.globalData.ownedCoupons.findIndex((coupon) => coupon.id === couponId);
+    if (targetIndex > -1) {
+      this.globalData.ownedCoupons[targetIndex].used = true;
       wx.setStorageSync('ownedCoupons', this.globalData.ownedCoupons);
       return true;
     }

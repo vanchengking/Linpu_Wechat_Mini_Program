@@ -99,6 +99,7 @@ Page({
         
         // 发放积分：每次阅读文化解码奖励
         getApp().addPoints(10, `文化解码：${this.data.currentItem.title}`);
+        getApp().syncProfileSummary({ silent: true });
         
         console.log(`体验 ${experienceId} 已记录完成，总计: ${done.length}/${this.data.experiences.length}`);
 

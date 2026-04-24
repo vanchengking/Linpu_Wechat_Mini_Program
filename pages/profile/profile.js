@@ -1,116 +1,223 @@
+const api = require('../../utils/api');
+const auth = require('../../utils/auth');
+
 Page({
   data: {
-    showAchievementModal: false,
-    // 简单的成就数据（弹窗用）
-    userLevel: 5,
-    userTitle: '文化行者',
-    unlockedBadges: 2,
-    totalBadges: 6,
-    completedAch: 2,
-    totalAch: 10,
-    stats: {
-      landmarkVisited: 3,
-      experienceDone: 2,
-      arScanned: 4
+    loading: true,
+    savingNickname: false,
+    uploadingAvatar: false,
+    bindingPhone: false,
+    defaultAvatar: '/resources/icons/个人.png',
+    profile: {
+      nickname: '未登录',
+      avatarUrl: '/resources/icons/个人.png',
+      phone: '',
+      phoneMasked: '未绑定手机号',
+      points: 0,
+      totalExp: 0,
+      level: 1,
+      levelTitle: '初来乍到',
+      stats: {
+        landmarkVisited: 0,
+        experienceDone: 0,
+        arScanned: 0
+      }
+    },
+    editableNickname: '',
+    syncText: '云端资料同步中...'
+  },
+
+  async onShow() {
+    await this.initializeProfile();
+  },
+
+  async initializeProfile() {
+    this.setData({ loading: true, syncText: '云端资料同步中...' });
+
+    try {
+      await auth.ensureLogin();
+      await getApp().syncProfileSummary({ silent: true });
+      const profile = await getApp().refreshUserProfile();
+      this.applyProfile(profile);
+      this.setData({
+        loading: false,
+        syncText: '数据已从云端加载'
+      });
+    } catch (error) {
+      console.error('initializeProfile failed:', error);
+      wx.showToast({
+        title: '个人资料加载失败',
+        icon: 'none'
+      });
+
+      const cachedProfile = wx.getStorageSync('linpu_cloud_profile');
+      if (cachedProfile) {
+        this.applyProfile(cachedProfile);
+      }
+
+      this.setData({
+        loading: false,
+        syncText: '当前展示的是本地缓存'
+      });
     }
   },
 
-  onLoad() {
-    this.loadAchievementData();
-  },
-
-  onShow() {
+  applyProfile(profile) {
+    if (!profile) return;
     this.setData({
-      userPoints: getApp().getPoints()
+      profile,
+      editableNickname: profile.nickname || ''
     });
   },
 
-  // 从缓存加载成就数据
-  loadAchievementData() {
+  onNicknameInput(event) {
+    this.setData({
+      editableNickname: event.detail.value
+    });
+  },
+
+  async saveNickname() {
+    const nickname = (this.data.editableNickname || '').trim();
+    if (!nickname) {
+      wx.showToast({
+        title: '昵称不能为空',
+        icon: 'none'
+      });
+      return;
+    }
+
+    this.setData({ savingNickname: true });
     try {
-      const userData = wx.getStorageSync('linpu_user_data');
-      if (userData) {
-        this.setData({
-          userLevel: Math.min(10, Math.floor((userData.totalExp || 0) / 200) + 1),
-          stats: {
-            landmarkVisited: userData.landmarkVisited || 0,
-            experienceDone: userData.experienceDone || 0,
-            arScanned: userData.arScanned || 0
-          }
-        });
-      }
-    } catch (e) {}
+      const response = await api.request({
+        url: '/api/profile/nickname',
+        method: 'POST',
+        data: { nickname }
+      });
+
+      this.applyProfile(response.profile);
+      getApp().setCloudProfile(response.profile);
+      wx.showToast({
+        title: '昵称已更新',
+        icon: 'success'
+      });
+    } catch (error) {
+      console.error('saveNickname failed:', error);
+      wx.showToast({
+        title: '昵称保存失败',
+        icon: 'none'
+      });
+    } finally {
+      this.setData({ savingNickname: false });
+    }
   },
 
-  // 打开成就弹窗（轻量）
-  showAchievementPopup() {
-    wx.vibrateShort({ type: 'light' });
-    this.setData({ showAchievementModal: true });
+  async onChooseAvatar(event) {
+    const avatarUrl = event.detail && event.detail.avatarUrl;
+    if (!avatarUrl) return;
+
+    this.setData({ uploadingAvatar: true });
+    try {
+      const response = await api.uploadFile({
+        url: '/api/profile/avatar',
+        filePath: avatarUrl
+      });
+
+      this.applyProfile(response.profile);
+      getApp().setCloudProfile(response.profile);
+      wx.showToast({
+        title: '头像已更新',
+        icon: 'success'
+      });
+    } catch (error) {
+      console.error('upload avatar failed:', error);
+      wx.showToast({
+        title: '头像上传失败',
+        icon: 'none'
+      });
+    } finally {
+      this.setData({ uploadingAvatar: false });
+    }
   },
 
-  // 关闭成就弹窗
-  closeAchievement() {
-    this.setData({ showAchievementModal: false });
+  async onGetPhoneNumber(event) {
+    if (!event.detail || !event.detail.code) {
+      wx.showToast({
+        title: '未获取到手机号授权',
+        icon: 'none'
+      });
+      return;
+    }
+
+    this.setData({ bindingPhone: true });
+    try {
+      const response = await api.request({
+        url: '/api/profile/phone/bind',
+        method: 'POST',
+        data: {
+          code: event.detail.code
+        }
+      });
+
+      this.applyProfile(response.profile);
+      getApp().setCloudProfile(response.profile);
+      wx.showToast({
+        title: '手机号已绑定',
+        icon: 'success'
+      });
+    } catch (error) {
+      console.error('bind phone failed:', error);
+      wx.showToast({
+        title: '手机号绑定失败',
+        icon: 'none'
+      });
+    } finally {
+      this.setData({ bindingPhone: false });
+    }
   },
 
-  // 跳转到完整成就页面
   goToAchievement() {
     wx.navigateTo({
-      url: '/pages/achievement/achievement',
-      fail: () => { wx.showToast({ title: '跳转失败', icon: 'none' }); }
+      url: '/pages/achievement/achievement'
     });
   },
 
-  // 跳转到林浦印象
   goToLinpu() {
     wx.navigateTo({
-      url: '/pages/linpu/linpu',
-      fail: () => { wx.showToast({ title: '跳转失败', icon: 'none' }); }
+      url: '/pages/linpu/linpu'
     });
   },
 
-  // 跳转到地标打卡（先切换到地图Tab）
   goToMapLandmark() {
     wx.switchTab({ url: '/pages/map/map' });
   },
 
-  // 跳转到个人记录
   goToRecord() {
     wx.navigateTo({
-      url: '/pages/record/record',
-      fail: () => { wx.showToast({ title: '跳转失败', icon: 'none' }); }
+      url: '/pages/record/record'
     });
   },
 
-  // 跳转到排行榜
   goToRanking() {
     wx.navigateTo({
-      url: '/pages/ranking/ranking',
-      fail: () => { wx.showToast({ title: '跳转失败', icon: 'none' }); }
+      url: '/pages/ranking/ranking'
     });
   },
 
-  // 跳转到更多设置
   goToSettings() {
     wx.navigateTo({
-      url: '/pages/settings/settings',
-      fail: () => { wx.showToast({ title: '跳转失败', icon: 'none' }); }
+      url: '/pages/settings/settings'
     });
   },
 
-  // 跳转到给予建议
   goToFeedback() {
     wx.navigateTo({
-      url: '/pages/feedback/feedback',
-      fail: () => { wx.showToast({ title: '跳转失败', icon: 'none' }); }
+      url: '/pages/feedback/feedback'
     });
   },
 
-  // 跳转到研发团队
   goToTeam() {
     wx.navigateTo({
-      url: '/pages/team/team',
-      fail: () => { wx.showToast({ title: '跳转失败', icon: 'none' }); }
+      url: '/pages/team/team'
     });
   }
 })
