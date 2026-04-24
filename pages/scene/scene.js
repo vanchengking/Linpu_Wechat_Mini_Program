@@ -1,5 +1,5 @@
 // 定义后端地址
-const BASE_URL = "http://127.0.0.1:8024";
+const BASE_URL = "https://bl.meishipay.com";
 const preloadUtil = require('../../utils/preload');
 
 // 场景配置字典：把所有景点的差异化数据集中管理

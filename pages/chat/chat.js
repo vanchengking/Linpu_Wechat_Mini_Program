@@ -1,5 +1,5 @@
 // 定义后端地址
-const BASE_URL = "http://127.0.0.1:8024";
+const BASE_URL = "https://bl.meishipay.com";
 
 Page({
   data: {
@@ -164,7 +164,7 @@ Page({
   playVoice(audioPath) {
     // 创建音频上下文
     const innerAudioContext = wx.createInnerAudioContext();
-    // 拼接完整地址：http://127.0.0.1:8024/audio/voice_xxx.mp3
+    // 拼接完整地址：https://bl.meishipay.com/audio/voice_xxx.mp3
     innerAudioContext.src = BASE_URL + audioPath;
     innerAudioContext.autoplay = true;
 

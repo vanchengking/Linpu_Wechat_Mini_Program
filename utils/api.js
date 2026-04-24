@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:8024';
+const BASE_URL = 'https://bl.meishipay.com';
 const SESSION_TOKEN_KEY = 'linpu_session_token';
 
 function getSessionToken() {
