@@ -29,23 +29,23 @@ if load_dotenv:
     load_dotenv()
 
 
-DIFY_API_KEY = os.getenv("DIFY_API_KEY", "")
+DIFY_API_KEY = os.getenv("DIFY_API_KEY", "app-QPNOOiIVckGN4D75ZQUkIWTS")
 DIFY_API_URL = os.getenv("DIFY_API_URL", "https://api.dify.ai/v1/chat-messages")
-DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
+DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "sk-7f1a7826e0ed482cadaedc8e2aabd5c7")
 
-WECHAT_APP_ID = os.getenv("WECHAT_APP_ID", "")
-WECHAT_APP_SECRET = os.getenv("WECHAT_APP_SECRET", "")
+WECHAT_APP_ID = os.getenv("WECHAT_APP_ID", "wx442934a532a838d5")
+WECHAT_APP_SECRET = os.getenv("WECHAT_APP_SECRET", "68e6be1e35599db1a5339c50c7dbe606")
 WECHAT_ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token"
 WECHAT_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session"
 WECHAT_PHONE_URL = "https://api.weixin.qq.com/wxa/business/getuserphonenumber"
 
-MYSQL_HOST = os.getenv("MYSQL_HOST", "")
+MYSQL_HOST = os.getenv("MYSQL_HOST", "127.0.0.1")
 MYSQL_PORT = int(os.getenv("MYSQL_PORT", "3306"))
-MYSQL_USER = os.getenv("MYSQL_USER", "")
-MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
-MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "")
+MYSQL_USER = os.getenv("MYSQL_USER", "linpu_user")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "jWbsGmrByjiXikWd")
+MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "linpu_wechat")
 
-SERVER_PUBLIC_BASE = os.getenv("SERVER_PUBLIC_BASE", "http://127.0.0.1:8024").rstrip("/")
+SERVER_PUBLIC_BASE = os.getenv("SERVER_PUBLIC_BASE", "https://bl.meishipay.com").rstrip("/")
 SESSION_EXPIRE_DAYS = int(os.getenv("SESSION_EXPIRE_DAYS", "30"))
 
 AUDIO_DIR = "temp_audio"
