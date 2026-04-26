@@ -1200,10 +1200,23 @@ Page({
   },
 
   enableARMode() {
+    // 检测是否是模拟器环境
+    const isSimulator = wx.getSystemInfoSync().platform === 'devtools';
+    
     this.setData({
       isARMode: true
     }, () => {
-      this.initAR();
+      if (isSimulator) {
+        wx.showToast({
+          title: '模拟器不支持摄像头，请用真机测试',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+      // 延迟确保 camera 组件已完全渲染
+      setTimeout(() => {
+        this.initAR();
+      }, 100);
     });
   },
 
@@ -1251,9 +1264,21 @@ Page({
   error(e) {
     console.error('相机启动失败:', e.detail);
     this.setData({ isARMode: false });
+    
+    // 解析错误类型并提供友好提示
+    const errorMsg = e.detail && e.detail.errMsg ? e.detail.errMsg : '';
+    let tip = '相机启动失败，已切回背景模式';
+    
+    if (errorMsg.includes('not permission') || errorMsg.includes('permission')) {
+      tip = '请允许相机权限后重试';
+    } else if (errorMsg.includes('not supported') || errorMsg.includes('simulator')) {
+      tip = '模拟器不支持摄像头，请用真机测试';
+    }
+    
     wx.showToast({
-      title: '相机启动失败，已切回背景模式',
-      icon: 'none'
+      title: tip,
+      icon: 'none',
+      duration: 2000
     });
   },
 

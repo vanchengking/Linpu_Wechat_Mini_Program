@@ -12,8 +12,8 @@ Page({
         name: '濂江书院',
         type: '文化教育',
         protectionLevel: "福州市级文物保护单位",
-        left: '67%',
-        top: '28%',
+        left: '69%',
+        top: '29%',
         images: [
           "https://101.34.247.48:8888/down/eTzNzBC9Pu65.jpg",
           "https://101.34.247.48:8888/down/Fu2P7KDHnWKZ.png",
@@ -29,8 +29,8 @@ Page({
         name: '世公保尚书家庙',
         type: '宗祠建筑',
         protectionLevel: "福州市级文物保护单位",
-        left: '35%',
-        top: '68%',
+        left: '32%',
+        top: '58%',
         images: [
           "https://101.34.247.48:8888/down/OgYQBzHxPO5O.jpg",
           "https://101.34.247.48:8888/down/0yd6tSidDl3S.png"
@@ -45,7 +45,7 @@ Page({
         name: '林浦泰山宫',
         type: '宫庙建筑',
         protectionLevel: "福建省级文物保护单位",
-        left: '54%',
+        left: '55%',
         top: '30%',
         images: [
           "https://101.34.247.48:8888/down/nx4A3JQ1lSnb.png",
@@ -62,8 +62,8 @@ Page({
         name: '尚书里石牌坊',
         type: '牌坊建筑',
         protectionLevel: "历史构筑物",
-        left: '8%',
-        top: '82%',
+        left: '9%',
+        top: '70%',
         images: [
           "https://101.34.247.48:8888/down/oJPQSStUpA7r.png",
           "https://101.34.247.48:8888/down/4BkKW05UwDUi.jpg",
@@ -96,8 +96,8 @@ Page({
         name: '进士木牌坊',
         type: '牌坊建筑',
         protectionLevel: "林尚书家庙附属文物",
-        left: '28%',
-        top: '52%',
+        left: '30%',
+        top: '44%',
         images: [
           "https://101.34.247.48:8888/down/F62Wg7A49Zis.png",
           "https://bl.meishipay.com/images/content/进士牌坊3.jpg",

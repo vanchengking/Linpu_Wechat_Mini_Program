@@ -1,0 +1,83 @@
+<!-- 编辑资料页面：头像 + 昵称 -->
+<view class="edit-page">
+
+  <!-- ====== 头像区域 ====== -->
+  <view class="avatar-section">
+    <view class="avatar-box">
+      <image class="avatar-img" src="{{avatarUrl}}" mode="aspectFill"></image>
+      <text class="avatar-hint" bindtap="onAvatarTap">点击更换</text>
+
+      <!-- 隐藏按钮：用于触发微信头像选择（open-type="chooseAvatar"） -->
+      <button
+        class="wechat-avatar-btn"
+        open-type="chooseAvatar"
+        bindchooseavatar="onChooseWechatAvatar"
+      ></button>
+    </view>
+  </view>
+
+  <text class="tip-text">可使用微信头像或从相册/拍照选择\n\n</text>
+
+  <!-- ====== 昵称区域 ====== -->
+  <view class="nickname-section">
+    <text class="nickname-label">昵称</text>
+    <input
+      class="nickname-input"
+      value="{{nickname}}"
+      placeholder="请输入你的昵称"
+      maxlength="20"
+      bindinput="onNicknameInput"
+      confirm-type="done"
+      bindconfirm="saveNickname"
+    />
+  </view>
+
+  <view style="padding: 32rpx;">
+    <button
+      class="save-btn"
+      bindtap="saveNickname"
+      loading="{{saving}}"
+    >
+      保存修改
+    </button>
+  </view>
+
+
+  <!-- ====== 头像裁剪弹窗 ====== -->
+  <view class="crop-modal" wx:if="{{cropVisible}}" catchtouchmove="preventMove">
+    <view class="crop-overlay" bindtap="closeCrop"></view>
+    <view class="crop-container">
+      <text class="crop-title">裁剪头像</text>
+      <text class="crop-hint">拖动移动位置 · 使用下方按钮缩放</text>
+
+      <!-- 裁剪预览 -->
+      <view class="crop-box">
+        <image
+          class="crop-image"
+          src="{{cropSrc}}"
+          mode="aspectFit"
+          style="width: {{cropImgW}}rpx; height: {{cropImgH}}rpx; left: {{cropX}}px; top: {{cropY}}px;"
+          catchtouchstart="onCropTouchStart"
+          catchtouchmove="onCropTouchMove"
+          catchtouchend="onCropTouchEnd"
+        ></image>
+        <view class="crop-circle-mask"></view>
+        <canvas type="2d" id="cropCanvas" class="crop-hidden-canvas"></canvas>
+      </view>
+
+      <!-- 缩放 -->
+      <view class="crop-zoom-row">
+        <view class="crop-zoom-btn" catchtap="onZoomOut">−</view>
+        <text class="crop-zoom-text">{{cropPercent}}%</text>
+        <view class="crop-zoom-btn" catchtap="onZoomIn">+</view>
+      </view>
+
+      <!-- 操作 -->
+      <view class="crop-actions">
+        <button class="crop-btn crop-cancel" bindtap="closeCrop">取消</button>
+        <button class="crop-btn crop-confirm" bindtap="confirmCrop" loading="{{uploading}}">确认使用</button>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -3,7 +3,7 @@
   <!-- 顶部用户信息卡片 -->
   <view class="user-card">
     <view class="user-info-row">
-      <image class="user-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+      <image class="user-avatar" src="{{userInfo.avatarUrl || defaultAvatar}}" mode="aspectFill"></image>
       <view class="user-detail">
         <text class="user-name">文化探险者</text>
         <text class="user-title">LV.{{userInfo.level}} {{userInfo.levelTitle}}</text>

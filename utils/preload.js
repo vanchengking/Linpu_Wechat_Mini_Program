@@ -18,7 +18,7 @@ const CORE_IMAGES = {
   // ===== 人物图标（全局复用）=====
   characters: [
     'https://bl.meishipay.com/images/characters/尚书伯悬浮按钮.webp',
-    'https://bl.meishipay.com/images/characters/shangshubo.webp',
+    'https://bl.meishipay.com/images/characters/shangshubo.png',
     'https://bl.meishipay.com/images/characters/laobo.webp',
   ],
 };

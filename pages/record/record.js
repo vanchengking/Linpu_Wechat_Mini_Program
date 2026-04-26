@@ -1,6 +1,10 @@
 // pages/record/record.js
+const DEFAULT_AVATAR = 'https://bl.meishipay.com/images/content/%E4%BA%BA%E7%89%A9/%E9%BB%98%E8%AE%A4%E5%A4%B4%E5%83%8F.png';
+
 Page({
   data: {
+    defaultAvatar: DEFAULT_AVATAR,
+    avatarUrl: '',
     currentTab: 'checkin',
     totalDays: 7,
     stats: {
@@ -53,8 +57,10 @@ Page({
   loadFromCache() {
     try {
       const userData = wx.getStorageSync('linpu_user_data');
+      const cachedProfile = wx.getStorageSync('linpu_cloud_profile') || {};
       if (userData) {
         this.setData({
+          avatarUrl: cachedProfile.avatarUrl || '',
           stats: {
             landmarkVisited: userData.landmarkVisited || 0,
             experienceDone: userData.experienceDone || 0,

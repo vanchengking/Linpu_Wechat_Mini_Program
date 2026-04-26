@@ -1,6 +1,9 @@
 // pages/ranking/ranking.js
+const DEFAULT_AVATAR = 'https://bl.meishipay.com/images/content/%E4%BA%BA%E7%89%A9/%E9%BB%98%E8%AE%A4%E5%A4%B4%E5%83%8F.png';
+
 Page({
   data: {
+    defaultAvatar: DEFAULT_AVATAR,
     currentTab: 'exp',
     topThree: [],
     rankList: [],

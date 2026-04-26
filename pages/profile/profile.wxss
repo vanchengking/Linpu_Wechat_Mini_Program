@@ -10,6 +10,7 @@
   padding: 32rpx 24rpx 140rpx;
 }
 
+/* ====== 卡片通用 ====== */
 .profile-card,
 .stats-card,
 .summary-card,
@@ -18,6 +19,7 @@
   box-shadow: 0 12rpx 32rpx rgba(53, 34, 16, 0.12);
 }
 
+/* ====== 用户资料卡片 ====== */
 .profile-card {
   border-radius: 28rpx;
   padding: 28rpx;
@@ -27,109 +29,79 @@
 .profile-header {
   display: flex;
   gap: 24rpx;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.avatar-trigger {
+.avatar-wrapper {
   position: relative;
-  width: 168rpx;
-  height: 168rpx;
-  padding: 0;
-  background: transparent;
-  border: none;
-  line-height: normal;
-}
-
-.avatar-trigger::after {
-  border: none;
+  width: 160rpx;
+  height: 160rpx;
+  flex-shrink: 0;
 }
 
 .avatar {
-  width: 168rpx;
-  height: 168rpx;
+  width: 160rpx;
+  height: 160rpx;
   border-radius: 50%;
   display: block;
-}
-
-.avatar-mask {
-  position: absolute;
-  left: 12rpx;
-  right: 12rpx;
-  bottom: 10rpx;
-  padding: 8rpx 0;
-  border-radius: 999rpx;
-  background: rgba(0, 0, 0, 0.52);
-  color: #fff;
-  font-size: 22rpx;
-  text-align: center;
 }
 
 .profile-main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10rpx;
+  gap: 8rpx;
+  min-width: 0;
 }
 
-.nickname-input {
-  height: 74rpx;
-  padding: 0 24rpx;
-  border-radius: 18rpx;
-  background: #fff;
-  color: #3f2d1f;
+.nickname-text {
   font-size: 30rpx;
-  font-weight: 600;
+  font-weight: 700;
+  color: #3f2d1f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .level-text {
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #6b4f36;
   font-weight: 600;
 }
 
 .phone-text,
 .sync-text {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #8a735f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .action-row {
   display: flex;
-  gap: 20rpx;
-  margin-top: 28rpx;
+  justify-content: center;
+  margin-top: 24rpx;
 }
 
-.primary-btn,
 .secondary-btn {
-  flex: 1;
   border-radius: 999rpx;
   height: 80rpx;
   line-height: 80rpx;
+  padding: 0 48rpx;
   font-size: 28rpx;
   font-weight: 600;
-}
-
-.primary-btn {
-  background: linear-gradient(135deg, #c98b52, #b26c35);
-  color: #fff;
-}
-
-.secondary-btn {
   background: #efe1cf;
   color: #5c422c;
 }
+.secondary-btn::after { border: none; }
 
-.primary-btn::after,
-.secondary-btn::after {
-  border: none;
-}
-
+/* ====== 积分/经验 ====== */
 .summary-row {
   display: flex;
   gap: 18rpx;
   margin-top: 24rpx;
 }
-
 .summary-card {
   flex: 1;
   border-radius: 24rpx;
@@ -138,37 +110,26 @@
   flex-direction: column;
   gap: 12rpx;
 }
+.summary-label { font-size: 24rpx; color: #8b735b; }
+.summary-value { font-size: 42rpx; color: #3b2a1d; font-weight: 700; }
 
-.summary-label {
-  font-size: 24rpx;
-  color: #8b735b;
-}
-
-.summary-value {
-  font-size: 42rpx;
-  color: #3b2a1d;
-  font-weight: 700;
-}
-
+/* ====== 云端统计 ====== */
 .stats-card {
   border-radius: 24rpx;
   padding: 26rpx 24rpx;
   margin-top: 24rpx;
 }
-
 .section-title {
   font-size: 28rpx;
   color: #3b2a1d;
   font-weight: 700;
   margin-bottom: 18rpx;
 }
-
 .stats-grid {
   display: flex;
   justify-content: space-between;
   gap: 16rpx;
 }
-
 .stat-item {
   flex: 1;
   padding: 24rpx 12rpx;
@@ -176,28 +137,16 @@
   background: #fff;
   text-align: center;
 }
+.stat-value { display: block; font-size: 40rpx; color: #c07b3e; font-weight: 700; }
+.stat-label { display: block; margin-top: 10rpx; font-size: 24rpx; color: #7e6855; }
 
-.stat-value {
-  display: block;
-  font-size: 40rpx;
-  color: #c07b3e;
-  font-weight: 700;
-}
-
-.stat-label {
-  display: block;
-  margin-top: 10rpx;
-  font-size: 24rpx;
-  color: #7e6855;
-}
-
+/* ====== 功能入口 ====== */
 .feature-row {
   margin-top: 28rpx;
   display: flex;
   justify-content: space-between;
   gap: 10rpx;
 }
-
 .feature-item {
   flex: 1;
   display: flex;
@@ -205,22 +154,11 @@
   align-items: center;
   padding: 18rpx 8rpx;
 }
+.feature-icon { width: 80rpx; height: 80rpx; }
+.feature-text { margin-top: 12rpx; font-size: 24rpx; color: #3d2c20; }
 
-.feature-icon {
-  width: 80rpx;
-  height: 80rpx;
-}
-
-.feature-text {
-  margin-top: 12rpx;
-  font-size: 24rpx;
-  color: #3d2c20;
-}
-
-.menu {
-  margin-top: 18rpx;
-}
-
+/* ====== 菜单列表 ====== */
+.menu { margin-top: 18rpx; }
 .menu-item {
   display: flex;
   justify-content: space-between;
@@ -229,7 +167,6 @@
   padding: 24rpx;
   margin-top: 16rpx;
 }
-
 .menu-left {
   display: flex;
   align-items: center;
@@ -237,13 +174,5 @@
   color: #3d2c20;
   font-size: 28rpx;
 }
-
-.menu-icon {
-  width: 42rpx;
-  height: 42rpx;
-}
-
-.menu-arrow {
-  color: #8b735b;
-  font-size: 32rpx;
-}
+.menu-icon { width: 42rpx; height: 42rpx; }
+.menu-arrow { color: #8b735b; font-size: 32rpx; }

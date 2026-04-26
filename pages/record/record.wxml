@@ -4,7 +4,7 @@
   <view class="stats-header">
     <view class="stats-bg"></view>
     <view class="stats-user">
-      <image class="stats-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+      <image class="stats-avatar" src="{{avatarUrl || defaultAvatar}}" mode="aspectFill"></image>
       <view class="stats-meta">
         <text class="stats-name">我的探索足迹</text>
         <text class="stats-summary">已累计探索 {{totalDays}} 天</text>

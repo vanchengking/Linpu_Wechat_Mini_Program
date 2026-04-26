@@ -143,10 +143,10 @@ page {
   min-height: 200rpx;
 }
 
-/* 人物图标加载中 */
-.character, .npc-icon {
+/* 人物图标加载中（已禁用占位背景，避免灰色边缘） */
+/* .character, .npc-icon {
   background-color: rgba(245, 240, 232, 0.6);
-}
+} */
 
 /* 骨架屏微光动画 */
 @keyframes shimmer {

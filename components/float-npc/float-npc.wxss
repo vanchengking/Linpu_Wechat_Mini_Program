@@ -4,9 +4,10 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
-  pointer-events: none; 
-  z-index: 99999; /* 保证永远在最上层 */
+  height: calc(100vh - 120rpx);
+  pointer-events: none;
+  z-index: 99999;
+  bottom: 120rpx;
 }
 
 /* 拖拽块 */

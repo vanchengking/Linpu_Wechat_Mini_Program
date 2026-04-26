@@ -1,10 +1,10 @@
 <!-- 更多设置页面 -->
 <view class="settings-page">
-  <!-- 用户信息卡片 -->
-  <view class="user-card">
-    <image class="user-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+  <!-- 用户信息卡片（点击进入编辑资料页） -->
+  <view class="user-card" bindtap="goToEditProfile">
+    <image class="user-avatar" src="{{avatarUrl || defaultAvatar}}" mode="aspectFill"></image>
     <view class="user-info">
-      <text class="user-name">文化探险者</text>
+      <text class="user-name">{{nickname || '文化探险者'}}</text>
       <text class="user-desc">Lv.{{userLevel}} {{userTitle}}</text>
     </view>
     <text class="edit-icon">></text>

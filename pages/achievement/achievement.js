@@ -1,7 +1,11 @@
 // pages/achievement/achievement.js
 
+const DEFAULT_AVATAR = 'https://bl.meishipay.com/images/content/%E4%BA%BA%E7%89%A9/%E9%BB%98%E8%AE%A4%E5%A4%B4%E5%83%8F.png';
+
 Page({
   data: {
+    defaultAvatar: DEFAULT_AVATAR,
+
     // 预计算的统计数（避免 WXML 中使用 .filter() 表达式）
     unlockedBadgeCount: 0,
     completedAchievementCount: 0,
@@ -10,6 +14,7 @@ Page({
 
     // 用户信息
     userInfo: {
+      avatarUrl: DEFAULT_AVATAR,
       level: 5,
       levelTitle: '文化行者',
       currentExp: 1280,
@@ -250,10 +255,12 @@ Page({
   loadUserData() {
     try {
       const userData = wx.getStorageSync('linpu_user_data');
+      const cachedProfile = wx.getStorageSync('linpu_cloud_profile') || {};
       if (userData) {
         const level = this.calcLevel(userData.totalExp || 0);
         this.setData({
           userInfo: {
+            avatarUrl: cachedProfile.avatarUrl || DEFAULT_AVATAR,
             level: level.level,
             levelTitle: this.getLevelTitle(level.level),
             currentExp: userData.totalExp || 0,
@@ -505,7 +512,7 @@ Page({
     return {
       title: `我在林浦印象已达到Lv.${this.data.userInfo.level}，快来挑战吧！`,
       path: '/pages/achievement/achievement',
-      imageUrl: '/resources/icons/人物头像.png'
+      imageUrl: DEFAULT_AVATAR
     };
   },
 

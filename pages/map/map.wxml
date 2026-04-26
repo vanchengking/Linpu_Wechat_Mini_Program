@@ -5,7 +5,7 @@
 
   <!-- 左上角底图缩略图 -->
   <view class="map-thumbnail">
-    <image src="https://bl.meishipay.com/images/content/地图导览.png" mode="aspectFill" class="thumbnail-img"></image>
+    <image src="https://bl.meishipay.com/images/content/mapping.jpg" mode="aspectFill" class="thumbnail-img"></image>
   </view>
 
   <movable-area class="map-area" scale-area>
@@ -20,7 +20,7 @@
       y="{{mapY}}"
       out-of-bounds="true"
     >
-      <image src="https://bl.meishipay.com/images/content/地图导览.png" class="map-bg"></image>
+      <image src="https://bl.meishipay.com/images/content/mapping.jpg" class="map-bg"></image>
       
       <view 
         class="anchor-point" 

@@ -1,0 +1,238 @@
+/* ========== 编辑资料页面样式（与设置页风格统一）========== */
+
+page {
+  background: linear-gradient(180deg, #fcf7e3 0%, #f5ead6 100%);
+  min-height: 100vh;
+}
+
+.edit-page {
+  padding: 32rpx 28rpx;
+}
+
+/* ====== 头像区域 ====== */
+.avatar-section {
+  display: flex;
+  justify-content: center;
+  padding: 48rpx 0 40rpx;
+}
+
+.avatar-box {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.avatar-img {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  border: 6rpx solid rgba(201, 139, 82, 0.35);
+  display: block;
+  background: #efe1cf;
+}
+
+.avatar-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8rpx;
+  padding: 10rpx 0;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 90rpx 90rpx 90rpx 90rpx;
+  color: #fff;
+  font-size: 22rpx;
+  text-align: center;
+  letter-spacing: 2rpx;
+}
+
+/* 隐藏的微信头像按钮 */
+.wechat-avatar-btn {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180rpx;
+  height: 180rpx;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: normal;
+  background: transparent;
+}
+.wechat-avatar-btn::after { border: none; }
+
+/* ====== 昵称区域 ====== */
+.nickname-section {
+  background: #fffaf2;
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(160,130,90,0.1);
+  margin-bottom: 12rpx;
+}
+
+.nickname-label {
+  display: block;
+  font-size: 26rpx;
+  color: #8a7a68;
+  margin-bottom: 14rpx;
+}
+
+.nickname-input {
+  height: 72rpx;
+  padding: 0 22rpx;
+  border-radius: 14rpx;
+  background: #fff;
+  color: #3f2d1f;
+  font-size: 30rpx;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.nickname-input::placeholder {
+  color: #bbaa98;
+  font-weight: 400;
+}
+
+/* ====== 提示信息 ====== */
+.tip-text {
+  display: block;
+  text-align: center;
+  font-size: 24rpx;
+  color: #a08a68;
+  margin-top: 16rpx;
+  line-height: 1.6;
+}
+
+/* ====== 头像裁剪弹窗 ====== */
+.crop-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-end;
+}
+
+.crop-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.crop-container {
+  position: relative;
+  width: 100%;
+  border-radius: 32rpx 32rpx 0 0;
+  background: #faf6ee;
+  padding: 36rpx 28rpx 48rpx;
+  z-index: 1;
+}
+
+.crop-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #3b2a1d;
+  text-align: center;
+  margin-bottom: 8rpx;
+}
+
+.crop-hint {
+  display: block;
+  text-align: center;
+  font-size: 24rpx;
+  color: #8a735f;
+  margin-bottom: 24rpx;
+}
+
+.crop-box {
+  position: relative;
+  width: 500rpx;
+  height: 500rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #222;
+}
+
+.crop-image {
+  position: absolute;
+  will-change: transform;
+}
+
+.crop-circle-mask {
+  position: absolute;
+  inset: -4rpx;
+  border: 6rpx solid rgba(201, 139, 82, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.crop-hidden-canvas {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 500px;
+  height: 500px;
+}
+
+.crop-zoom-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32rpx;
+  margin-top: 24rpx;
+}
+
+.crop-zoom-btn {
+  width: 64rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  border-radius: 50%;
+  background: #efe1cf;
+  color: #5c422c;
+  font-size: 40rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.crop-zoom-text {
+  font-size: 26rpx;
+  color: #6b4f36;
+  min-width: 80rpx;
+  text-align: center;
+}
+
+.crop-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 32rpx;
+}
+
+.crop-btn {
+  flex: 1;
+  height: 84rpx;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.crop-btn::after { border: none; }
+
+.crop-cancel { background: #e8dfd2; color: #6b5543; }
+.crop-confirm { background: linear-gradient(135deg, #c98b52, #b26c35); color: #fff; }
+
+/* ====== 保存按钮 ====== */
+.save-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  background: linear-gradient(135deg, #c98b52, #b26c35);
+  color: #fff;
+}
+.save-btn::after { border: none; }

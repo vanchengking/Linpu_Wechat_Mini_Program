@@ -1,15 +1,22 @@
 // pages/settings/settings.js
+const DEFAULT_AVATAR = 'https://bl.meishipay.com/images/content/%E4%BA%BA%E7%89%A9/%E9%BB%98%E8%AE%A4%E5%A4%B4%E5%83%8F.png';
+
 Page({
   data: {
-    userLevel: 5,
-    userTitle: '文化行者',
+    // 用户资料（从全局缓存读取）
+    avatarUrl: '',
+    defaultAvatar: DEFAULT_AVATAR,
+    nickname: '',
+    userLevel: 1,
+    userTitle: '初来乍到',
+
     notificationOn: true,
     soundOn: true,
     vibrateOn: true,
     cacheSize: '2.3 MB',
     showResetModal: false,
-    devTaps: 0,        // 开发者模式点击计数
-    showEasterEgg: false // 彩蛋页面显示状态
+    devTaps: 0,
+    showEasterEgg: false
   },
 
   onLoad() {
@@ -17,8 +24,18 @@ Page({
     this.calcCacheSize();
   },
 
+  /** 加载用户资料 + 设置 */
   loadSettings() {
     try {
+      // 从全局缓存读取（profile页和编辑页共用同一缓存key）
+      const cached = wx.getStorageSync('linpu_cloud_profile') || {};
+      if (cached.avatarUrl || cached.nickname) {
+        this.setData({
+          avatarUrl: cached.avatarUrl || DEFAULT_AVATAR,
+          nickname: cached.nickname || ''
+        });
+      }
+
       const userData = wx.getStorageSync('linpu_user_data');
       if (userData) {
         const level = Math.min(10, Math.floor((userData.totalExp || 0) / 200) + 1);
@@ -37,6 +54,20 @@ Page({
       if (settings.sound !== undefined) this.setData({ soundOn: settings.sound });
       if (settings.vibrate !== undefined) this.setData({ vibrateOn: settings.vibrate });
     } catch (e) {}
+  },
+
+  onShow() {
+    // 每次显示时刷新用户数据（可能从编辑页返回后更新了缓存）
+    try {
+      const cached = wx.getStorageSync('linpu_cloud_profile') || {};
+      if (cached.avatarUrl) this.setData({ avatarUrl: cached.avatarUrl });
+      if (cached.nickname) this.setData({ nickname: cached.nickname });
+    } catch (e) {}
+  },
+
+  /** 点击用户卡片 → 进入编辑资料页面 */
+  goToEditProfile() {
+    wx.navigateTo({ url: '/pages/settings/profile-edit' });
   },
 
   saveSettings() {

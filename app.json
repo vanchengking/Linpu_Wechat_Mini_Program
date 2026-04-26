@@ -22,6 +22,7 @@
     "pages/record/record",
     "pages/ranking/ranking",
     "pages/settings/settings",
+    "pages/settings/profile-edit",
     "pages/feedback/feedback",
     "pages/team/team",
     "pages/scene/scene",

@@ -4,7 +4,7 @@
   <!-- 背景图 -->
   <image 
     class="bg-img"
-    src="https://bl.meishipay.com/images/background/background5.png"
+    src="https://bl.meishipay.com/images/background/background.png"
     mode="aspectFill"
   ></image>
 

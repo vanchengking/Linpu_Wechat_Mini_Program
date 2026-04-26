@@ -7,17 +7,17 @@ const sceneConfig = {
   guide: {
     bgImg: "https://bl.meishipay.com/images/background/background.webp",
     initialText: "诶！那是谁家的小书生？快跟上！我是林浦的尚书伯，也是这里的'巡境百事通'，有什么想问的尽管说！\n听见锣鼓声了吗？咱们村的巡境队伍马上就要出发了！\n第一站，你想随我去哪里打卡？",
-    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.webp"
+    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.png"
   },
   lianshu: {
     bgImg: "https://bl.meishipay.com/images/content/濂江书院1.webp",
     initialText: "濂江书院是福州现存最完好的古书院，始建于唐末，南宋朱熹曾在此讲学，'宋朱熹讲学处' 巨碑、'文光射斗' 石栏等遗迹，见证千年学风传承。",
-    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.webp"
+    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.png"
   },
   shigong: {
     bgImg: "https://bl.meishipay.com/images/content/世公保1.webp",
     initialText: "世公保全称世宫保尚书林公家庙，由明代林瀚始建，是 '三代五尚书' 家族的纪念地，木结构建筑群与 '形如乌纱' 的庙前水池，尽显闽派建筑特色与望族底蕴。",
-    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.webp"
+    characterImg: "https://bl.meishipay.com/images/characters/shangshubo.png"
   },
   taishan: {
     bgImg: "https://bl.meishipay.com/images/content/location/泰山宫1.png",

@@ -24,7 +24,7 @@
     <!-- 第二名 -->
     <view class="podium-item second">
       <view class="podium-avatar-wrap silver-ring">
-        <image class="podium-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+        <image class="podium-avatar" src="{{defaultAvatar}}" mode="aspectFill"></image>
       </view>
       <text class="podium-rank">2</text>
       <text class="podium-name">{{topThree[1].name}}</text>
@@ -36,7 +36,7 @@
     <view class="podium-item first">
       <view class="crown">👑</view>
       <view class="podium-avatar-wrap gold-ring">
-        <image class="podium-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+        <image class="podium-avatar" src="{{defaultAvatar}}" mode="aspectFill"></image>
       </view>
       <text class="podium-rank gold-text">1</text>
       <text class="podium-name">{{topThree[0].name}}</text>
@@ -47,7 +47,7 @@
     <!-- 第三名 -->
     <view class="podium-item third">
       <view class="podium-avatar-wrap bronze-ring">
-        <image class="podium-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+        <image class="podium-avatar" src="{{defaultAvatar}}" mode="aspectFill"></image>
       </view>
       <text class="podium-rank">3</text>
       <text class="podium-name">{{topThree[2].name}}</text>
@@ -67,7 +67,7 @@
           <text class="pos-text {{item.rank <= 3 ? 'top' : ''}}">{{item.rank}}</text>
         </view>
         <view class="rank-info">
-          <image class="rank-avatar" src="/resources/icons/人物头像.png" mode="aspectFill"></image>
+          <image class="rank-avatar" src="{{defaultAvatar}}" mode="aspectFill"></image>
           <view class="rank-detail">
             <text class="rank-name">{{item.name}}</text>
             <view class="rank-level">
