@@ -59,7 +59,12 @@ Page({
   },
 
   onLoad: function(options) {
-    // 页面加载时的初始化逻辑可以放在这里
+    const sortedExperiences = this.data.experiences.slice().sort((a, b) => {
+      if (a.id === 4) return -1;
+      if (b.id === 4) return 1;
+      return 0;
+    });
+    this.setData({ experiences: sortedExperiences });
   },
 
   // 显示详情，增加震动反馈
