@@ -41,17 +41,17 @@ const STORY_LEVELS = [
       },
       {
         id: 1, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '昺儿，别怕。前面就是福州了。再坚持一下。'
       },
       {
         id: 2, type: 'bubble', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '皇兄……我们还要走多久？'
       },
       {
         id: 3, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '等到上岸的那一天，我们就能歇脚了。陆先生说……福州有个叫林浦的地方，那里的人会接纳我们。',
         options: [
           { text: '陆先生是谁？', nextId: 4 },
@@ -61,12 +61,12 @@ const STORY_LEVELS = [
       // 第2轮A（选"陆先生是谁"）
       {
         id: 4, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '陆秀夫陆先生。他一直护着我和弟弟。临安陷落的时候，是陆先生和张世杰将军带着我们从海上逃出来的。……朕……不，我有时候想，如果没有他们，我和弟弟早就不在了。'
       },
       {
         id: 5, type: 'bubble', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '陆先生对我很好，他把自己的衣服给我穿。',
         options: [
           { text: '听起来很不容易', nextId: 8 },
@@ -76,13 +76,13 @@ const STORY_LEVELS = [
       // 第2轮B（选"你们从哪里来"）
       {
         id: 6, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '从临安……从我们的家。元兵攻陷临安的时候，我才八岁，弟弟才六岁。父皇把我们交给了陆先生，然后就……我们就再也见不到父皇了。',
         side: 'look_far'
       },
       {
         id: 7, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '别怕，皇兄在这里。',
         after: { type: 'bubble', speaker: '赵昺', text: '我想母后……' },
         options: [
@@ -93,38 +93,38 @@ const STORY_LEVELS = [
       // 第3轮·初到林浦
       {
         id: 8, type: 'ar_scene',
-        text: '海浪推动小船靠岸，画面渐变——古代林浦村的轮廓从薄雾中浮现，村民夹道跪迎，两幼帝在臣僚簇拥下步入村落。',
+        text: '海浪推动小船靠岸，画面渐变——古代林浦村的轮廓从薄雾中浮现，村民夹道跪迎，两位王子在臣僚簇拥下步入村落。',
         gameId: 'chapter1'
       },
       {
         id: 9, type: 'narrator', speaker: '旁白',
-        text: '公元1277年冬，两位年幼的皇帝踏入了这座名叫"林浦"的小村庄。',
+        text: '公元1276年5月，两位年幼的王子踏入了这座名叫"林浦"的小村庄。',
         narratorStyle: 'warm'
       },
       {
         id: 10, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '此处山水相依，倒是个安身之所。'
       },
       {
         id: 11, type: 'bubble', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '皇兄你看！那边的房子好大！还有那座桥！'
       },
       {
         id: 12, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '那是濂江书院。待局势安稳了，便送你去念书。'
       },
       {
         id: 13, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '真的吗？我要读书！我要像……像那些大人一样厉害！',
         isMain: false
       },
       {
         id: 14, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '好。那我们就在这里住下吧。——这里的老百姓，看起来很善良。'
       },
       {
@@ -144,7 +144,7 @@ const STORY_LEVELS = [
       },
       {
         id: 18, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '',
         options: [
           { text: '去前面牌坊看看', nextId: -1, action: 'unlock_next', actionText: '解锁第二章，跳转尚书里石牌坊（古村长迎接）' },
@@ -215,7 +215,7 @@ const STORY_LEVELS = [
       {
         id: 7, type: 'npc', speaker: '古村长',
         npcImage: 'https://bl.meishipay.com/images/content/人物/古村长.png',
-        text: '来过！1276年，元兵攻陷临安，陆秀夫、张世杰护着两个小皇帝从海上逃到林浦，就在泰山宫住下了。后来就在这里拥立端宗皇帝，改元景炎。可惜……后来崖山一战，全军覆没。唉，两位小皇帝啊……一个病死，一个……跳海了。才几岁的孩子……',
+        text: '来过！1276年，元兵攻陷临安，陆秀夫、张世杰护着两个小王子从海上逃到林浦，就在泰山宫住下了。后来就在这里拥立端宗皇帝，改元景炎。可惜……后来崖山一战，全军覆没。唉，两位小皇帝啊……一个病死，一个……跳海了。才几岁的孩子……',
         options: [
           { text: '后来怎么样了？', nextId: 11 },
           { text: '崖山在哪里？', nextId: 11 }
@@ -489,7 +489,7 @@ const STORY_LEVELS = [
       },
       {
         id: 1, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '朕……好冷。这里是……进士牌坊吗？朕好像来过这里……又好像没有。朕记得……那天船翻了，好多叔叔掉进水里。陆先生抱着朕，说"陛下别怕"。可是朕好怕……',
         ghostMode: true,
         options: [
@@ -500,13 +500,13 @@ const STORY_LEVELS = [
       // 第2轮A
       {
         id: 2, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '朕是赵昺……宋少帝赵昺。那年朕才七岁。元兵的船好大，我们的船好小。朕听到好多人在哭……陆先生背着朕跳海的时候，水好冷。朕看到岸上的人都在哭…',
         ghostMode: true
       },
       {
         id: 3, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '等等……这个气息……（颤抖）皇兄？！皇兄是你吗？！皇兄——！！',
         ghostMode: true,
         side: 'excited'
@@ -517,14 +517,14 @@ const STORY_LEVELS = [
       },
       {
         id: 5, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '昺儿……是你吗？',
         ghostMode: true,
         newNpcAppear: true
       },
       {
         id: 10, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '皇兄！！朕找你好久！朕好想你！',
         ghostMode: true,
         options: [
@@ -535,7 +535,7 @@ const STORY_LEVELS = [
       // 第2轮B（选"不要怕，这里很安全"）
       {
         id: 6, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '真的吗？朕好想再看一眼太阳……林浦的百姓对朕很好，送大米给朕吃。朕想谢谢他们。可是朕找不到哥哥了。哥哥在哪里？朕好想哥哥……',
         ghostMode: true
       },
@@ -545,14 +545,14 @@ const STORY_LEVELS = [
       },
       {
         id: 8, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '昺儿……朕在这里。',
         ghostMode: true,
         side: 'distant'
       },
       {
         id: 9, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '皇兄——？！',
         ghostMode: true,
         side: 'excited'
@@ -572,31 +572,31 @@ const STORY_LEVELS = [
       },
       {
         id: 13, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '昺儿，朕……皇兄一直在平山堂等你。皇兄知道你会回来的。林浦的百姓也一直在等。',
         ghostMode: true
       },
       {
         id: 14, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '皇兄，陆先生……陆先生他……',
         ghostMode: true
       },
       {
         id: 15, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '皇兄知道。陆先生是忠臣。他背负着你跳海的时候，皇兄在天上看着。皇兄不怪他。',
         ghostMode: true
       },
       {
         id: 16, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '可是皇兄你……你才九岁就……你在碙洲一个人……一定很害怕……',
         ghostMode: true
       },
       {
         id: 17, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '怕。当然怕。但皇兄更怕的是……保护不了你。',
         ghostMode: true
       },
@@ -606,7 +606,7 @@ const STORY_LEVELS = [
       },
       {
         id: 19, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '你……你是林浦的百姓吗？还是……从很远的地方来的？',
         ghostMode: true,
         options: [
@@ -617,20 +617,20 @@ const STORY_LEVELS = [
       // 第4轮A1
       {
         id: 20, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '那就好好看看这里吧。每一块砖，每一片瓦，都有故事。',
         ghostMode: true
       },
       {
         id: 21, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '对！皇兄带我看过濂江书院！那里的书好大本！还有……还有那个敲鼓的老爷爷，他的鼓声可好听了！',
         ghostMode: true,
         isMain: false
       },
       {
         id: 25, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '这些，都是林浦留给我们的记忆。现在，交给你们了。',
         ghostMode: true,
         options: [
@@ -641,20 +641,20 @@ const STORY_LEVELS = [
       // 第4轮B1
       {
         id: 22, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '替朕……替我们谢过林浦的乡亲。八百年了，他们还记得。每年元宵分米，每年游神巡境……他们用这种方式，一直记着我们。',
         ghostMode: true
       },
       {
         id: 23, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '嗯！那个老村长说，"皇帝住过的地方，就要守好"！林浦的人真好！',
         ghostMode: true,
         isMain: false
       },
       {
         id: 24, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '那么，能否请帮我们一件事？',
         ghostMode: true,
         options: [
@@ -665,26 +665,26 @@ const STORY_LEVELS = [
       // 第5轮·托付与告别
       {
         id: 26, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '告诉林浦的孩子们——好好读书，勇敢做人。不要忘记历史，也不要被历史困住。这片土地的未来，在他们手里。',
         ghostMode: true
       },
       {
         id: 27, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '还有还有！告诉他们……要开心！就像……就像我们在林浦的那些日子一样。虽然很短，但是……很开心。',
         ghostMode: true,
         isMain: false
       },
       {
         id: 28, type: 'npc', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '该走了，昺儿。',
         ghostMode: true
       },
       {
         id: 29, type: 'npc', speaker: '赵昺',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋少帝1.png',
         text: '再见……林浦。再见……',
         ghostMode: true,
         isMain: false
@@ -702,7 +702,7 @@ const STORY_LEVELS = [
       },
       {
         id: 32, type: 'narrator', speaker: '赵昰',
-        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗.png',
+        npcImage: 'https://bl.meishipay.com/images/content/人物/宋端宗1.png',
         text: '会回来的。也许不是我们……但一定会有人回来，记住这里的一切。',
         narratorStyle: 'distant'
       },
