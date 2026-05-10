@@ -62,8 +62,8 @@ Page({
         name: '尚书里石牌坊',
         type: '牌坊建筑',
         protectionLevel: "历史构筑物",
-        left: '9%',
-        top: '70%',
+        left: '3.5%',
+        top: '68%',
         images: [
           "https://101.34.247.48:8888/down/oJPQSStUpA7r.png",
           "https://101.34.247.48:8888/down/4BkKW05UwDUi.jpg",
@@ -79,8 +79,8 @@ Page({
         name: '林浦断桥',
         type: '桥梁建筑',
         protectionLevel: "省级历史文化名村景点",
-        left: '95%',
-        top: '55%',
+        left: '27.5%',
+        top: '25%',
         images: [
           "https://101.34.247.48:8888/down/7uSZjtEegwT4.jpg",
           "https://101.34.247.48:8888/down/hAvpvdK1jnlz.jpg",
